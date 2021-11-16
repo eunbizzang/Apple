@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
@@ -19,7 +20,9 @@ public class ShopReportOkAction implements Action {
 
 		String shopid = request.getParameter("shopid");
 		String date = request.getParameter("date");
-		String pname = request.getParameter("pname");
+		String pnumname = request.getParameter("pnumname");
+		String pname = pnumname.substring(6);
+		String pnum = pnumname.substring(0,6);
 		int sales_no = Integer.parseInt(request.getParameter("sales_no"));
 
 		SalesDTO dto = new SalesDTO();
@@ -29,9 +32,9 @@ public class ShopReportOkAction implements Action {
 		dto.setSales_no(sales_no);
 		
 		SalesDAO dao = SalesDAO.getInstance();
-		dao.salesInsert(dto);
-		List<SalesDTO> list = dao.salesToday();
-		int total = dao.totalToday();
+		dao.salesInsert(dto, pnum, sales_no, shopid);
+		List<SalesDTO> list = dao.salesToday(shopid);
+		int total = dao.totalToday(shopid);
 		
 		request.setAttribute("salesList", list);
 		request.setAttribute("total", total);

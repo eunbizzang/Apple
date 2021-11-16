@@ -7,7 +7,14 @@ public class SalesDTO {
 	private String shop_id;
 	private int sales_no;
 	private String sales_date;
+	private int total;
 	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	public int getNo() {
 		return no;
 	}

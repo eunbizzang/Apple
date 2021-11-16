@@ -12,12 +12,12 @@ import com.shop.controller.ActionForward;
 import com.shop.model.SalesDAO;
 import com.shop.model.SalesDTO;
 
-public class ShopReportAction implements Action {
+public class ShopSummaryAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
-
+		
+		
 		SalesDAO dao = SalesDAO.getInstance();
 
 		String shopid = "1";
@@ -37,9 +37,10 @@ public class ShopReportAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("shop/shop_report.jsp");
+		forward.setPath("shop/shop_summary.jsp");
 		
 		
 		return forward;
 	}
+
 }

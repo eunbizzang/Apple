@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Apple store sales report page</title>
 <style type="text/css">
 
 	table {
@@ -24,72 +24,84 @@
 			<h3>매출 보고서</h3>
 		<hr width="65%" color="blue">
 		<br>
+		
+		<c:set var="shopid" value="${shopid }" />
 		<form method="post" 
 			action="<%=request.getContextPath() %>/shop_report_ok.do"
 			onsubmit = "return confirm('매출을 전송하시겠습니까?');">
+			<input type="hidden" name="shopid" value="${shopid }">
 		<table>
 		<tr>
 			<th>매출일자</th>
 			<td>
-				<input type ="date" name = "date"></td>
+				<input type ="date" name = "date" required></td>
 		</tr>
 		<tr>	
 			<th>매장명</th>
 			<td>
-				<select name="shopid">
-	            	   <option value="1" selected>Apple 여의도</option>
-	            	   <option value="2">Apple 가로수길</option>
-	            	   <option value="3">프리스비 홍대점</option>
-	            	   <option value="4">윌리스 김포공항점</option>
-	            	   <option value="5">윌리스 인천터미널점</option>	            	
-				</select>
+				<c:choose>	
+				<c:when test="${shopid eq '1'}"><input value="Apple 여의도 점" readonly></c:when>
+				<c:when test="${shopid eq '2'}"><input value="Apple 가로수길" readonly></c:when>    
+				<c:when test="${shopid eq '3'}"><input value="프리스비 홍대점" readonly></c:when>
+				<c:when test="${shopid eq '4'}"><input value="윌리스 김포공항" readonly></c:when>
+				<c:when test="${shopid eq '5'}"><input value="윌리스 인천터미널점" readonly></c:when>
+				</c:choose>
 			</td>
 		</tr>	
 		<tr>
 			<th>상품명</th>
 			<td>
-				<select name="pname">
-	            	   <option value="iPadPro" selected>iPadPro [PAD001]</option>
-	            	   <option value="iPadAir">iPadAir [PAD002]</option>
-	            	   <option value="iPad">iPad [PAD003]</option>
-	            	   <option value="iPadmini">iPadmini [PAD004]</option>
-	            	   <option value="iPhone13Pro">iPhone13Pro [PHO001]</option>	            	
-	            	   <option value="iPhone13" >iPhone13 [PHO002]</option>
-	            	   <option value="iPhone13mini">iPhone13mini [PHO003]</option>
-	            	   <option value="iPhoneSE">iPhoneSE [PHO004]</option>
-	            	   <option value="AirPodsPro">AirPodsPro [POD001]</option>
-	            	   <option value="AirPods3">AirPods3 [POD002]</option>	            	
-	            	   <option value="AirPods2">AirPods2 [POD003]</option>
-	            	   <option value="AppleWatch7">AppleWatch7 [WCH001]</option>
-	            	   <option value="AppleWatchSE">AppleWatchSE [WCH002]</option>
-	            	   <option value="AppleWatch3">AppleWatch3 [WCH003]</option>             	
+				<select name="pnumname" required>
+	            	   <option value="PAD001iPadPro" selected>iPadPro [PAD001]</option>
+	            	   <option value="PAD002iPadAir">iPadAir [PAD002]</option>
+	            	   <option value="PAD003iPad">iPad [PAD003]</option>
+	            	   <option value="PAD004iPadmini">iPadmini [PAD004]</option>
+	            	   <option value="PHO001iPhone13Pro">iPhone13Pro [PHO001]</option>	            	
+	            	   <option value="PHO002iPhone13" >iPhone13 [PHO002]</option>
+	            	   <option value="PHO003iPhone13mini">iPhone13mini [PHO003]</option>
+	            	   <option value="PHO004iPhoneSE">iPhoneSE [PHO004]</option>
+	            	   <option value="POD001AirPodsPro">AirPodsPro [POD001]</option>
+	            	   <option value="POD002AirPods3">AirPods3 [POD002]</option>	            	
+	            	   <option value="POD003AirPods2">AirPods2 [POD003]</option>
+	            	   <option value="WCH001AppleWatch7">AppleWatch7 [WCH001]</option>
+	            	   <option value="WCH002AppleWatchSE">AppleWatchSE [WCH002]</option>
+	            	   <option value="WCH003AppleWatch3">AppleWatch3 [WCH003]</option>             	
 					</select></td>
-		<tr>
-			<th>판매수량</th>
-			<td><input type="number" min="0" name="sales_no"></td>
-		</tr>
-		<tr>
+			<tr>
+				<th>판매수량</th>
+				<td><input type="number" min="0" name="sales_no" required></td>
+			</tr>
+			<tr>
 	            <td colspan="2" align="center">
 	               <input type="submit" value="매출등록">&nbsp;&nbsp;&nbsp;
 	         	   <input type="reset" value="다시작성">
-	            </td>
-	         </tr>	
+				</td>
+			</tr>	
 		</table>
 	   	</form>
 	  	<br> <br>
-		
+	  	
+		<c:choose>	
+		<c:when test="${shopid eq '1'}"><h3>Apple 여의도 점</h3></c:when>
+		<c:when test="${shopid eq '2'}"><h3>Apple 가로수길</h3></c:when>    
+		<c:when test="${shopid eq '3'}"><h3>프리스비 홍대점</h3></c:when>
+		<c:when test="${shopid eq '4'}"><h3>윌리스 김포공항</h3></c:when>
+		<c:when test="${shopid eq '5'}"><h3>윌리스 인천터미널점</h3></c:when>
+		</c:choose>
+
 		<h3>매출보고 내역</h3>
 		<table width="300">
 		<c:set var="list" value="${salesList }" />
 		<c:set var="total" value="${total }" />
 			<c:if test="${!empty list }">
 	      	<tr>
-	      		<th>상품명</th> <th>수 량</th><th>삭 제</th>
+	      		<th>상품명</th> <th>수 량</th><th>합 계</th><th>삭 제</th>
 	         <c:forEach items="${list }" var="dto">
 	         <tr>
 	               <td> ${dto.getPname() } </td>
 	               <td> ${dto.getSales_no() } </td>
-	               <td><a href="<%=request.getContextPath() %>/sales_delete.do?no=${dto.getNo() }">삭 제</a>
+	               <td> ${dto.getTotal() }</td>
+	               <td><a href="<%=request.getContextPath() %>/sales_delete.do?no=${dto.getNo() } ">삭 제</a>
 	               </td>
 	         </tr>
 			</c:forEach>
@@ -101,7 +113,13 @@
 		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
 	    <table>     
 	         <tr>
-	         	<td>xx매장 일 매출 : </td>
+	         	<c:choose>	
+				<c:when test="${shopid eq '1'}"><td>Apple 여의도 점 일 매출 : </td></c:when>
+				<c:when test="${shopid eq '2'}"><td>Apple 가로수길 일 매출 : </td></c:when>    
+				<c:when test="${shopid eq '3'}"><td>프리스비 홍대점 일 매출 : </td></c:when>
+				<c:when test="${shopid eq '4'}"><td>윌리스 김포공항 일 매출 : </td></c:when>
+				<c:when test="${shopid eq '5'}"><td>윌리스 인천터미널점 일 매출 : </td></c:when>
+				</c:choose>
 	         	<td><fmt:formatNumber value="${total}"/>원</td>
 	         </tr>
 		</table>

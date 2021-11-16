@@ -85,7 +85,7 @@ public class SalesDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public int salesInsert(SalesDTO dto) {
+	public void salesInsert(SalesDTO dto, String pnum, int sales_no, String shopid) {
 		int result = 0, count = 0;
 		
 		try {
@@ -101,7 +101,6 @@ public class SalesDAO {
 				count = rs.getInt(1) + 1;
 			}
 			
-			
 			sql = "insert into sales values(?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, count);
@@ -110,25 +109,53 @@ public class SalesDAO {
 			pstmt.setInt(4, dto.getSales_no());
 			pstmt.setString(5, dto.getSales_date());
 			result = pstmt.executeUpdate();
-			
+			if(result > 0) {
+				if(shopid.equals("1")) {
+				sql = "update shop1_prod set "
+						+ "now_no = now_no - ? "
+						+ "where pnum = ?";
+				}else if(shopid.equals("2")) {
+				sql = "update shop2_prod set "
+						+ "now_no = now_no - ? "
+						+ "where pnum = ?";
+				}else if(shopid.equals("3")) {
+				sql = "update shop3_prod set "
+						+ "now_no = now_no - ? "
+						+ "where pnum = ?";
+				}else if(shopid.equals("4")) {
+				sql = "update shop4_prod set "
+						+ "now_no = now_no - ? "
+						+ "where pnum = ?";
+				}else if(shopid.equals("5")) {
+				sql = "update shop5_prod set "
+						+ "now_no = now_no - ? "
+						+ "where pnum = ?";
+				}
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, sales_no);
+				pstmt.setString(2, pnum);
+				pstmt.executeUpdate();
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
 		}
-		
-		return result;
 	}	// salesInsert() end
 	
-	public List<SalesDTO> salesToday() {
+	public List<SalesDTO> salesToday(String shopid) {
 		List<SalesDTO> list = new ArrayList<SalesDTO>();
 		
 		try {
 			openConn();
-			sql = "select * from sales where sales_date = ?";
+			sql = "select no, sales.pname, shop_id, sales_no, sales_date, price " + 
+					"from sales left join prod " + 
+					"on sales.pname = prod.pname " + 
+					"where sales_date = ? and shop_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, date);
+			pstmt.setString(2, shopid);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -138,6 +165,7 @@ public class SalesDAO {
 				dto.setShop_id(rs.getString("shop_id"));
 				dto.setSales_no(rs.getInt("sales_no"));
 				dto.setSales_date(rs.getString("sales_date"));
+				dto.setTotal(rs.getInt("sales_no")*rs.getInt("price"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -149,7 +177,7 @@ public class SalesDAO {
 		return list;
 	}	// salesInsert() end
 	
-	public int totalToday() {
+	public int totalToday(String shopid) {
 		int result = 0;
 		
 		
@@ -158,9 +186,11 @@ public class SalesDAO {
 			sql = "select sum(price*sales_no) as total " + 
 				"from prod p left join sales s " + 
 				"on p.pname = s.pname " + 
-				"where s.sales_date = ?";
+				"where s.sales_date = ? and "
+				+ "shop_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, date);
+			pstmt.setString(2, shopid);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -175,9 +205,33 @@ public class SalesDAO {
 		return result;
 	}	//totalToday() 메서드 end
 	
+	public String getPnum(int no) {
+		String result = null;
+		try {
+			openConn();
+			
+			sql = "select pnum from sales left join prod " + 
+					"on prod.pname = sales.pname " + 
+					"where no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}	// getPnum()메서드 end;
+	
 	public int deleteSales(int no) {
 		int result = 0;
-		
 		
 		try {
 			openConn();
@@ -196,9 +250,10 @@ public class SalesDAO {
 			closeConn(rs, pstmt, con);
 		}
 		return result;
-	}
+	}	// deleteSales()메서드 end;
 	
-	public void updateSalesNo(int no) {
+	public int updateSalesNo(int no) {
+		int result = 0;
 		try {
 			openConn();
 			
@@ -212,12 +267,55 @@ public class SalesDAO {
 			
 			pstmt.executeUpdate();
 			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			closeConn(rs, pstmt, con);
 		}
+		return result;
+	}	// updateSalesNo()메서드 end;
+	
+	public void plusPno(String pnum, String shopid, int no) {
+		try {
+			
+			openConn();
+			
+			if(shopid == "1") {
+				sql = "update shop1_prod set "
+						+ "now_no = now_no + ? "
+						+ "where pnum = ?";
+			}else if(shopid.equals("2")) {
+				sql = "update shop2_prod set "
+						+ "now_no = now_no + ? "
+						+ "where pnum = ?";
+			}else if(shopid.equals("3")) {
+				sql = "update shop3_prod set "
+						+ "now_no = now_no + ? "
+						+ "where pnum = ?";
+			}else if(shopid.equals("4")) {
+				sql = "update shop4_prod set "
+						+ "now_no = now_no + ? "
+						+ "where pnum = ?";
+			}else if(shopid.equals("5")) {
+				sql = "update shop5_prod set "
+						+ "now_no = now_no + ? "
+						+ "where pnum = ?";
+				}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, pnum);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+	}	// plusPno() 메서드 end
+	
+	public void minusPno() {
 		
-	}
+	}	// minusPno() 메서드 end
 }
