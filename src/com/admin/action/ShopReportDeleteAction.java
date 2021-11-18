@@ -36,7 +36,7 @@ public class ShopReportDeleteAction implements Action {
 			forward.setPath("shop_report.do");
 		}else {
 			out.println("<script>");
-			out.println("alert('상품 삭제 실패~~~')");
+			out.println("alert('상품 삭제 실패')");
 			out.println("history.back()");
 			out.println("</script>");
 		}
