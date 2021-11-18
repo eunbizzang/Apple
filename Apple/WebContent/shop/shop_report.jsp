@@ -9,22 +9,41 @@
 <meta charset="UTF-8">
 <title>Apple store sales report page</title>
 <style type="text/css">
-
+	div.row {
+		width: 80%;
+		display: flex;
+	}
+	div.left {
+        width: 50%;
+        float: left;
+        border-width: 1px;
+        border-color: gray;
+	}
+	div.right {
+        width: 50%;
+        float: right;
+	}
 	table {
 		margin-left:auto;
 		margin-right:auto;
 	}
-
 </style>
 </head>
 <body>
-
-	<div align="center">
-		<hr width="65%" color="blue">
-			<h3>매출 보고서</h3>
-		<hr width="65%" color="blue">
+	<div class="row">
+		<div class="left">
+		<div align="center">
+		<br><br>
+		<c:choose>	
+		<c:when test="${shopid eq '1'}"><h3>Apple 여의도 점</h3></c:when>
+		<c:when test="${shopid eq '2'}"><h3>Apple 가로수길</h3></c:when>    
+		<c:when test="${shopid eq '3'}"><h3>프리스비 홍대점</h3></c:when>
+		<c:when test="${shopid eq '4'}"><h3>윌리스 김포공항</h3></c:when>
+		<c:when test="${shopid eq '5'}"><h3>윌리스 인천터미널점</h3></c:when>
+		</c:choose>
+        <h3>매출 보고</h3>
 		<br>
-		
+		</div>
 		<c:set var="shopid" value="${shopid }" />
 		<form method="post" 
 			action="<%=request.getContextPath() %>/shop_report_ok.do"
@@ -32,12 +51,12 @@
 			<input type="hidden" name="shopid" value="${shopid }">
 		<table>
 		<tr>
-			<th>매출일자</th>
+			<td>매출일자</td>
 			<td>
 				<input type ="date" name = "date" required></td>
 		</tr>
 		<tr>	
-			<th>매장명</th>
+			<td>매장명</td>
 			<td>
 				<c:choose>	
 				<c:when test="${shopid eq '1'}"><input value="Apple 여의도 점" readonly></c:when>
@@ -49,7 +68,7 @@
 			</td>
 		</tr>	
 		<tr>
-			<th>상품명</th>
+			<td>상품명</td>
 			<td>
 				<select name="pnumname" required>
 	            	   <option value="PAD001iPadPro" selected>iPadPro [PAD001]</option>
@@ -68,7 +87,7 @@
 	            	   <option value="WCH003AppleWatch3">AppleWatch3 [WCH003]</option>             	
 					</select></td>
 			<tr>
-				<th>판매수량</th>
+				<td>판매수량</td>
 				<td><input type="number" min="0" name="sales_no" required></td>
 			</tr>
 			<tr>
@@ -79,16 +98,11 @@
 			</tr>	
 		</table>
 	   	</form>
+	   	</div>
 	  	<br> <br>
 	  	
-		<c:choose>	
-		<c:when test="${shopid eq '1'}"><h3>Apple 여의도 점</h3></c:when>
-		<c:when test="${shopid eq '2'}"><h3>Apple 가로수길</h3></c:when>    
-		<c:when test="${shopid eq '3'}"><h3>프리스비 홍대점</h3></c:when>
-		<c:when test="${shopid eq '4'}"><h3>윌리스 김포공항</h3></c:when>
-		<c:when test="${shopid eq '5'}"><h3>윌리스 인천터미널점</h3></c:when>
-		</c:choose>
-
+	  	<div class="right" align="center">
+		<br><br>
 		<h3>매출보고 내역</h3>
 		<table width="300">
 		<c:set var="list" value="${salesList }" />
@@ -111,7 +125,7 @@
 			         
 		<c:set var="now" value="<%=new Date() %>" /> 
 		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
-	    <table>     
+	    <table align = "center">     
 	         <tr>
 	         	<c:choose>	
 				<c:when test="${shopid eq '1'}"><td>Apple 여의도 점 일 매출 : </td></c:when>
@@ -123,6 +137,7 @@
 	         	<td><fmt:formatNumber value="${total}"/>원</td>
 	         </tr>
 		</table>
+		</div>
 	</div>
 </body>
 </html>
