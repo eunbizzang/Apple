@@ -11,6 +11,7 @@ import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 import com.shop.model.SalesDAO;
 import com.shop.model.SalesDTO;
+import com.shop.model.ShopprodDAO;
 
 public class ShopReportOkAction implements Action {
 
@@ -32,7 +33,13 @@ public class ShopReportOkAction implements Action {
 		dto.setSales_no(sales_no);
 		
 		SalesDAO dao = SalesDAO.getInstance();
-		dao.salesInsert(dto, pnum, sales_no, shopid);
+		int check = dao.salesInsert(dto, pnum, sales_no, shopid);
+		
+		if(check>0) {
+			ShopprodDAO shopdao = ShopprodDAO.getInstance();
+			shopdao.plusNo(shopid, pnum, sales_no);
+		}
+		
 		List<SalesDTO> list = dao.salesToday(shopid);
 		int total = dao.totalToday(shopid);
 		

@@ -22,8 +22,10 @@ public class ShopSummaryAction implements Action {
 		SalesDAO dao = SalesDAO.getInstance();
 
 		ArrayList<Integer> shopsales = dao.shopsales();
+		int[] prodsales = dao.prodsales();
 		System.out.println(shopsales);
 		request.setAttribute("shopsales", shopsales);
+		request.setAttribute("prodsales", prodsales);
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);

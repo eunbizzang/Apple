@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.Context;
@@ -85,7 +86,7 @@ public class SalesDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	public void salesInsert(SalesDTO dto, String pnum, int sales_no, String shopid) {
+	public int salesInsert(SalesDTO dto, String pnum, int sales_no, String shopid) {
 		int result = 0, count = 0;
 		
 		try {
@@ -108,7 +109,7 @@ public class SalesDAO {
 			pstmt.setString(3, dto.getShop_id());
 			pstmt.setInt(4, dto.getSales_no());
 			pstmt.setString(5, dto.getSales_date());
-			pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -116,6 +117,7 @@ public class SalesDAO {
 		} finally {
 			closeConn(rs, pstmt, con);
 		}
+		return result;
 	}	// salesInsert() end
 	
 	public List<SalesDTO> salesToday(String shopid) {
@@ -251,32 +253,6 @@ public class SalesDAO {
 		return result;
 	}	// updateSalesNo()메서드 end;
 	
-	public void plusShop1Pno(String pnum, int no) {
-		try {
-			
-			openConn();
-			
-			sql = "update shop1_prod set "
-					+ "now_no = now_no + ? "
-					+ "where pnum = ?";
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			pstmt.setString(2, pnum);
-			pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			closeConn(rs, pstmt, con);
-		}
-	}	// plusPno() 메서드 end
-	
-	public void minusPno() {
-		
-	}	// minusPno() 메서드 end
-	
 	public ArrayList<Integer> shopsales() {
 		ArrayList<Integer> shopsales = new ArrayList<>();
 		
@@ -299,4 +275,69 @@ public class SalesDAO {
 		}
 		return shopsales;
 	}	// shopsales() 메서드 end
+	
+	public int[] prodsales() {
+		int[] prodsales = new int[4];
+		
+		try {
+			openConn();
+			sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+					"where pname like 'iPad%'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				prodsales[0]=rs.getInt(1);
+				sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+						"where pname like 'iPhone%'";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					prodsales[1]=rs.getInt(1);
+					sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+							"where pname like 'AirPods%'";
+					pstmt = con.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						prodsales[2]=rs.getInt(1);
+						sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+								"where pname like 'AppleWatch%'";
+						pstmt = con.prepareStatement(sql);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							prodsales[3]=rs.getInt(1);}
+					}
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prodsales;
+	}	// prodsales() 메서드 end
+	
+	public HashMap<String, Integer> weekSales(String date, String shopid) {
+		HashMap<String, Integer> result = new HashMap<String, Integer>();
+		
+		try {
+			openConn();
+			
+			sql = "select sales_date, NVL(sum(sales_no*price), 0) as total "
+					+ "from sales join prod on sales.pname = prod.pname "
+					+ "where sales_date >= ? and shop_id = ? "
+					+ "group by sales.sales_date";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, date);
+			pstmt.setString(2, shopid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result.put(rs.getString("sales_date"), rs.getInt("total"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

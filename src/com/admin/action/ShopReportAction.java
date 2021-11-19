@@ -20,7 +20,7 @@ public class ShopReportAction implements Action {
 
 		SalesDAO dao = SalesDAO.getInstance();
 
-		String shopid = "5";
+		String shopid = "gimpo";
 		
 		List<SalesDTO> list = dao.salesToday(shopid);
 		

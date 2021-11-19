@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.shop.controller.Action;
 import com.shop.controller.ActionForward;
 import com.shop.model.SalesDAO;
+import com.shop.model.ShopprodDAO;
 
 public class ShopReportDeleteAction implements Action {
 
@@ -21,17 +22,21 @@ public class ShopReportDeleteAction implements Action {
 		
 		String shopid = (String)session.getAttribute("shopid");
 		int no = Integer.parseInt(request.getParameter("no").trim());
+		int sales_no = Integer.parseInt(request.getParameter("sales_no").trim());
 		
 		SalesDAO dao = SalesDAO.getInstance();
 		String pnum = dao.getPnum(no);
 		int check = dao.deleteSales(no);
+		
 		ActionForward forward = new ActionForward();
 		PrintWriter out = response.getWriter();
 		
 		if(check > 0) {
 			dao.updateSalesNo(no);
-			dao.plusShop1Pno(pnum, no);
-			
+
+			ShopprodDAO shopdao = ShopprodDAO.getInstance();
+			shopdao.minusNo(shopid, pnum, sales_no);
+
 			forward.setRedirect(true);
 			forward.setPath("shop_report.do");
 		}else {
