@@ -325,13 +325,13 @@ public class SalesDAO {
 			sql = "select sales_date, NVL(sum(sales_no*price), 0) as total "
 					+ "from sales join prod on sales.pname = prod.pname "
 					+ "where sales_date >= ? and shop_id = ? "
-					+ "group by sales.sales_date";
+					+ "group by sales.sales_date ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, date);
 			pstmt.setString(2, shopid);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				result.put(rs.getString("sales_date"), rs.getInt("total"));
 			}
 		} catch (SQLException e) {

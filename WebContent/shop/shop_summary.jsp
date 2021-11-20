@@ -32,8 +32,8 @@
 </head>
 <body>
 <section>
-<div class="left" style="width: 400px; height: 400px;">
-<canvas id="wholesales" width="300" height="300"></canvas>
+<div class="left" style="width: 700px; height: 500px;">
+<canvas id="wholesales" width="700" height="500"></canvas>
 <canvas id="shopsales" width="300" height="300"></canvas>
 </div>
 <div class="right" style="width: 400px; height: 400px;">
@@ -46,16 +46,10 @@
 
 <script>
 
-let data=[];
+let shopdata=[];
 <c:set var="sales" value="${shopsales}" />
 <c:forEach items="${sales}" var="sales">
-data.push('${sales}');
-</c:forEach>
-
-let data2=[];
-<c:set var="psales" value="${prodsales}" />
-<c:forEach items="${psales}" var="sales">
-data2.push('${sales}');
+shopdata.push('${sales}');
 </c:forEach>
 
 const ctx = document.getElementById('shopsales');
@@ -65,7 +59,7 @@ const myChart = new Chart(ctx, {
         labels: ['Apple 가로수길', '윌리스 김포공항', '프리스비 홍대점', '윌리스 인천터미널점', 'Apple 여의도 점'],
         datasets: [{
             label: '매장별 매출액',
-            data: data,
+            data: shopdata,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -94,6 +88,12 @@ const myChart = new Chart(ctx, {
     }
 });
 
+let proddata=[];
+<c:set var="psales" value="${prodsales}" />
+<c:forEach items="${psales}" var="sales">
+proddata.push('${sales}');
+</c:forEach>
+
 const pie = document.getElementById('prodsales');
 const pieChart = new Chart(pie, {
     type: 'pie',
@@ -101,7 +101,7 @@ const pieChart = new Chart(pie, {
         labels: ['iPad','iPhone','Airpods','AppleWatch'],
         datasets: [{
             label: '제품별 매출액',
-            data: data2,
+            data: proddata,
             backgroundColor: [
             	'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -130,19 +130,31 @@ const pieChart = new Chart(pie, {
     }
 });
 
+let week=[];
+<c:set var="week" value="${week}" />
+<c:forEach items="${week}" var="week">
+week.push('${week}');
+</c:forEach>
+
+let garosu=[];
+<c:set var="garosu" value="${garosu}" />
+<c:forEach items="${garosu}" var="garosu">
+garosu.push('${garosu}');
+</c:forEach>
+
 const con = document.getElementById('wholesales');
 const config = new Chart(con, {
 		  type: 'bar',
 		  data: {
-				  labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat', 'Sun'],
+				  labels: week,
 				  datasets: [
 				    {
-				      label: 'Apple 여의도 점',
-				      data: ['1','2','3','4','5','6','3'],
+				      label: 'Apple 가로수길',
+				      data: garosu,
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				    },
 				    {
-				      label: 'Apple 가로수길',
+				      label: '윌리스 김포공항',
 				      data: ['1','2','3','4','5','6','4'],
 				      backgroundColor: 'rgba(54, 162, 235, 0.2)',
 				    },
@@ -152,12 +164,12 @@ const config = new Chart(con, {
 				      backgroundColor: 'rgba(255, 206, 86, 0.2)',
 				    },
 				    {
-				        label: '윌리스 김포공항',
+				        label: '윌리스 인천터미널점',
 				        data: ['1','2','3','2','5','2','2'],
 				        backgroundColor: 'rgba(75, 192, 192, 0.2)',
 				    },
 				    {
-				        label: '윌리스 인천터미널점',
+				        label: 'Apple 여의도 점',
 				        data: ['1','2','3','4','2','2','2'],
 				        backgroundColor: 'rgba(255, 159, 64, 0.2)',
 				      },
@@ -171,9 +183,9 @@ const config = new Chart(con, {
 		      },
 		    },
 		    responsive: true,
-		    legend: {
+		    /* legend: {
 		         position: 'right' // place legend on the right side of chart
-		      },
+		      }, */
 		    scales: {
 		        xAxes: [{
 		           stacked: true // this should be set to make the bars stacked
