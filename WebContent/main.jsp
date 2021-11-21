@@ -16,7 +16,6 @@
 	   <a href="<%=request.getContextPath() %>/report_main.jsp">매출 현황</a>
 	   <a href="<%=request.getContextPath() %>/shop_report.do">매장 매출보고</a>
 	   <a href="<%=request.getContextPath() %>/shop_order.do">매장 발주</a>
-	   <a href="<%=request.getContextPath() %>/shop/shop_info.jsp">매장 정보</a>
 	      
 	</div>
 	

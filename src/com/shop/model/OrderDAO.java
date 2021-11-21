@@ -120,11 +120,11 @@ public class OrderDAO {
 	public int insertOrderList(String shopid, String pnum, int order_no,String order_code) {
 		int result = 0, count = 0;
 
+			openConn();
+			
+			sql = "select max(order_code) from shop_order where shop_id = ?";
+			
 			try {
-				openConn();
-				
-				sql = "select max(order_code) from shop_order where shop_id = ?";
-				
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, shopid);
 				rs = pstmt.executeQuery();

@@ -29,12 +29,9 @@ public class ShopSummaryAction implements Action {
 		request.setAttribute("week", week);
 		
 		SalesDAO dao = SalesDAO.getInstance();
-		
-		// select all store's sales list
-		ArrayList<Integer> shopsales = dao.shopsalesweek(week[0], week[6]);
-		
-		// select all store's productsales list
-		int[] prodsales = dao.prodsalesweek(week[0], week[6]);
+
+		ArrayList<Integer> shopsales = dao.shopsales();
+		int[] prodsales = dao.prodsales();
 		
 		request.setAttribute("shopsales", shopsales);
 		request.setAttribute("prodsales", prodsales);
@@ -42,11 +39,11 @@ public class ShopSummaryAction implements Action {
 		// Store name order
 		// garosu / gimpo / hongdae / incheon / yeouido
 		// Get Hashmap data<date, salesincome> in last week.
-		HashMap<String, Integer> garosuweek = dao.weekSales(week[0], "garosu");
-		HashMap<String, Integer> gimpoweek = dao.weekSales(week[0], "gimpo");
-		HashMap<String, Integer> hongdaeweek = dao.weekSales(week[0], "hongdae");
-		HashMap<String, Integer> incheonweek = dao.weekSales(week[0], "incheon");
-		HashMap<String, Integer> yeouidoweek = dao.weekSales(week[0], "yeouido");
+		HashMap<String, Integer> garosuweek = dao.weekSales(week[6], "garosu");
+		HashMap<String, Integer> gimpoweek = dao.weekSales(week[6], "gimpo");
+		HashMap<String, Integer> hongdaeweek = dao.weekSales(week[6], "hongdae");
+		HashMap<String, Integer> incheonweek = dao.weekSales(week[6], "incheon");
+		HashMap<String, Integer> yeouidoweek = dao.weekSales(week[6], "yeouido");
 		int[] garosu = new int[7];
 		int[] gimpo = new int[7];
 		int[] hongdae = new int[7];
@@ -54,43 +51,49 @@ public class ShopSummaryAction implements Action {
 		int[] yeouido = new int[7];
 		
 		for(int i=0; i<=6; i++) {
-			if(garosuweek.get(week[i])!=null) {
+			if(garosuweek.containsKey(week[i])) {
 				garosu[i] = garosuweek.get(week[i]);
 			}else {
 				garosu[i] = 0;
 			}
-		
-			if(gimpoweek.get(week[i])!=null) {
+		}
+		for(int i=0; i<=6; i++) {
+			if(gimpoweek.containsKey(week[i])) {
 				gimpo[i] = gimpoweek.get(week[i]);
 			}else {
 				gimpo[i] = 0;
 			}
-		
-			if(hongdaeweek.get(week[i])!=null) {
+		}
+		for(int i=0; i<=6; i++) {
+			if(hongdaeweek.containsKey(week[i])) {
 				hongdae[i] = hongdaeweek.get(week[i]);
 			}else {
 				hongdae[i] = 0;
 			}
-		
-			if(incheonweek.get(week[i])!=null) {
+		}
+		for(int i=0; i<=6; i++) {
+			if(incheonweek.containsKey(week[i])) {
 				incheon[i] = incheonweek.get(week[i]);
 			}else {
 				garosu[i] = 0;
 			}
-		
-			if(yeouidoweek.get(week[i])!=null) {
+		}
+		for(int i=0; i<=6; i++) {
+			if(yeouidoweek.containsKey(week[i])) {
 				yeouido[i] = yeouidoweek.get(week[i]);
 			}else {
 				yeouido[i] = 0;
 			}
 		}
+		System.out.println(garosu[0]+","+garosu[1]+","+garosu[2]+","+garosu[3]+","+garosu[4]+","+garosu[5]+","+garosu[6]);
+		System.out.println(yeouido[3]);
+		
 		request.setAttribute("garosu", garosu);
 		request.setAttribute("gimpo", gimpo);
 		request.setAttribute("hongdae", hongdae);
 		request.setAttribute("incheon", incheon);
 		request.setAttribute("yeouido", yeouido);
-		System.out.println(garosu[0]+","+garosu[2]+","+garosu[3]+","+garosu[4]+","+garosu[5]+garosu[1]);
-		System.out.println(hongdae);
+		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
