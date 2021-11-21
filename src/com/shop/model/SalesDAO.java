@@ -340,4 +340,82 @@ public class SalesDAO {
 		}
 		return result;
 	}
+	
+	public ArrayList<Integer> shopsalesweek(String sdate, String edate) {
+		ArrayList<Integer> shopsales = new ArrayList<>();
+		
+		try {
+			openConn();
+			sql = "select sum(price*s.sales_no)as total " + 
+					"from prod p join sales s " + 
+					"on p.pname = s.pname " + 
+					"where sales_date between ? and ? " + 
+					"group by s.shop_id " + 
+					"order by s.shop_id";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdate);
+			pstmt.setString(2, edate);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				shopsales.add(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return shopsales;
+	}	// shopsales() 메서드 end
+	
+	public int[] prodsalesweek(String sdate, String edate) {
+		int[] prodsales = new int[4];
+		
+		try {
+			openConn();
+			sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+					"where pname like 'iPad%' "
+					+ "and sales_date between ? and ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdate);
+			pstmt.setString(2, edate);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				prodsales[0]=rs.getInt(1);
+				sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+						"where pname like 'iPhone%' "
+						+ "and sales_date between ? and ? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sdate);
+				pstmt.setString(2, edate);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					prodsales[1]=rs.getInt(1);
+					sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+							"where pname like 'AirPods%' " 
+							 + "and sales_date between ? and ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, sdate);
+					pstmt.setString(2, edate);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						prodsales[2]=rs.getInt(1);
+						sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+								"where pname like 'AppleWatch%' "
+								+ "and sales_date between ? and ? ";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, sdate);
+						pstmt.setString(2, edate);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							prodsales[3]=rs.getInt(1);}
+					}
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prodsales;
+	}	// prodsales() 메서드 end
 }
