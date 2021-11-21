@@ -8,7 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Apple store sales report page</title>
+
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+body{
+font-family: 'Nanum Gothic', sans-serif;
+}
 	div.row {
 		width: 80%;
 		display: flex;
@@ -103,6 +109,8 @@
 	  	
 	  	<div class="right" align="center">
 		<br><br>
+		<c:set var="now" value="<%=new Date() %>" /> 
+		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
 		<h3>매출보고 내역</h3>
 		<table width="300">
 		<c:set var="list" value="${salesList }" />
@@ -122,9 +130,6 @@
 	        </c:if>
 		</table>
 		<br> <br>
-			         
-		<c:set var="now" value="<%=new Date() %>" /> 
-		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
 	    <table align = "center">     
 	         <tr>
 	         	<c:choose>	
