@@ -12,18 +12,20 @@
 <title>Apple store sales summary here</title>
 <style>
 #container {
-  display: flex;
+	width: 1200px;
+	height: 600px;
+	display: flex;
 }
 #box-left {
   flex: 2;
   text-align: left;
 }
 #box-center {
-  flex: 3;
+  flex: 2;
   text-align: center;
 }
 #box-right {
-  flex: 2;
+  flex: 1;
   text-align: right;
 }
 header {
@@ -40,9 +42,6 @@ header {
 		font-family: Monospace,"돋움", dotum, "굴림", gulim, arial, helvetica, sans-serif;
 		color: #ffffff;
 		}
- 	section {
-		padding-top: 48px;
-	}
 </style>
 </head>
 <body>
@@ -54,25 +53,32 @@ header {
 </nav>
 </header>
 
-<div id="container">
+<div id="container" width="900" height="300">
 <div id="box-left">
-<canvas id="shopsales" width="300" height="300"></canvas>
+<canvas id="shopsales"></canvas>
 </div>
 <div id="box-center">
-<canvas id="wholesales" width="300" height="300"></canvas>
+<canvas id="wholesales"></canvas>
 </div>
 <div id="box-right">
-<canvas id="prodsales" width="300" height="300"></canvas>
+<canvas id="prodsales"></canvas>
 </div>
 </div>
-<div id="container">
 	<h2>Weekly Sales report</h2>
 	<table>
 		<tr>
 			<th>Date</th><th>Shop</th>
 		</tr>
 	</table>
-</div>
+	<h3>매출보고 내역</h3>
+		<table width="300">
+	      	<tr>
+	      		<th>상품명</th> <th>수 량</th><th>합 계</th><th>삭 제</th>
+	         <tr>
+	               <td> ${dto.getPname() } </td>
+	               <td> ${dto.getSales_no() } </td>
+	               <td> ${dto.getTotal() }</td>
+		</table>
 <script>
 let shopdata=[];
 <c:set var="sales" value="${shopsales}" />
@@ -249,6 +255,5 @@ const config = new Chart(con, {
 		  }
 		});
 </script>
-
 </body>
 </html>

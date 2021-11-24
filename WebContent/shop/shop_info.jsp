@@ -72,37 +72,6 @@ font-family: 'Nanum Gothic', sans-serif;
 <div id="map" style="width:500px; height:400px;"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>
-<script>
-
-	$(function() {
-		$.ajax({
-			type : "get",
-			dataType : "json",
-			url : "data/data.json",
-			success : function(data) {
-				// index : data 객체 내의 인덱스를 의미함.
-				// item : data 객체 내의 이름과 값을 가지고 있는 객체를 말함.
-				$.each(data, function(index, item) {
-					let txt = "<li>책 제목 : "+ item.title + "</li>" + 
-					          "<li>책 저자 : "+ item.author + "</li>" +
-					          "<li>책 가격 : "+ item.price + "</li><hr>";
-					          
-					$("body").append(txt);
-				});
-			},
-			error : function(data) {
-				alert("데이터 통신 오류입니다.");
-			}
-		});
-	});
-
-
-</script>
-
-
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>
 <script>
 	let container = document.getElementById('map');

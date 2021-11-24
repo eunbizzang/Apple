@@ -117,6 +117,127 @@ public class OrderDAO {
 		return list;
 	}	// getOrderList() 메서드 end;
 	
+	public List<OrderDTO> getOrderSetList(String shopid, String field, String date1, String date2) {
+		
+		List<OrderDTO> list = new ArrayList<OrderDTO>();
+		
+		openConn();
+		
+		if(field.equals("all")) {
+			try {
+				sql = "select * from shop_order "
+						+ "where shop_id = ? "
+						+ "and order_date between ? and ? "
+						+ "order by order_date";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, shopid);
+				pstmt.setString(2, date1);
+				pstmt.setString(3, date2);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					OrderDTO dto = new OrderDTO();
+					dto.setShop_id(rs.getString("shop_id"));
+					dto.setPnum(rs.getString("pnum"));
+					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_date(rs.getString("order_date"));
+					dto.setOrder_check(rs.getString("order_check"));
+					dto.setOrder_code(rs.getString("order_code"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(field.equals("order")) {
+			try {
+				sql = "select * from shop_order "
+						+ "where shop_id = ? "
+						+ "and order_date between ? and ?  "
+						+ "and order_check = '요청' "
+						+ "order by order_date";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, shopid);
+				pstmt.setString(2, date1);
+				pstmt.setString(3, date2);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					OrderDTO dto = new OrderDTO();
+					dto.setShop_id(rs.getString("shop_id"));
+					dto.setPnum(rs.getString("pnum"));
+					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_date(rs.getString("order_date"));
+					dto.setOrder_check(rs.getString("order_check"));
+					dto.setOrder_code(rs.getString("order_code"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(field.equals("order_ok")) {
+			try {
+				sql = "select * from shop_order "
+						+ "where shop_id = ? "
+						+ "and order_date between ? and ?  "
+						+ "and order_check = '발주승인' "
+						+ "order by order_date";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, shopid);
+				pstmt.setString(2, date1);
+				pstmt.setString(3, date2);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					OrderDTO dto = new OrderDTO();
+					dto.setShop_id(rs.getString("shop_id"));
+					dto.setPnum(rs.getString("pnum"));
+					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_date(rs.getString("order_date"));
+					dto.setOrder_check(rs.getString("order_check"));
+					dto.setOrder_code(rs.getString("order_code"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(field.equals("order_cancel")) {
+			try {
+				sql = "select * from shop_order "
+						+ "where shop_id = ? "
+						+ "and order_date between ? and ?  "
+						+ "and order_check = '발주취소' "
+						+ "order by order_date";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, shopid);
+				pstmt.setString(2, date1);
+				pstmt.setString(3, date2);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					OrderDTO dto = new OrderDTO();
+					dto.setShop_id(rs.getString("shop_id"));
+					dto.setPnum(rs.getString("pnum"));
+					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_date(rs.getString("order_date"));
+					dto.setOrder_check(rs.getString("order_check"));
+					dto.setOrder_code(rs.getString("order_code"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}	// getOrderList() 메서드 end;
+	
 	public int insertOrderList(String shopid, String pnum, int order_no,String order_code) {
 		int result = 0, count = 0;
 
