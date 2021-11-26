@@ -36,6 +36,9 @@ font-family: 'Nanum Gothic', sans-serif;
 </style>
 </head>
 <body>
+
+<jsp:include page="../include/shop_top.jsp" />
+
 	<div class="row">
 		<div class="left">
 		<div align="center">
@@ -50,7 +53,7 @@ font-family: 'Nanum Gothic', sans-serif;
         <h3>매출 보고</h3>
 		<br>
 		</div>
-		<c:set var="shopid" value="${shopid }" />
+		<c:set var="shopid" value="${shopId }" />
 		<form method="post" 
 			action="<%=request.getContextPath() %>/shop_report_ok.do"
 			onsubmit = "return confirm('매출을 전송하시겠습니까?');">

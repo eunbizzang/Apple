@@ -30,7 +30,10 @@
 </style>
 </head>
 <body>
-	<c:set var="shopid" value="${shopid }" />
+
+	<jsp:include page="../include/shop_top.jsp" />
+	
+	<c:set var="shopid" value="${shopId }" />
 	<div class="row" align="center">
 	<div class="left">
 	<h3>${shopid } 재고 현황</h3>

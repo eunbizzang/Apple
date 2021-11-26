@@ -9,9 +9,9 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shop.controller.Action;
-import com.shop.controller.ActionForward;
-import com.shop.model.SalesDAO;
+import com.shops.controller.Action;
+import com.shops.controller.ActionForward;
+import com.shops.model.SalesDAO;
 
 public class ShopSummaryAction implements Action {
 
@@ -89,13 +89,11 @@ public class ShopSummaryAction implements Action {
 		request.setAttribute("hongdae", hongdae);
 		request.setAttribute("incheon", incheon);
 		request.setAttribute("yeouido", yeouido);
-		System.out.println(garosu[0]+","+garosu[2]+","+garosu[3]+","+garosu[4]+","+garosu[5]+garosu[1]);
-		System.out.println(hongdae);
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("shop/shop_summary.jsp");
+		forward.setPath("admin/shop_summary.jsp");
 		
 		
 		return forward;

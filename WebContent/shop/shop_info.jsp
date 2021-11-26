@@ -34,7 +34,7 @@ font-family: 'Nanum Gothic', sans-serif;
 	color: #4F4F4F;
 	display: block;
 	width: 150px;
-	font-size:17px;
+	font-size:15px;
 	font-weight: bold;
 }
 
@@ -50,6 +50,9 @@ font-family: 'Nanum Gothic', sans-serif;
 </style>
 </head>
 <body>
+
+	<jsp:include page="../include/shop_top.jsp" />
+
 <div id = "menu" align="center">
 	<ul>
 		<li><a class="menuLink" onclick="garosu()">Apple 가로수길</a></li>
@@ -59,14 +62,15 @@ font-family: 'Nanum Gothic', sans-serif;
 		<li><a class="menuLink" onclick="yeouido()">Apple 여의도</a></li>
 	</ul>
 </div>
-<hr color="lightgray" width = "50%">
+
 <div align="center">
+<hr color="lightgray" align = "center" width = "50%">
 <p id="shopname">Apple 가로수길</p>
 <div id="info" align="center">
-<p><img src="../image/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
-<p><img src="../image/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
-<p><img src="../image/phone.png" width="18" height="18"> 080-500-0029</p>
-<p><img src="../image/man.png" width="18" height="18"> 담당자 : 표은비</p>
+<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
+<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
+<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
+<p><img src="../images/man.png" width="18" height="18"> 담당자 : 표은비</p>
 </div><br>
 <hr color="lightgray" style="width:550px;"><br>
 <div id="map" style="width:500px; height:400px;"></div>
@@ -80,30 +84,30 @@ font-family: 'Nanum Gothic', sans-serif;
 		level: 3
 	};
 		
-	let garosuinfo = "<p><img src='../image/location.png' width='18' height='18'> 서울 강남구 가로수길 43 (우)06028</p>"
-					+"<p><img src='../image/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
-					+"<p><img src='../image/phone.png' width='18' height='18'> 080-500-0029</p>"
-					+"<p><img src='../image/man.png' width='18' height='18'> 담당 매니저 : 표은비</p>";
+	let garosuinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 강남구 가로수길 43 (우)06028</p>"
+					+"<p><img src='../images/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
+					+"<p><img src='../images/phone.png' width='18' height='18'> 080-500-0029</p>"
+					+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 표은비</p>";
 
-	let yeouidoinfo = "<p><img src='../image/location.png' width='18' height='18'> 서울 영등포구 국제금융로 10 IFC몰 지하 1층 (우)07326</p>"
-					+"<p><img src='../image/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
-					+"<p><img src='../image/phone.png' width='18' height='18'> 080-500-0013</p>"
-					+"<p><img src='../image/man.png' width='18' height='18'> 담당 매니저 : 표은비</p>"
+	let yeouidoinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 영등포구 국제금융로 10 IFC몰 지하 1층 (우)07326</p>"
+					+"<p><img src='../images/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
+					+"<p><img src='../images/phone.png' width='18' height='18'> 080-500-0013</p>"
+					+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 표은비</p>"
 
-	let hongdaeinfo = "<p><img src='../image/location.png' width='18' height='18'> 서울 마포구 홍익로 11 (우)04040</p>"
-					+"<p><img src='../image/time.png' width='18' height='18'> 11:00 ~ 21:00</p>"
-					+"<p><img src='../image/phone.png' width='18' height='18'> 02-323-1765</p>"
-					+"<p><img src='../image/man.png' width='18' height='18'> 담당 매니저 : 이도엽</p>"
+	let hongdaeinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 마포구 홍익로 11 (우)04040</p>"
+					+"<p><img src='../images/time.png' width='18' height='18'> 11:00 ~ 21:00</p>"
+					+"<p><img src='../images/phone.png' width='18' height='18'> 02-323-1765</p>"
+					+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 이도엽</p>"
 
-	let gimpoinfo = "<p><img src='../image/location.png' width='18' height='18'> 서울 강서구 하늘길 38 롯데몰 MF층 롯데하이마트 내 (우)07505</p>"
-					+"<p><img src='../image/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
-					+"<p><img src='../image/phone.png' width='18' height='18'> 02-6116-1700</p>"
-					+"<p><img src='../image/man.png' width='18' height='18'> 담당 매니저 : 이유빈</p>"
+	let gimpoinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 강서구 하늘길 38 롯데몰 MF층 롯데하이마트 내 (우)07505</p>"
+					+"<p><img src='../images/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
+					+"<p><img src='../images/phone.png' width='18' height='18'> 02-6116-1700</p>"
+					+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 이유빈</p>"
 
-	let incheoninfo = "<p><img src='../image/location.png' width='18' height='18'> 인천 미추홀구 관교동 15 지하1층</p>"
-					+"<p><img src='../image/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
-					+"<p><img src='../image/phone.png' width='18' height='18'> 032-242-2710</p>"
-					+"<p><img src='../image/man.png' width='18' height='18'> 담당 매니저 : 이영훈</p>"
+	let incheoninfo = "<p><img src='../images/location.png' width='18' height='18'> 인천 미추홀구 관교동 15 지하1층</p>"
+					+"<p><img src='../images/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
+					+"<p><img src='../images/phone.png' width='18' height='18'> 032-242-2710</p>"
+					+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 이영훈</p>"
 
 // yeouido : 37.525100134561754, 126.92588452406844
 //				서울 영등포구 국제금융로 10 IFC몰 지하 1층 (우)07326

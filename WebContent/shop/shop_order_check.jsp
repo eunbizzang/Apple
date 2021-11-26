@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<jsp:include page="../include/shop_top.jsp" />
+	
 	<h3>발주 내역</h3>
 	
 	<form method="post"
@@ -25,11 +28,12 @@
 			<input type="submit" value="확인">
 		</form>
 	
-		<table width="600">
+		<table width="800">
 		<c:set var="list" value="${orderlist }" />
 			<c:if test="${!empty list }">
 			<tr>
 	      		<th>요청 코드</th><th>요청매장</th><th>요청제품</th><th>요청 일자</th><th>상태</th>
+	      		<th>본사 코멘트</th><th>본사 확인 날짜</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 			<tr>
@@ -38,6 +42,8 @@
 	            <td> ${dto.getPnum() } </td>
 	            <td> ${dto.getOrder_date() } </td>
 	            <td> ${dto.getOrder_check() } </td>
+	            <td> ${dto.getOrder_comment() } </td>
+	            <td> ${dto.getOrderok_date() } </td>
 	         </tr>
 			</c:forEach>
 	        </c:if>

@@ -7,9 +7,9 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shop.controller.Action;
-import com.shop.controller.ActionForward;
-import com.shop.model.SalesDAO;
+import com.shops.controller.Action;
+import com.shops.controller.ActionForward;
+import com.shops.model.SalesDAO;
 
 public class ShopSummaryDateAction implements Action {
 
