@@ -12,9 +12,7 @@
 <jsp:include page="../include/admin_top.jsp" />
 	
 	<div align="center">
-	
-	      <h3>상품 수정 폼 페이지</h3>
-	      
+	      <h2>상품 수정</h2>
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"
@@ -71,5 +69,6 @@
 	
 	</div>
 
+<jsp:include page="../include/shop_bottom.jsp" />
 </body>
 </html>

@@ -23,7 +23,7 @@
 		<hr width="80%" color="gray" width="800">
 		<br>
 		
-		<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/board_insert.do">
+		<form method="post" enctype="multipart/form-data" action="<%=request.getContextPath() %>/admin_board_writeOk.do">
 		
 			<table border="0" cellspacing="0" width="600">
 			

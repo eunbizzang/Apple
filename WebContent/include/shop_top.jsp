@@ -33,6 +33,7 @@ body{
 	background-color: #263343;
 	padding: 8px 12px;
 	
+	margin-bottom: 30px;
 }
 
 
@@ -91,6 +92,8 @@ body{
 	margin:0;
 	padding: 0;
 	font-size: 13px;
+	
+	display:none;
 }
 
 .menu ul{
@@ -99,11 +102,12 @@ body{
 	padding: 0;
 	position: absolute;
 	left: 0;
-	top: 40px;
+	top: 38px;
 	width: 105px;
 	background: #263343;
 	text-align: center;
 	opacity: 0;
+	
 }
 
 .menu li:hover ul{
@@ -114,6 +118,8 @@ body{
 	height: 35px;
 	overflow: visible;
 	padding: 0;
+	
+	display: block;
 }
 
 .menu li:hover > a{
@@ -174,7 +180,7 @@ body{
 	<ul class="menu">
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_main.jsp">Home</a></li>
 		
-		<li><a class="cate_a" href="">매  장</a>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">매  장</a>
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">Shop Info</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_apple_product.do">제품목록</a></li>
@@ -182,7 +188,7 @@ body{
 			</ul>
 		</li>
 		
-		<li><a class="cate_a" href="">재  고</a>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재  고</a>
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재고관리</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order.do">발주</a></li>
@@ -190,10 +196,11 @@ body{
 			</ul>
 		</li>
 		
-		<li><a class="cate_a" href="">매  출</a>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매  출</a>
 			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">주간 매출</a></li>
-				<li> <a class="cate_a" href="">매장별 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">주간 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_monthly.do">월 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매장별 매출</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_report.do">매출 보고</a></li>
 			</ul>
 		</li>
@@ -206,6 +213,7 @@ body{
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/user_logout.do">Logout</a></li>
 	</ul>
 </nav>
+
 
 
 </body>

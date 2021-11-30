@@ -90,15 +90,14 @@
 			<tr>
 				<td colspan="4"> </td>
 				<td>
-					<button type="button" class="btn btn-dark" onclick="location.href='<%=request.getContextPath() %>/board_write.do'">글작성</button>
+					<button type="button" class="btn btn-dark" onclick="location.href='<%=request.getContextPath() %>/admin_board_write.do'">글작성</button>
 				</td>
 			</tr>
 		
 		</table>
 		
-		<c:if test="${page > block }">
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=1">[첫 페이지]</a>
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${startBlock-1 }">[이전]</a>
+		<c:if test="${page <= endBlock && page != 1 }">
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=1'"><<</button>
  		</c:if>
  	
  		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
@@ -111,9 +110,8 @@
 	 		</c:if>
  		</c:forEach>
  	
-	 	<c:if test="${endBlock < allPage }">
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${endBlock+1 }">[다음]</a>
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${allPage }">[마지막 페이지]</a>
+	 	<c:if test="${allPage > 1 && page != endBlock }">
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=${endBlock }'">>></button>
 	 	</c:if>
 	
 	</div>

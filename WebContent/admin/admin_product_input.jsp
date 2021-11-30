@@ -17,9 +17,7 @@
 	<jsp:include page="../include/admin_top.jsp" />
 
 	<div align="center">
-	   <hr width="100%" color="gold">
-	      <h1>제품 추가</h1>
-	   <hr width="100%" color="gold">
+	      <h2>상품 추가</h2>
 	   <br>
 	   
 	   <form method="post" enctype="multipart/form-data"
@@ -59,6 +57,6 @@
 	
 	</div>
 	
-
+<jsp:include page="../include/shop_bottom.jsp" />
 </body>
 </html>

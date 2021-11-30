@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-	td {
+	td, tr {
 		text-align: center;
 	}
 	
@@ -22,8 +22,11 @@
     background-color:#CCCCCC;
 	}
 	
+	.na{
+	color:white;
+	}
 	
-
+	
 </style>
 </head>
 <body>
@@ -32,12 +35,12 @@
 
 	<div align="center">
 		<br>
-	      <h1>${shop_name } 재고 리스트</h1>
+	      <h2>${shopName } 재고 리스트</h2>
 		<br><br>
 	   
 	   <table bgcolor="E0E0E0" border="1" cellspacing="0" width="700">
 	      <tr bgcolor="#263343">
-	          <th>상품번호</th> <th>상품 이름</th> <th>상품 수량</th>
+	          <th class = na>상품번호</th> <th class = na>상품 이름</th> <th class = na>상품 수량</th>
 	      </tr>
 	      
 	      <c:set var="list" value="${shoplist }" />

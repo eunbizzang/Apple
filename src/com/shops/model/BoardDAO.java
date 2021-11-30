@@ -95,7 +95,7 @@ public class BoardDAO {
 			
 			openConn();
 			
-			sql = "select count(*) from board";
+			sql = "select count(*) from shop_board";
 			
 			pstmt = con.prepareStatement(sql);
 			

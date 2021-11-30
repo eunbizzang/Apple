@@ -13,25 +13,31 @@
 </style>
 <style type="text/css">
 
-	th {
+	tr th {
 		text-align: center;
 		background: #EEEEEE;
 		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	tr {
-		height: 50px;
+		height: 60px;
 	}
 	
 	td {
+		text-align: center;
 		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	h3 {
-		text-align: left;
+		text-align: center;
 		font-family: 'Gothic A1', sans-serif;
 		left: 150px;
 		top: 50px;
+	}
+	
+	td a {
+		text-decoration: none;
+		color: black;
 	}
 	
 	a {
@@ -84,10 +90,9 @@
 		
 		</table>
 		
-		<c:if test="${page > block }">
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=1">[첫 페이지]</a>
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${startBlock-1 }">[이전]</a>
- 		</c:if>
+		<c:if test="${page <= endBlock && page != 1 }">
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=1'"><<</button>
+		</c:if>
  	
  		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 	 		<c:if test="${i == page }">
@@ -99,12 +104,13 @@
 	 		</c:if>
  		</c:forEach>
  	
-	 	<c:if test="${endBlock < allPage }">
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${endBlock+1 }">[다음]</a>
-	 		<a href="<%=request.getContextPath() %>/admin_board_list.do?page=${allPage }">[마지막 페이지]</a>
+	 	<c:if test="${allPage > 1 && page != endBlock }">
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=${endBlock }'">>></button>
 	 	</c:if>
 	
 	</div>
+
+<jsp:include page="../include/shop_bottom.jsp" />
 
 </body>
 </html>

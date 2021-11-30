@@ -2,6 +2,7 @@ package com.admin.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,8 @@ import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
 import com.shops.model.AdminDAO;
 import com.shops.model.AdminDTO;
+import com.shops.model.OrderDAO;
+import com.shops.model.OrderDTO;
 
 public class Admin_Login implements Action {
 
@@ -21,6 +24,9 @@ public class Admin_Login implements Action {
 		
 		AdminDAO dao = AdminDAO.getInstance();
 	    int res = dao.adminCheck(main_id, main_pwd);
+	    
+	    OrderDAO odao = OrderDAO.getInstance();
+	    List<OrderDTO> odto = odao.getMainOrderList();
 	    
 	    ActionForward forward = new ActionForward();
 	    
@@ -35,6 +41,7 @@ public class Admin_Login implements Action {
 	    	
 	    	session.setAttribute("adminId", dto.getMain_id());
 	    	
+	    	request.setAttribute("orderlist", odto);
 	    	
 	    	// 세션에 저장된 정보를 가지고 View Page로 이동하자
 	    	forward.setRedirect(false);
@@ -55,8 +62,6 @@ public class Admin_Login implements Action {
 	    	out.println("</script>");
 	    }
 	    
-	      
-	      
 		return forward;
 	}
 

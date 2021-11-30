@@ -43,13 +43,7 @@ font-family: 'Nanum Gothic', sans-serif;
 		<div class="left">
 		<div align="center">
 		<br><br>
-		<c:choose>	
-		<c:when test="${shopid eq 'yeouido'}"><h3>Apple 여의도 점</h3></c:when>
-		<c:when test="${shopid eq 'garosu'}"><h3>Apple 가로수길</h3></c:when>    
-		<c:when test="${shopid eq 'hongdae'}"><h3>프리스비 홍대점</h3></c:when>
-		<c:when test="${shopid eq 'gimpo'}"><h3>윌리스 김포공항</h3></c:when>
-		<c:when test="${shopid eq 'incheon'}"><h3>윌리스 인천터미널점</h3></c:when>
-		</c:choose>
+		<h4>${shopName } 매출</h4>
         <h3>매출 보고</h3>
 		<br>
 		</div>
@@ -67,13 +61,7 @@ font-family: 'Nanum Gothic', sans-serif;
 		<tr>	
 			<td>매장명</td>
 			<td>
-				<c:choose>	
-				<c:when test="${shopid eq 'yeouido'}"><input value="Apple 여의도 점" readonly></c:when>
-				<c:when test="${shopid eq 'garosu'}"><input value="Apple 가로수길" readonly></c:when>    
-				<c:when test="${shopid eq 'hongdae'}"><input value="프리스비 홍대점" readonly></c:when>
-				<c:when test="${shopid eq 'gimpo'}"><input value="윌리스 김포공항" readonly></c:when>
-				<c:when test="${shopid eq 'incheon'}"><input value="윌리스 인천터미널점" readonly></c:when>
-				</c:choose>
+				<input value="${shopName }" readonly>
 			</td>
 		</tr>	
 		<tr>
@@ -135,13 +123,7 @@ font-family: 'Nanum Gothic', sans-serif;
 		<br> <br>
 	    <table align = "center">     
 	         <tr>
-	         	<c:choose>	
-				<c:when test="${shopid eq 'yeouido'}"><td>Apple 여의도 점 일 매출 : </td></c:when>
-				<c:when test="${shopid eq 'garosu'}"><td>Apple 가로수길 일 매출 : </td></c:when>    
-				<c:when test="${shopid eq 'hongdae'}"><td>프리스비 홍대점 일 매출 : </td></c:when>
-				<c:when test="${shopid eq 'gimpo'}"><td>윌리스 김포공항 일 매출 : </td></c:when>
-				<c:when test="${shopid eq 'incheon'}"><td>윌리스 인천터미널점 일 매출 : </td></c:when>
-				</c:choose>
+	         	<td>${shopName } 일 매출 :&nbsp;&nbsp;</td>
 	         	<td><fmt:formatNumber value="${total}"/>원</td>
 	         </tr>
 		</table>

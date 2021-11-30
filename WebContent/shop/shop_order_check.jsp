@@ -7,12 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+.wow{
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   margin-top: 50px;
+   
+    flex-direction: column;
+     align-items: center;
+}
+
+.wow1{
+   margin-top: 50px;
+   margin-bottom: 50px;
+}
+
+</style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
+	<div class="wow">
 	
 	<h3>발주 내역</h3>
+	
+	<div class="wow1">
 	
 	<form method="post"
 			action="<%=request.getContextPath() %>/shop_order_check.do">
@@ -27,13 +48,13 @@
 			</select>
 			<input type="submit" value="확인">
 		</form>
-	
-		<table width="800">
+	</div>
+	<div class="wow2">
+		<table width="600">
 		<c:set var="list" value="${orderlist }" />
 			<c:if test="${!empty list }">
 			<tr>
 	      		<th>요청 코드</th><th>요청매장</th><th>요청제품</th><th>요청 일자</th><th>상태</th>
-	      		<th>본사 코멘트</th><th>본사 확인 날짜</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 			<tr>
@@ -42,12 +63,12 @@
 	            <td> ${dto.getPnum() } </td>
 	            <td> ${dto.getOrder_date() } </td>
 	            <td> ${dto.getOrder_check() } </td>
-	            <td> ${dto.getOrder_comment() } </td>
-	            <td> ${dto.getOrderok_date() } </td>
 	         </tr>
 			</c:forEach>
 	        </c:if>
 		</table>
-		
+	</div>
+</div>
+			
 </body>
 </html>
