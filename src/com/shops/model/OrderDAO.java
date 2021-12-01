@@ -372,7 +372,8 @@ public class OrderDAO {
 			try {
 				sql = "select * from shop_order "
 						+ "where shop_id = ? "
-						+ "and order_date between ? and ? "
+						+ "and order_date between to_date(? , 'YYYY/MM/DD') and "
+						+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
 						+ "order by order_date";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, shopid);
@@ -399,7 +400,8 @@ public class OrderDAO {
 			try {
 				sql = "select * from shop_order "
 						+ "where shop_id = ? "
-						+ "and order_date between ? and ?  "
+						+ "and order_date between to_date(? , 'YYYY/MM/DD') and "
+						+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
 						+ "and order_check = '요청' "
 						+ "order by order_date";
 				pstmt = con.prepareStatement(sql);
@@ -427,7 +429,8 @@ public class OrderDAO {
 			try {
 				sql = "select * from shop_order "
 						+ "where shop_id = ? "
-						+ "and order_date between ? and ?  "
+						+ "and order_date between to_date(? , 'YYYY/MM/DD') and "
+						+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
 						+ "and order_check = '발주승인' "
 						+ "order by order_date";
 				pstmt = con.prepareStatement(sql);
@@ -455,7 +458,8 @@ public class OrderDAO {
 			try {
 				sql = "select * from shop_order "
 						+ "where shop_id = ? "
-						+ "and order_date between ? and ?  "
+						+ "and order_date between to_date(? , 'YYYY/MM/DD') and "
+						+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
 						+ "and order_check = '발주취소' "
 						+ "order by order_date";
 				pstmt = con.prepareStatement(sql);

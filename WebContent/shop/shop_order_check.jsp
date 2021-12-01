@@ -36,7 +36,7 @@
 	<div class="wow1">
 	
 	<form method="post"
-			action="<%=request.getContextPath() %>/shop_order_check.do">
+			action="<%=request.getContextPath() %>/shop_order_check_again.do">
 			<input type="date" name="date1" required>
 			<input type="date" name="date2" required>
 			&nbsp;&nbsp;&nbsp;상태 : 

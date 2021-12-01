@@ -330,7 +330,7 @@ public class SalesDAO {
 	}	// prodsales() 메서드 end
 	
 	// 해당 매장의 날자별 주간 매출을 불러오는 메서드
-	public HashMap<String, Integer> weekSales(String sdate, String edate, String shopid) {
+	public HashMap<String, Integer> allSales(String sdate, String edate, String shopid) {
 		HashMap<String, Integer> result = new LinkedHashMap<String, Integer>();
 		
 		try {
@@ -446,6 +446,73 @@ public class SalesDAO {
 		return prodsales;
 	}	// prodsales() 메서드 end
 	
+	// 특정 매장의 제품별 일정기간 매출을 불러오는 메서드
+	public int[] shopprodsales(String sdate, String edate, String shopid) {
+		int[] prodsales = new int[4];
+		
+		try {
+			openConn();
+			sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+					"where pname like 'iPad%' "
+					+ "and sales_date between to_date(? , 'YYYY/MM/DD') and "
+					+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+					+ "and shop_id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sdate);
+			pstmt.setString(2, edate);
+			pstmt.setString(3, shopid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				prodsales[0]=rs.getInt(1);
+				sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+						"where pname like 'iPhone%' "
+						+ "and sales_date between to_date(? , 'YYYY/MM/DD') and "
+						+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+						+ "and shop_id = ? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sdate);
+				pstmt.setString(2, edate);
+				pstmt.setString(3, shopid);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					prodsales[1]=rs.getInt(1);
+					sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+							"where pname like 'AirPods%' " 
+							+ "and sales_date between to_date(? , 'YYYY/MM/DD') and "
+							+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+							+ "and shop_id = ? ";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, sdate);
+					pstmt.setString(2, edate);
+					pstmt.setString(3, shopid);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						prodsales[2]=rs.getInt(1);
+						sql = "select NVL(sum(sales.sales_no),0) from sales " + 
+								"where pname like 'AppleWatch%' "
+								+ "and sales_date between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and shop_id = ? ";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, sdate);
+						pstmt.setString(2, edate);
+						pstmt.setString(3, shopid);
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							prodsales[3]=rs.getInt(1);}
+					}
+				}
+			}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return prodsales;
+	}	// hopprodsales() 메서드 end
+		
 	// 월 매출 총 합계를 불러오는 메서드
 	public int getMonthSales(String shopid, String month) {
 		int total = 0;

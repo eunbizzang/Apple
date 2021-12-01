@@ -10,14 +10,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Insert title here</title>
 <style>
-
+#container {
+    width:100%;
+    display:flex; flex-flow:row wrap;
+    grid-template-columns: 1fr 1fr 1fr; 
+}
+.item { padding: 8px;  }
 </style>	
 </head>
 <body>
 	<jsp:include page="../include/shop_top.jsp" />
-	<div align="center">
+	<div id="container">
+	<div class="item">
+		<canvas id="prodsales" width="500" height="500"></canvas>
+	</div>
+	<div class="item">
 	<form method="post" 
-			action="<%=request.getContextPath() %>/shop_summary.do">
+			action="<%=request.getContextPath() %>/shop_summary_check.do">
 	<table>
 		
 		<tr>
@@ -40,13 +49,34 @@
 	</form>
 	<c:set var="psales" value="${proddata}" />
 	<c:set var="dsales" value="${perioddata}" />
-	<c:if test="${empty dsales}">
-	<br><br>
-	<h5>내용을 선택 후 확인버튼을 눌러주세요.</h5>
-	</c:if>
-	<c:if test="${!empty dsales}">
-	<canvas id="prodsales" width="500" height="500"></canvas>
-	<table>
+	<c:set var="submitdata" value="${submitdata}" />
+	<br>
+	<table width="400">
+		<tr>
+			<th>제품군</th><th>판매대수</th>
+		</tr>
+		<tr>
+			<td> iPad</td>
+			<td> ${psales[0]} </td>
+		</tr>
+		<tr>
+			<td> iPhone</td>
+			<td> ${psales[1]} </td>
+		</tr>
+		<tr>
+			<td> AirPods</td>
+			<td> ${psales[2]} </td>
+		</tr>
+		<tr>
+			<td> AppleWatch</td>
+			<td> ${psales[3]} </td>
+		</tr>
+	</table>
+	</div>
+
+	<div class="item">
+	<p>${submitdata[0] }&nbsp;&nbsp;&nbsp;  ${submitdata[1] } - ${submitdata[2] }</p><br>
+	<table width="400">
 		<tr>
 			<th>매출 일자</th><th>매출액</th>
 		</tr>
@@ -57,8 +87,8 @@
 		</tr>
 		</c:forEach>
 	</table>
-	</c:if>	
-	</div>
+	</div>	
+</div>
 <script>
 
 

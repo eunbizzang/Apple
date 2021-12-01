@@ -11,22 +11,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Apple store sales summary here</title>
 <style>
-
+#container {
+    justify-content: center;
+    display:flex; flex-flow:row wrap;
+    grid-template-columns: 1fr 1fr ; 
+}
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-
-<div align="center" >
-  <h1>매출 관리</h1>
+<div id="container">
+<div class="item">
     <span>전체 매출(최근 1주일)</span>
-    <span>매장별 매출</span>
 <canvas id="wholesales" width="400" height="400"></canvas>
+</div>
+<div class="item">
+    <span>매장별 매출</span>
 <canvas id="shopsales" width="400" height="400"></canvas>
 </div>
+</div>
 <div align="center">
-	<h3>매출보고 내역</h3>
 	<table width="900">
 		<tr>
 			<th>매장명</th>

@@ -12,7 +12,7 @@ import com.shops.controller.ActionForward;
 import com.shops.model.OrderDAO;
 import com.shops.model.OrderDTO;
 
-public class ShopOrderCheckAction implements Action {
+public class ShopOrderCheckAgainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -21,7 +21,11 @@ public class ShopOrderCheckAction implements Action {
 		HttpSession session = request.getSession();
 		String shopid = (String)session.getAttribute("shopId");
 
-		List<OrderDTO> orderlist = dao.getOrderList(shopid);
+		String field = request.getParameter("search_field");
+		String date1 = request.getParameter("date1");
+		String date2 = request.getParameter("date2");
+		System.out.println(date2);
+		List<OrderDTO> orderlist = dao.getOrderSetList(shopid, field, date1, date2);
 
 		request.setAttribute("orderlist", orderlist);
 		request.setAttribute("shopid", shopid);

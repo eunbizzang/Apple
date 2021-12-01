@@ -52,11 +52,11 @@ public class ShopWeeklyAction implements Action {
 		// Store name order
 		// garosu / gimpo / hongdae / incheon / yeouido
 		// Get Hashmap data<date, salesincome> in last week.
-		HashMap<String, Integer> garosuweek = dao.weekSales(week[0], week[6], "garosu");
-		HashMap<String, Integer> gimpoweek = dao.weekSales(week[0], week[6], "gimpo");
-		HashMap<String, Integer> hongdaeweek = dao.weekSales(week[0], week[6], "hongdae");
-		HashMap<String, Integer> incheonweek = dao.weekSales(week[0], week[6], "incheon");
-		HashMap<String, Integer> yeouidoweek = dao.weekSales(week[0], week[6], "yeouido");
+		HashMap<String, Integer> garosuweek = dao.allSales(week[0], week[6], "garosu");
+		HashMap<String, Integer> gimpoweek = dao.allSales(week[0], week[6], "gimpo");
+		HashMap<String, Integer> hongdaeweek = dao.allSales(week[0], week[6], "hongdae");
+		HashMap<String, Integer> incheonweek = dao.allSales(week[0], week[6], "incheon");
+		HashMap<String, Integer> yeouidoweek = dao.allSales(week[0], week[6], "yeouido");
 		int[] garosu = new int[7];
 		int[] gimpo = new int[7];
 		int[] hongdae = new int[7];

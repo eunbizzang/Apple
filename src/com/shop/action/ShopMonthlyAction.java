@@ -21,8 +21,7 @@ public class ShopMonthlyAction implements Action {
 		
 		SalesDAO dao = SalesDAO.getInstance();
 
-		
-		// Dateset for weeksales research
+		// Dateset for lastmonth, thismonth
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, 0);
@@ -31,18 +30,19 @@ public class ShopMonthlyAction implements Action {
 		String lastmonth = format.format(cal.getTime()).substring(0,7);
 		
 		// month set for labels
-		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
+		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월", thismonth.substring(0,7)};
 		request.setAttribute("monthlabel", month);
 		
-		// garosu
+		// garosu month date
 		int galasttotal = dao.getMonthSales("garosu", lastmonth);
 		int gathistotal = dao.getMonthSales("garosu", thismonth);
 		HashMap<String, Integer> gamonthlysaleslist = dao.getMonthList(thismonth, "garosu");
 		request.setAttribute("gamonthlysaleslist", gamonthlysaleslist);
 		request.setAttribute("galasttotal", galasttotal);
 		request.setAttribute("gathistotal", gathistotal);
+		System.out.println(gamonthlysaleslist);
 		
-		// gimpo
+		// gimpo month date
 		int gilasttotal = dao.getMonthSales("gimpo", lastmonth);
 		int githistotal = dao.getMonthSales("gimpo", thismonth);
 		HashMap<String, Integer> gimonthlysaleslist = dao.getMonthList(thismonth, "gimpo");
@@ -50,7 +50,7 @@ public class ShopMonthlyAction implements Action {
 		request.setAttribute("gilasttotal", gilasttotal);
 		request.setAttribute("githistotal", githistotal);
 		
-		// hongdae
+		// hongdae month date
 		int holasttotal = dao.getMonthSales("hongdae", lastmonth);
 		int hothistotal = dao.getMonthSales("hongdae", thismonth);
 		HashMap<String, Integer> homonthlysaleslist = dao.getMonthList(thismonth, "hongdae");
@@ -58,7 +58,7 @@ public class ShopMonthlyAction implements Action {
 		request.setAttribute("holasttotal", holasttotal);
 		request.setAttribute("hothistotal", hothistotal);
 		
-		// incheon
+		// incheon month date
 		int inlasttotal = dao.getMonthSales("incheon", lastmonth);
 		int inthistotal = dao.getMonthSales("incheon", thismonth);
 		HashMap<String, Integer> inmonthlysaleslist = dao.getMonthList(thismonth, "incheon");
@@ -66,14 +66,13 @@ public class ShopMonthlyAction implements Action {
 		request.setAttribute("inlasttotal", inlasttotal);
 		request.setAttribute("inthistotal", inthistotal);
 		
-		// yeouido
+		// yeouido month date
 		int yelasttotal = dao.getMonthSales("yeouido", lastmonth);
 		int yethistotal = dao.getMonthSales("yeouido", thismonth);
 		HashMap<String, Integer> yemonthlysaleslist = dao.getMonthList(thismonth, "yeouido");
 		request.setAttribute("yemonthlysaleslist", yemonthlysaleslist);
 		request.setAttribute("yelasttotal", yelasttotal);
 		request.setAttribute("yethistotal", yethistotal);
-		
 		
 		ActionForward forward = new ActionForward();
 		
