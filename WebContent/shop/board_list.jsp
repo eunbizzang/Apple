@@ -13,6 +13,17 @@
 </style>
 <style type="text/css">
 
+	div.notice {
+		width: 1000px;
+		height: 30px;
+		font-size: 20px;
+		font-weight: bold;
+		font-family: 'Gothic A1', sans-serif;
+		text-align: left;
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
+
 	tr th {
 		text-align: center;
 		background: #EEEEEE;
@@ -53,9 +64,9 @@
 
 	<div align="center">
 		
-		<h3>공지사항</h3>
-		<hr width="80%" color="gray">
-		<br>
+		<div class="notice">
+			공지사항
+		</div>
 		
 		<table border="0" cellspacing="0" width="1000">
 			

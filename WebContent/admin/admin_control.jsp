@@ -12,17 +12,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
+</style>
 <style type="text/css">	
 
-	td,tr {
+	tr th {
 		text-align: center;
+		background: #EEEEEE;
+		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	tr {
+		height: 60px;
+	}
+	
+	td {
+		text-align: center;
+		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	h3 {
+		text-align: center;
+		font-family: 'Gothic A1', sans-serif;
+		left: 150px;
+		top: 50px;
+	}
+	
+	td a {
+		text-decoration: none;
+		color: black;
+	}
+	
+	a {
+		text-decoration: none;
+		color: black;
 	}
 	tr:hover {
     	background-color:#CCCCCC;
 	}
-	.na{
-	color:white;
-	}
+
 </style>
 </head>
 <body>
@@ -31,10 +60,10 @@
 	      <h2>매장별 재고관리 페이지</h2>
 	   <br>
 
-	<table bgcolor="E0E0E0" border="1" cellspacing="0" width="65%">
-	      <tr bgcolor="#263343">
-	         <th class = na>매장이름</th> <th class = na>상품 번호</th>
-	          <th class = na>상품 이름</th> <th class = na>남은 수량</th>
+	<table border="0" cellspacing="0" width="800">
+			<tr>
+	         <th>매장이름</th> <th >상품 번호</th>
+	          <th >상품 이름</th> <th >남은 수량</th>
 	      </tr>
 	      
 	      <c:set var="list" value="${productcontrol }" />

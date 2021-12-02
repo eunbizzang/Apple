@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>지도 이동시키기</title>
+    <title>Apple 매장 정보</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
@@ -17,7 +17,6 @@ font-family: 'Nanum Gothic', sans-serif;
 	width : 850px;
 	margin-left : auto;
 	margin-right : auto;
-	
 }
 
 #menu ul li {
@@ -35,10 +34,8 @@ font-family: 'Nanum Gothic', sans-serif;
 	color: #4F4F4F;
 	display: block;
 	width: 150px;
-	font-size:15px;
+	font-size:17px;
 	font-weight: bold;
-	
-	
 }
 
 #shopname {
@@ -54,7 +51,8 @@ font-family: 'Nanum Gothic', sans-serif;
 </head>
 <body>
 
-	<jsp:include page="../include/shop_top.jsp" />
+<jsp:include page="../include/admin_top.jsp" />
+
 
 <div id = "menu" align="center">
 	<ul>
@@ -78,8 +76,6 @@ font-family: 'Nanum Gothic', sans-serif;
 <hr color="lightgray" style="width:550px;"><br>
 <div id="map" style="width:500px; height:400px;"></div>
 </div>
-
-
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>
 <script>
@@ -219,8 +215,6 @@ function incheon() {
 
 
 </script>
-
-
-
 </body>
+
 </html>

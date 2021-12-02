@@ -50,6 +50,7 @@ body{
 	display: flex;
 	list-style: none;
 	padding-left: 0;
+	z-index: 1;
 }
 
 .menu li{
@@ -178,7 +179,7 @@ body{
 	</div>
 	
 	<ul class="menu">
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_main.jsp">Home</a></li>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_login_ok.do?code=1">Home</a></li>
 		
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">매  장</a>
 			<ul class="sub">

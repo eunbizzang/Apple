@@ -15,24 +15,44 @@
 body{
 font-family: 'Nanum Gothic', sans-serif;
 }
-	div.row {
-		width: 80%;
-		display: flex;
-	}
-	div.left {
-        width: 50%;
-        float: left;
+   div.row {
+      display: flex;
+      
+      justify-content: center;
+      align-items: center;
+      
+      width: 800px;
+     
+      margin-top: 80px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   div.left {
+   
+   		width: 350px;
+        margin-right: 70px;
+        
         border-width: 1px;
         border-color: gray;
-	}
-	div.right {
-        width: 50%;
-        float: right;
-	}
-	table {
-		margin-left:auto;
-		margin-right:auto;
-	}
+   }
+   
+   .center{
+   		margin-bottom: 50px;
+   }
+   
+   div.right {
+   		width: 350px;
+        
+   }
+   
+   .table{
+   		margin-top: 50px;
+   }
+   
+   table {
+      margin-left:auto;
+      margin-right:auto;
+   }
 </style>
 </head>
 <body>
@@ -41,11 +61,9 @@ font-family: 'Nanum Gothic', sans-serif;
 
 	<div class="row">
 		<div class="left">
-		<div align="center">
-		<br><br>
+		<div align="center" class="center">
 		<h4>${shopName } 매출</h4>
         <h3>매출 보고</h3>
-		<br>
 		</div>
 		<c:set var="shopid" value="${shopId }" />
 		<form method="post" 
@@ -96,14 +114,11 @@ font-family: 'Nanum Gothic', sans-serif;
 		</table>
 	   	</form>
 	   	</div>
-	  	<br> <br>
-	  	
 	  	<div class="right" align="center">
-		<br><br>
 		<c:set var="now" value="<%=new Date() %>" /> 
 		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
 		<h3>매출보고 내역</h3>
-		<table width="300">
+		<table width="300" class="table">
 		<c:set var="list" value="${salesList }" />
 		<c:set var="total" value="${total }" />
 			<c:if test="${!empty list }">
@@ -120,7 +135,6 @@ font-family: 'Nanum Gothic', sans-serif;
 			</c:forEach>
 	        </c:if>
 		</table>
-		<br> <br>
 	    <table align = "center">     
 	         <tr>
 	         	<td>${shopName } 일 매출 :&nbsp;&nbsp;</td>

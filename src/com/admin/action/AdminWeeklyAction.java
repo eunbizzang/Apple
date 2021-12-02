@@ -1,4 +1,4 @@
-package com.shop.action;
+package com.admin.action;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
 import com.shops.model.SalesDAO;
 
-public class ShopWeeklyAction implements Action {
+public class AdminWeeklyAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -31,7 +31,6 @@ public class ShopWeeklyAction implements Action {
 		request.setAttribute("week", week);
 		System.out.println(week[0]);
 		System.out.println(week[6]);
-		
 		SalesDAO dao = SalesDAO.getInstance();
 		
 		// select all store's sales list
@@ -108,7 +107,7 @@ public class ShopWeeklyAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("shop/shop_weekly.jsp");
+		forward.setPath("admin/admin_weekly.jsp");
 		
 		
 		return forward;

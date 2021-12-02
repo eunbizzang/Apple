@@ -1,4 +1,4 @@
-package com.shop.action;
+package com.admin.action;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -14,7 +14,7 @@ import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
 import com.shops.model.SalesDAO;
 
-public class ShopMonthlyAction implements Action {
+public class AdminMonthlyAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -28,9 +28,10 @@ public class ShopMonthlyAction implements Action {
 		String thismonth = format.format(cal.getTime()).substring(0,7);
 		cal.add(Calendar.MONTH, -1);
 		String lastmonth = format.format(cal.getTime()).substring(0,7);
-		
+		System.out.println(thismonth);
+		System.out.println(lastmonth);
 		// month set for labels
-		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
+		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월", thismonth.substring(0,7)};
 		request.setAttribute("monthlabel", month);
 		
 		// garosu month date
@@ -78,7 +79,7 @@ public class ShopMonthlyAction implements Action {
 		
 		forward.setRedirect(false);
 		
-		forward.setPath("shop/shop_monthly.jsp");
+		forward.setPath("admin/admin_monthly.jsp");
 		
 		
 		return forward;

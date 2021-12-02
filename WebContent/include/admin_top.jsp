@@ -9,12 +9,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+</style>
 <style type="text/css">
 
 body{
 	margin: 0;
-	font-family: ''Source Sans Pro', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	
 }
 
@@ -47,6 +49,7 @@ body{
 	display: flex;
 	list-style: none;
 	padding-left: 0;
+	z-index: 1;
 }
 
 .menu li{
@@ -136,6 +139,13 @@ body{
 	padding: 3px;
 }
 
+.fa-user-plus {
+   
+   font-size: 25px;
+   margin-right: 50px;
+   text-decoration: none;
+   color: white;
+}
 @media screen and (max-width: 666px) {
 	.bar{
 		flex-direction: column;
@@ -174,8 +184,7 @@ body{
 	</div>
 	
 	<ul class="menu">
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin/admin_main.jsp">Home</a></li>
-		
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_main.do">Home</a></li>
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">매  장</a>
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">Shop Info</a></li>
@@ -191,16 +200,18 @@ body{
 			</ul>
 		</li>
 		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">매  출</a>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">매  출</a>
 			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">주간 매출</a></li>
-				<li> <a class="cate_a" href="">매장별 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">주간 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_monthly.do">월 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">매장별 매출</a></li>
 			</ul>
 		</li>
 		
 	</ul>
 	
 	<ul class="logout">
+		<li> <a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
 		<li> <a class="cate_a" href="#">관리자 &nbsp;</a> </li>
 		<li><i class="fas fa-sign-in-alt"></i></li>
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>

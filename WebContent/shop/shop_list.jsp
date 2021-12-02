@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<jsp:include page="../include/shop_top.jsp" />
 <div align="center">
       <hr width="100%" color="gold">
          <h3>매장 재고 관리 </h3>

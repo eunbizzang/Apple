@@ -11,68 +11,32 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Apple store sales summary here</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-body{
-font-family: 'Nanum Gothic', sans-serif;
-}
 #container {
     justify-content: center;
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr ; 
 }
-table.type05 {
-  border-collapse: separate;
-  border-spacing: 1px;
-  text-align: center;
-  line-height: 1.2;
-  border-top: 1px solid #ccc;
-  margin: 10px 10px;
-}
-table.type05 th {
-  width: 650px;
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-  background: #efefef;
-}
-table.type05 td {
-  width: 350px;
-  padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-}
-.wrapper {
-  width: 500px; height:500px;
-  border-spacing: 10;
-  border:0.5px solid lightgrey;
-}
 </style>
 </head>
 <body>
 
-	<jsp:include page="../include/shop_top.jsp" />
+	<jsp:include page="../include/admin_top.jsp" />
 <div id="container">
 <div class="item">
-<div class="wrapper">
     <span>전체 매출(최근 1주일)</span>
-<canvas id="wholesales" width="450" height="450"></canvas>
-</div>
+<canvas id="wholesales" width="400" height="400"></canvas>
 </div>
 <div class="item">
-<div class="wrapper">
     <span>매장별 매출</span>
-<canvas id="shopsales" width="450" height="450"></canvas>
-</div>
+<canvas id="shopsales" width="400" height="400"></canvas>
 </div>
 </div>
 <div align="center">
-	<table width="1000" class="type05">
+	<table width="900">
 		<tr>
-			<th scope="row">매장명</th>
+			<th>매장명</th>
 			<c:set var="week" value="${week}" />
-			<c:forEach var="week" items="${week}"><td>${week}</td></c:forEach>
+			<c:forEach var="week" items="${week}"><th>${week}</th></c:forEach>
 		</tr>
 		<c:set var="garosu" value="${garosu}" />
 		<c:set var="gimpo" value="${gimpo}" />
@@ -80,27 +44,27 @@ table.type05 td {
 		<c:set var="incheon" value="${incheon}" />
 		<c:set var="yeouido" value="${yeouido}" />
 		<tr>
-			<th scope="row"> Apple 가로수길 </th>
+			<td> Apple 가로수길 </td>
 			<c:forEach var="garosu" items="${garosu}">
 			<td>${garosu }</td></c:forEach>
 		</tr>
 		<tr>
-			<th scope="row"> 윌리스 김포공항 </th>
+			<td> 윌리스 김포공항 </td>
 			<c:forEach var="gimpo" items="${gimpo}">
 			<td>${gimpo }</td></c:forEach>
 		</tr>
 		<tr>
-			<th scope="row"> 프리스비 홍대점 </th>
+			<td> 프리스비 홍대점 </td>
 			<c:forEach var="hongdae" items="${hongdae}">
 			<td>${hongdae }</td></c:forEach>
 		</tr>
 		<tr>
-			<th scope="row"> 윌리스 인천터미널점 </th>
+			<td> 윌리스 인천터미널점 </td>
 			<c:forEach var="incheon" items="${incheon}">
 			<td>${incheon }</td></c:forEach>
 		</tr>
 		<tr>
-			<th scope="row"> Apple 여의도 점 </th>
+			<td> Apple 여의도 점 </td>
 			<c:forEach var="yeouido" items="${yeouido}">
 			<td>${yeouido }</td></c:forEach>
 		</tr>
@@ -119,7 +83,7 @@ const ctx = document.getElementById('shopsales');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['가로수', '김포', '홍대', '인천', '여의도'],
+        labels: ['GAROSU', 'GIMPO', 'HONGDAE', 'INCHEON', 'YEOUIDO'],
         datasets: [{
             label: 'WEEKLY SALES REPORT',
             data: shopdata,
@@ -153,7 +117,7 @@ const myChart = new Chart(ctx, {
 let week=[];
 <c:set var="week" value="${week}" />
 <c:forEach items="${week}" var="week">
-week.push('${week}'.substring(5, 10));
+week.push('${week}');
 </c:forEach>
 let garosu=[];
 <c:set var="garosu" value="${garosu}" />
@@ -187,35 +151,35 @@ const config = new Chart(con, {
 				  labels: week,
 				  datasets: [
 				    {
-				      label: '가로수',
+				      label: 'GAROSU',
 				      data: garosu,
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)',
 				      borderColor: 'rgba(255, 99, 132, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				      label: '김포',
+				      label: 'GIMPO',
 				      data: gimpo,
 				      backgroundColor: 'rgba(255, 205, 86, 0.2)',
 				      borderColor: 'rgba(54, 162, 235, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				      label: '홍대',
+				      label: 'HONGDAE',
 				      data: hongdae,
 				      backgroundColor: 'rgba(75, 192, 192, 0.2)',
 				      borderColor: 'rgba(255, 206, 86, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				        label: '인천',
+				        label: 'INCHEON',
 				        data: incheon,
 				        backgroundColor: 'rgba(54, 162, 235, 0.2)',
 				        borderColor: 'rgba(75, 192, 192, 0.2)',
 					    borderWidth: 1,
 				    },
 				    {
-				        label: '여의도',
+				        label: 'YEOUIDO',
 				        data: yeouido,
 				        backgroundColor: 'rgba(153, 102, 255, 0.2)',
 				        borderColor: 'rgba(153, 102, 255, 0.2)',

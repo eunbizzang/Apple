@@ -1,7 +1,6 @@
 package com.admin.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -9,29 +8,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
-import com.shops.model.AdminDAO;
-import com.shops.model.AdminDTO;
 import com.shops.model.BoardDAO;
 import com.shops.model.BoardDTO;
 import com.shops.model.OrderDAO;
-import com.shops.model.OrderDTO;
 import com.shops.model.SalesDAO;
 
-public class Admin_Login implements Action {
+public class AdminMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String main_id = request.getParameter("main_id").trim();
-		String main_pwd = request.getParameter("main_pwd").trim();
-		
-		AdminDAO dao = AdminDAO.getInstance();
-	    int res = dao.adminCheck(main_id, main_pwd);
-	    
-	    // 발주 데이터
+		// 발주 데이터
 	    OrderDAO odao = OrderDAO.getInstance();
 	    int odto = odao.getMainOrderCount();
 	    
@@ -42,7 +31,7 @@ public class Admin_Login implements Action {
 	    BoardDAO bdao = BoardDAO.getInstance();
 	    List<BoardDTO> bdto = bdao.getMainBoardList();
 	    
-	 // 주간매출 데이터
+	    // 주간매출 데이터
 	    // Dateset for weeksales research
 	 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	 	Calendar cal = Calendar.getInstance();
@@ -110,55 +99,30 @@ public class Admin_Login implements Action {
 		}
 		
 	    ActionForward forward = new ActionForward();
+	 
+	    request.setAttribute("ordercount", odto);
+	    request.setAttribute("noticelist", ndto);
+	    request.setAttribute("boardlist", bdto);
 	    
-	    PrintWriter out = response.getWriter();
 	    
-	    // 세션을 생성하는 방법
-	    HttpSession session = request.getSession();
-	    
-	    if(res > 0) {
-	    	// 관리자인 경우 관리자의 정보를 받아오자
-	    	AdminDTO dto = dao.getMain(main_id);
+	    request.setAttribute("garosu", garosu);
+		request.setAttribute("gimpo", gimpo);
+		request.setAttribute("hongdae", hongdae);
+		request.setAttribute("incheon", incheon);
+		request.setAttribute("yeouido", yeouido);
+		request.setAttribute("week", week);
+		 
+		request.setAttribute("gathistotal", gathistotal);
+		request.setAttribute("githistotal", githistotal);
+		request.setAttribute("hothistotal", hothistotal);
+		request.setAttribute("inthistotal", inthistotal);
+		request.setAttribute("yethistotal", yethistotal); 
+		
+	    // 세션에 저장된 정보를 가지고 View Page로 이동하자
+	    forward.setRedirect(false);
 	    	
-	    	session.setAttribute("adminId", dto.getMain_id());
-	    	
-	    	request.setAttribute("ordercount", odto);
-	    	request.setAttribute("noticelist", ndto);
-	    	request.setAttribute("boardlist", bdto);
-	    	
-	    	request.setAttribute("garosu", garosu);
-			request.setAttribute("gimpo", gimpo);
-			request.setAttribute("hongdae", hongdae);
-			request.setAttribute("incheon", incheon);
-			request.setAttribute("yeouido", yeouido);
-			request.setAttribute("week", week);
-			 
-			request.setAttribute("gathistotal", gathistotal);
-			request.setAttribute("githistotal", githistotal);
-			request.setAttribute("hothistotal", hothistotal);
-			request.setAttribute("inthistotal", inthistotal);
-			request.setAttribute("yethistotal", yethistotal); 
-	    	
-	    	// 세션에 저장된 정보를 가지고 View Page로 이동하자
-	    	forward.setRedirect(false);
-	    	
-	    	forward.setPath("admin/admin_main.jsp");
-	    	
-	    } else if(res == -1) {
-	    	// 아이디는 맞으나 비밀번호가 틀린 경우
-	    	out.println("<script>");
-	    	out.println("alert('관리자 비밀번호가 틀립니다.')");
-	    	out.println("history.back()");
-	    	out.println("</script>");
-	    }else {
-	    	// 존재하지 않는 아이디
-	    	out.println("<script>");
-	    	out.println("alert('존재하지 않는 관리자입니다.')");
-	    	out.println("history.back()");
-	    	out.println("</script>");
-	    }
-	    
+	    forward.setPath("admin/admin_main.jsp");
+
 		return forward;
 	}
-
 }

@@ -83,36 +83,24 @@ public class OrderDAO {
 		
 	}  // closeConn() 메서드 end
 	
-	// getMainOrderList() 메소드
-	// admin 메인 화면에서 출력되는 발주내역 ('요청'만, 모든 매장)
-	public List<OrderDTO> getMainOrderList() {
+	// getMainOrderCount() 메소드
+	// admin 메인 화면에서 출력되는 발주내역 개수 ('요청'만, 모든 매장)
+	public int getMainOrderCount() {
 		
-		List<OrderDTO> list = new ArrayList<OrderDTO>();
+		int count = 0;
 		
 		try {
 			
 			openConn();
 			
-			sql = "select * from shop_order where order_check = '요청' order by order_code desc";
+			sql = "select count(order_no) from shop_order where order_check = '요청'";
 			
 			pstmt = con.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) { 
-				
-				OrderDTO dto = new OrderDTO();
-				
-				dto.setShop_id(rs.getString("shop_id"));
-				dto.setPnum(rs.getString("pnum"));
-				dto.setOrder_no(rs.getInt("order_no"));
-				dto.setOrder_date(rs.getString("order_date"));
-				dto.setOrder_check(rs.getString("order_check"));
-				dto.setOrder_code(rs.getString("order_code"));
-				dto.setOrder_comment(rs.getString("order_comment"));
-				dto.setOrderok_date(rs.getString("orderok_date"));
-				
-				list.add(dto);
+			if(rs.next()) { 
+				count = rs.getInt(1);
 			}
 			
 		} catch (SQLException e) {
@@ -121,10 +109,103 @@ public class OrderDAO {
 			closeConn(rs, pstmt, con);
 		}
 		
-		return list;
-		
+		return count;
+			
 	} // getMainOrderList() 메소드 end
+		
+	// getShopOrderCount() 메소드
+	// shop 메인 화면에서 출력되는 발주내역 개수 ('요청'만, 모든 매장)
+	public int getShopOrderCount(String shopid) {
+		
+		int count = 0;
+		
+		try {
+			
+			openConn();
+			
+			sql = "select count(order_no) from shop_order where order_check = '요청' and shop_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, shopid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+			
+	} // getShopOrderList() 메소드 end
 	
+	// getShopOrderOklist() 메소드
+	// shop 메인 화면에서 출력되는 발주내역 개수 ('발주승인'만, 모든 매장)
+	public int getShopOrderOklist(String shopid) {
+		
+		int count = 0;
+		
+		try {
+			
+			openConn();
+			
+			sql = "select count(order_no) from shop_order where order_check = '발주승인' and shop_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, shopid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+			
+	} // getShopOrderOklist() 메소드  end
+	
+	// getShopCancellist() 메소드
+	// shop 메인 화면에서 출력되는 발주내역 개수 ('발주취소'만, 모든 매장)
+	public int getShopCancellist(String shopid) {
+		
+		int count = 0;
+		
+		try {
+			
+			openConn();
+			
+			sql = "select count(order_no) from shop_order where order_check = '발주취소' and shop_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, shopid);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				count = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return count;
+			
+	} // getShopOrderOklist() 메소드  end
+
 	// getOrderList() 메소드
 	// 발주테이블 전체 내역을 조회하는 메소드
 	public List<OrderDTO> getOrderList() {
@@ -166,6 +247,48 @@ public class OrderDAO {
 		return list;
 		
 	} // getOrderList() 메소드 end
+	
+	// getOrderRequestList() 메소드
+	// 발주테이블 전체 내역을 조회하는 메소드, 요청만 조회하는 메소드
+	public List<OrderDTO> getOrderRequestList() {
+			
+		List<OrderDTO> list = new ArrayList<OrderDTO>();
+			
+		try {
+				
+				openConn();
+				
+				sql = "select * from shop_order where order_check = '요청' order by order_code desc";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) { 
+					
+					OrderDTO dto = new OrderDTO();
+					
+					dto.setShop_id(rs.getString("shop_id"));
+					dto.setPnum(rs.getString("pnum"));
+					dto.setOrder_no(rs.getInt("order_no"));
+					dto.setOrder_date(rs.getString("order_date"));
+					dto.setOrder_check(rs.getString("order_check"));
+					dto.setOrder_code(rs.getString("order_code"));
+					dto.setOrder_comment(rs.getString("order_comment"));
+					dto.setOrderok_date(rs.getString("orderok_date"));
+					
+					list.add(dto);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return list;
+			
+		} // getOrderRequestList() 메소드 end
 	
 	// getOrderCont() 메소드
 	// 발주번호에 해당하는 상세내역을 조회하는 메소드
@@ -361,6 +484,678 @@ public class OrderDAO {
 		
 	} // getOrderList() 메소드 end
 	
+	// getOrderAllSetList() 메소드
+		public List<OrderDTO> getOrderAllSetList(String shop, String field, String date1, String date2) {
+			
+			List<OrderDTO> list = new ArrayList<OrderDTO>();
+			
+			openConn();
+			
+			if(shop.equals("all")) { // 전체 매장 선택
+				
+				if(field.equals("all")) { // 전체 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // // 전체 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 전체 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // // 전체 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} else if(shop.equals("yeouido")) { // 여의도 매장 선택
+				
+				if(field.equals("all")) { // 여의도 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'yeouido' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // 여의도 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'yeouido' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 여의도 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'yeouido' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // 여의도 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where shop_id = 'yeouido' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} else if(shop.equals("garosu")) { // 가로수 매장 선택
+				
+				if(field.equals("all")) { // 가로수 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'garosu' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // 가로수 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'garosu' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 가로수 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'garosu' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // 가로수 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where shop_id = 'garosu' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} else if(shop.equals("hongdae")) { // 홍대 매장 선택
+				
+				if(field.equals("all")) { // 홍대 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'hongdae' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // 홍대 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'hongdae' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 홍대 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'hongdae' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // 홍대 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where shop_id = 'hongdae' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} else if(shop.equals("gimpo")) { // 김포 매장 선택
+				
+				if(field.equals("all")) { // 김포 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'gimpo' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // 김포 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'gimpo' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 김포 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'gimpo' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // 김포 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where shop_id = 'gimpo' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			} else if(shop.equals("incheon")) { // 인천 매장 선택
+				
+				if(field.equals("all")) { // 인천 매장 - 전체 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'incheon' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order")) { // 인천 매장 - 요청 상태 선태
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'incheon' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '요청' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_ok")) { // 인천 매장 - 발주 승인 상태 선택
+					
+					try {
+						sql = "select * from shop_order where shop_id = 'incheon' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주승인' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
+				} else if(field.equals("order_cancel")) { // 인천 매장 - 발주 취소 상태 선택
+					try {
+						sql = "select * from shop_order where shop_id = 'incheon' and order_date "
+								+ "between to_date(? , 'YYYY/MM/DD') and "
+								+ "to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS') "
+								+ "and order_check = '발주취소' order by order_code desc";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, date1);
+						pstmt.setString(2, date2);
+						rs = pstmt.executeQuery();
+						
+						while(rs.next()) {
+							OrderDTO dto = new OrderDTO();
+							dto.setShop_id(rs.getString("shop_id"));
+							dto.setPnum(rs.getString("pnum"));
+							dto.setOrder_no(rs.getInt("order_no"));
+							dto.setOrder_date(rs.getString("order_date"));
+							dto.setOrder_check(rs.getString("order_check"));
+							dto.setOrder_code(rs.getString("order_code"));
+							
+							list.add(dto);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+			
+			return list;
+			
+		} // getOrderAllSetList() 메소드 end
 	// getOrderSetList() 메소드
 	public List<OrderDTO> getOrderSetList(String shopid, String field, String date1, String date2) {
 		
