@@ -21,8 +21,10 @@ public class ShopMonthlyCheckAction implements Action {
 		String lastmonth;
 		if(monthcheck == 1) {
 			lastmonth = (year-1) + "-" + "12";
-		}else {
+		}else if(monthcheck >=11){
 			lastmonth = year + "-" + (monthcheck-1);
+		}else {
+			lastmonth = year + "-" + "0"+ (monthcheck-1);
 		}
 
 		String thismonth = month;

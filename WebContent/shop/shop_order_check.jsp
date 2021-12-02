@@ -50,19 +50,29 @@
 		</form>
 	</div>
 	<div class="wow2">
-		<table width="600">
+		<table width="800">
 		<c:set var="list" value="${orderlist }" />
 			<c:if test="${!empty list }">
 			<tr>
-	      		<th>요청 코드</th><th>요청매장</th><th>요청제품</th><th>요청 일자</th><th>상태</th>
+	      		<th>요청 코드</th><th>요청제품</th><th>요청 일자</th><th>상태</th><th>본사 확인</th><th>코멘트</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 			<tr>
 				<td> ${dto.getOrder_code() } </td>
-				<td> ${shopid } </td>
 	            <td> ${dto.getPnum() } </td>
 	            <td> ${dto.getOrder_date() } </td>
 	            <td> ${dto.getOrder_check() } </td>
+	            <td> <c:if test="${!empty dto.getOrder_comment() }">
+	            	${dto.getOrderok_date() }</c:if>
+	            	<c:if test="${empty dto.getOrder_comment() }">
+	             	미확인</c:if> 
+	            </td>
+	            <td>
+	            	<c:if test="${!empty dto.getOrder_comment() }">
+	            	${dto.getOrder_comment() }</c:if>
+	            	<c:if test="${empty dto.getOrder_comment() }">
+	             	없음</c:if>
+	            </td>
 	         </tr>
 			</c:forEach>
 	        </c:if>

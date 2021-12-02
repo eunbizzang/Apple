@@ -14,7 +14,7 @@ font-family: 'Nanum Gothic', sans-serif;
 
 #menu {
 	height : 40px;
-	width : 850px;
+	width : 900px;
 	margin-left : auto;
 	margin-right : auto;
 }
@@ -33,7 +33,7 @@ font-family: 'Nanum Gothic', sans-serif;
 	text-decoration: none;
 	color: #4F4F4F;
 	display: block;
-	width: 150px;
+	width: 170px;
 	font-size:17px;
 	font-weight: bold;
 }
@@ -51,7 +51,7 @@ font-family: 'Nanum Gothic', sans-serif;
 </head>
 <body>
 
-<jsp:include page="../include/admin_top.jsp" />
+<jsp:include page="../include/shop_top.jsp" />
 
 
 <div id = "menu" align="center">
