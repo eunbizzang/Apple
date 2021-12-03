@@ -16,7 +16,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
 </style>
 <style type="text/css">
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
 
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
 	div.notice {
 		width: 1000px;
 		height: 30px;
@@ -28,18 +36,38 @@
 		margin-bottom: 20px;
 	}
 	
+	.listbtn {
+		width:200px;
+		background-color: #000000;
+		border: none;
+		color:#fff;
+		padding: 15px 0;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 15px;
+ 		margin: 4px;
+		cursor: pointer;
+		border-radius: 10px;
+	}
+	
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/admin_top.jsp" />
-
+	<div id="body-wrapper">
+	<div id="body-content">
 	<div align="center">
 	
 		<c:set var="dto" value="${Cont }" />
 	
 		<div class="notice">
-			공지사항
+		공지사항
+			<button type="button" style="margin-left: 820px" class="btn btn-outline-dark btn-sm" onclick="location.href='admin_board_update.do?num=${dto.getBoard_no() }&page=${Page }'">수정</button>
+			<button type="button" class="btn btn-outline-dark btn-sm" onclick="if(confirm('게시글을 삭제하시겠습니까?')) {
+																location.href='admin_board_delete.do?num=${dto.getBoard_no() }&page=${Page }'
+																} else { return; }">삭제</button>
 		</div>
 
 		<hr color="#000000" width="1000" size="3">
@@ -77,25 +105,18 @@
 					<td colspan="2"> <h3>작성된 내용이 없습니다.</h3> </td>
 				</tr>
 			</c:if>
-				
-			<tr>
-				<td colspan="2" align="center">
-					<button type="button" class="btn btn-dark" onclick="location.href='admin_board_update.do?num=${dto.getBoard_no() }&page=${Page }'">수정</button> &nbsp;
-					<button type="button" class="btn btn-dark" onclick="if(confirm('게시글을 삭제하시겠습니까?')) {
-																location.href='admin_board_delete.do?num=${dto.getBoard_no() }&page=${Page }'
-																} else { return; }">삭제</button>
-				</td>
-			</tr>
 			
 			<tr>
 				<td colspan="2" align="center">
-					<button type="button" class="btn btn-dark" onclick="location.href='admin_board_list.do?page=${Page }'">전체목록</button> &nbsp;
+					<button type="button" class="listbtn" onclick="location.href='admin_board_list.do?page=${Page }'">전체목록</button>
 				</td>
 			</tr>
 		
 		</table>
 		
 	</div>
-
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

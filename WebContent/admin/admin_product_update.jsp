@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
-</style>
-<style type="text/css">	
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 td,tr {
 		padding : 10px;
 	}
@@ -71,7 +72,7 @@ td,tr {
 	         
 	         <tr>
 	            <th>상품 정보</th>
-	            <td> <textarea name = "cont" rows="5" cols="50">${dto.getPcont() }</textarea> </td>
+	            <td> <textarea name = "pcont" rows="5" cols="50">${dto.getPcont() }</textarea> </td>
 	         </tr>
 	         
 	         

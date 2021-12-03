@@ -16,7 +16,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
 </style>
 <style type="text/css">
-
+	#body-wrapper {
+	    min-height: 100%;
+	    position: relative;
+	}
+	
+	#body-content {
+	    margin-top: 0px;
+	    padding-bottom: 150px; /* footer의 높이 */
+	}
 	div.notice {
 		width: 1000px;
 		height: 30px;
@@ -28,12 +36,28 @@
 		margin-bottom: 20px;
 	}
 	
+	.listbtn {
+		width:200px;
+		background-color: #000000;
+		border: none;
+		color:#fff;
+		padding: 15px 0;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 15px;
+ 		margin: 4px;
+		cursor: pointer;
+		border-radius: 10px;
+	}
+	
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-
+	<div id="body-wrapper">
+	<div id="body-content">
 	<div align="center">
 	
 		<c:set var="dto" value="${Cont }" />
@@ -79,14 +103,16 @@
 			</c:if>
 			
 				<tr>
-					<td colspan="2">
-						<button type="button" class="btn btn-dark" onclick="location.href='shop_board_list.do?page=${Page }'">전체목록</button> &nbsp;
+					<td colspan="2" align="center">
+						<button type="button" class="listbtn" onclick="location.href='shop_board_list.do?page=${Page }'">전체목록</button>
 					</td>
 				</tr>
 		
 		</table>
 		
 	</div>
-
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

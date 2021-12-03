@@ -295,6 +295,7 @@ import javax.sql.DataSource;
 					dto.setPnum(rs.getString("pnum"));
 					dto.setPname(rs.getString("pname"));				
 					dto.setPrice(rs.getInt("price"));
+					dto.setPcont(rs.getString("pcont"));
 			
 					list.add(dto);
 				}
@@ -328,6 +329,7 @@ import javax.sql.DataSource;
 					dto.setPnum(rs.getString("pnum"));
 					dto.setPname(rs.getString("pname"));				
 					dto.setPrice(rs.getInt("price"));
+					dto.setPcont(rs.getString("pcont"));
 			
 					list.add(dto);
 				}
@@ -361,6 +363,7 @@ public List<ProductDTO> getProductListpho() {
 					dto.setPnum(rs.getString("pnum"));
 					dto.setPname(rs.getString("pname"));				
 					dto.setPrice(rs.getInt("price"));
+					dto.setPcont(rs.getString("pcont"));
 			
 					list.add(dto);
 				}
@@ -394,6 +397,7 @@ public List<ProductDTO> getProductListpad() {
 			dto.setPnum(rs.getString("pnum"));
 			dto.setPname(rs.getString("pname"));				
 			dto.setPrice(rs.getInt("price"));
+			dto.setPcont(rs.getString("pcont"));
 	
 			list.add(dto);
 		}

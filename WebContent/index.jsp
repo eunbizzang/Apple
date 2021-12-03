@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/1c8b531657.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<style type="text/css">
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
 body {
-	background-color: #263343;
+  background-color: #263343;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 div.main_top {
@@ -103,6 +103,7 @@ div.login2 {
 	color: white;
 	font-size: 1.0em;
 	letter-spacing: 2px;
+	font-weight: bold;
 }
 
 .hr {
@@ -130,7 +131,7 @@ div.login2 {
 	<div class="back_login">
         <div class="login1" >
 	        <form method="post" action="<%=request.getContextPath() %>/main_login_ok.do">
-	        	<h3>Admin Login</h3>
+	        	<h2>Admin Login</h2>
 	        	<hr class="hr" color="#2e8cff" width="30" size="3">
 	        	<div class="login_id">
 	                <input name="main_id" placeholder="ID">
@@ -146,7 +147,7 @@ div.login2 {
            
         <div class="login2" >
         	<form method="post" action="<%=request.getContextPath() %>/shop_login_ok.do">
-	        	<h3>Shop Login</h3>
+	        	<h2>Shop Login</h2>
 	        	<hr class="hr" color="#2e8cff" width="30" size="3">
 	        	<div class="login_id">
 	                <input name="shop_id" placeholder="ID">

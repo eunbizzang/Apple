@@ -12,6 +12,10 @@
 <script type="text/javascript" src="js/customer.js"></script> -->
 
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .num{
 		text-align:center;
 	}
@@ -19,12 +23,13 @@
 	.top{
 		display: flex;
 		justify-content: center;
+		margin-top: 50px;
 	}
 
 	.all{
 		display: flex;
 		justify-content: center;
-		margin-top: 100px;
+		margin-top: 80px;
 	}
 
 	.ordertable {
@@ -36,7 +41,7 @@
 	
 	.ordercontent {
 		
-		margin-left: 150px;
+		margin-left: 100px;
 		
 		width:500px;
 		height: 500px;
@@ -224,5 +229,6 @@
 		</div>
 	</c:if>
 	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
 </body>
 </html>

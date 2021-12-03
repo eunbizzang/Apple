@@ -14,76 +14,138 @@
 <title>Insert title here</title>
 
 <style type="text/css">	
-
-
-
+	#body-wrapper {
+	    min-height: 100%;
+	    position: relative;
+	}
 	
+	#body-content {
+	    margin-top: 0px;
+	    padding-bottom: 150px; /* footer의 높이 */
+	}
 	td, tr {
 		text-align: center; padding : 50px;
 	}
 	
-	.ab{
-		 flex:1;
-	}
+
 	.ccc{
 		border-stlye : solid;
 	}
+	.cccc{
+		font-size : 15px;
+	}
 	
-	
-	
-	
+	.ac{
+		display: flex;
+	}
+	table {
+		margin : 25px;
+	}
 
 	
-
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-
+	<div id="body-wrapper">
+	<div id="body-content">
  	<div align="center">
 	      <h2>상품 리스트</h2>
 	   <br>
-	   	  <c:set var="list" value="${productList }" />
-	   	  	      <c:if test="${empty list }">
-	         <tr>
-	            <td colspan="9" align="center">
-	               <h3>등록된 상품 리스트가 없습니다.....</h3>
-	            </td>
-	         </tr>
-	      </c:if>
-	      
-	      
-	      
-	      <c:if test="${!empty list }">
-	   <table class="ccc"  border="0" cellspacing="0" width="80%">
+		 
+	   	  <c:set var="list" value="${productListpho }" />
+	   	  
+  		<c:if test="${!empty list }">
+	   <table class="ac" border="1" cellspacing="0" width="1600">
 			<tr>
 	         <c:forEach items="${list }" var="dto">
 	         <c:set var="count" value="${count + 1 }" />
-	        		<td width="25%">
-	 	           <img src="<%=imgPath %>${dto.getPimage() }" width="200" height="200" border="0"><br>  
+	        		<td width="400">
+	 	           <img src="<%=imgPath %>${dto.getPimage() }" width="150" height="150" border="0"><br>  
 	               <h4>${dto.getPname() } <br></h4> <h5 align="right"><fmt:formatNumber value="${dto.getPrice() }" /> 원</h5>
-	               	<h6 align="left">${dto.getPcont() }<br></h6>
+	               	<h6 class = "cccc" align="left">${dto.getPcont() }<br></h6>
 	               </td>   
-	            
-	          <c:if test="${count % 3 == 0 }">
+	          <c:if test="${count % 4 == 0 }">
 	                 </tr>
 	                 <tr>       
 	      	</c:if>
 	      </c:forEach>
-
-	
+	      
 	   </table>
 	   </c:if>
-	   <br>
-	   <br>
-	   <br>
-	</div>
-<br><br><br>
-<div align = "center">
-<a href="https://www.apple.com/kr/" class="btn btn-light btn-lg">애플 공식 홈페이지</a>
-</div>      
+	   
+	    <c:set var="list" value="${productListpad }" />
+	   	  
+  		<c:if test="${!empty list }">
+	   <table class="ac" border="1" cellspacing="0" width="1600">
+			<tr>
+	         <c:forEach items="${list }" var="dto">
+	         <c:set var="count" value="${count + 1 }" />
+	        		<td width="400">
+	 	           <img src="<%=imgPath %>${dto.getPimage() }" width="150" height="150" border="0"><br>  
+	               <h4>${dto.getPname() } <br></h4> <h5 align="right"><fmt:formatNumber value="${dto.getPrice() }" /> 원</h5>
+	               	<h6 class = "cccc" align="left">${dto.getPcont() }<br></h6>
+	               </td>   
+	            
+	          <c:if test="${count % 4 == 0 }">
+	                 </tr>
+	                 <tr>       
+	      	</c:if>
+	      </c:forEach>
+	      
 
+	   </table>
+	   </c:if>
+	   
+	   <c:set var="list" value="${productListwch }" />
+	   
+	   <c:if test="${!empty list }">
+	   <table class="ac"  border="1" cellspacing="0" width="1600">
+			<tr>
+	         <c:forEach items="${list }" var="dto">
+	         <c:set var="count" value="${count + 1 }" />
+	        		<td width="400">
+	 	           <img src="<%=imgPath %>${dto.getPimage() }" width="150" height="150" border="0"><br>  
+	               <h4>${dto.getPname() } <br></h4> <h5 align="right"><fmt:formatNumber value="${dto.getPrice() }" /> 원</h5>
+	               	<h6 class = "cccc" align="left">${dto.getPcont() }<br></h6>
+	               </td>   
+	            
+	          <c:if test="${count % 4 == 0 }">
+	                 </tr>
+	                 <tr>       
+	      	</c:if>
+	      </c:forEach>
+	      
+
+	   </table>
+	   </c:if>
+	   
+	    <c:set var="list" value="${productListpod }" />
+	   
+	   <c:if test="${!empty list }">
+	   <table class="ac"  border="1" cellspacing="0" width="1600">
+			<tr>
+	         <c:forEach items="${list }" var="dto">
+	         <c:set var="count" value="${count + 1 }" />
+	        		<td width="400">
+	 	           <img src="<%=imgPath %>${dto.getPimage() }" width="150" height="150" border="0"><br>  
+	               <h4>${dto.getPname() } <br></h4> <h5 align="right"><fmt:formatNumber value="${dto.getPrice() }" /> 원</h5>
+	               	<h6 class = "cccc" align="left">${dto.getPcont() }<br></h6>
+	               </td>   
+	            
+			
+	      </c:forEach>
+	      
+
+	   </table>
+	   </c:if>
+	   
+	   
+	</div>
+<br><br><br>     
+</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

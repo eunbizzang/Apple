@@ -7,9 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../include/shop_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 <div align="center">
       <hr width="100%" color="gold">
          <h3>매장 재고 관리 </h3>
@@ -55,7 +72,9 @@
      </form>
    </div>
    
-   
+   </div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 
 </body>
 </html>

@@ -8,7 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 .wow{
    height: 100%;
    display: flex;
@@ -79,6 +85,8 @@
 		</table>
 	</div>
 </div>
-			
+<div>
+<jsp:include page="../include/shop_bottom.jsp" />
+</div>
 </body>
 </html>

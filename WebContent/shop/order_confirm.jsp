@@ -21,7 +21,10 @@
 </script>
 
 <style type="text/css">
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 	.ordertable {
 		float: left;
 		width: 40%;
@@ -37,8 +40,8 @@
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-	
-	<br><br><br><br><br>
+	<div id="body-wrapper">
+	<div id="body-content">
 	
 	<c:set var="list" value="${List }" />
 	
@@ -137,6 +140,8 @@
 			</table>
 		</div>
 	</c:if>
-	
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

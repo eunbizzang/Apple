@@ -13,14 +13,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
-</style>
-<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
 
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
 	tr th {
 		text-align: center;
 		background: #EEEEEE;
-		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	tr {
@@ -29,12 +37,10 @@
 	
 	td {
 		text-align: center;
-		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	h3 {
 		text-align: center;
-		font-family: 'Gothic A1', sans-serif;
 		left: 150px;
 		top: 50px;
 	}
@@ -57,7 +63,8 @@
 </head>
 <body>
 	<jsp:include page="../include/shop_top.jsp" />
-
+	<div id="body-wrapper">
+	<div id="body-content">
 	<div align="center">
 		
 	      <h3>${shopName } 재고 리스트</h3>
@@ -94,7 +101,8 @@
 	   
 	   </table>   	   
 	</div>
-
+	</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

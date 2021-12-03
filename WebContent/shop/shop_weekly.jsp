@@ -11,10 +11,21 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Apple store sales summary here</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-body{
-font-family: 'Nanum Gothic', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+#body-wrapper {
+	    min-height: 100%;
+	    position: relative;
+	}
+	
+	#body-content {
+	    margin-top: 0px;
+	    padding-bottom: 150px; /* footer의 높이 */
+	}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 #container {
     justify-content: center;
@@ -53,6 +64,8 @@ table.type05 td {
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 <div id="container">
 <div class="item">
 <div class="wrapper">
@@ -106,9 +119,9 @@ table.type05 td {
 		</tr>
 	</table>
 	</div>
-
-
-
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 <script>
 let shopdata=[];
 <c:set var="sales" value="${shopsales}" />

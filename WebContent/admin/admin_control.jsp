@@ -13,14 +13,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@200;500&display=swap');
-</style>
-<style type="text/css">	
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 	tr th {
 		text-align: center;
 		background: #EEEEEE;
-		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	tr {
@@ -29,12 +29,10 @@
 	
 	td {
 		text-align: center;
-		font-family: 'Gothic A1', sans-serif;
 	}
 	
 	h3 {
 		text-align: center;
-		font-family: 'Gothic A1', sans-serif;
 		left: 150px;
 		top: 50px;
 	}

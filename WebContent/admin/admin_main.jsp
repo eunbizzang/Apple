@@ -11,94 +11,113 @@
 <meta charset="UTF-8">
 <title>Admin Main Page</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-</style>
-<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
 
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
 .big{
-	margin: 0 auto;
-	width: 900px;
-	height: 600px;
-	display: flex;
-	border: 1px solid #F0FFF0;
+   
+   margin: 50px auto;
+   width: 1100px;
+   height: 800px;
+   
+   display: flex;
+   /* border: 1px solid #F0FFF0; */
+   
 }
 
 .small{
-
-	width: 450px;
-	height: 600px;
-	flex-direction: row-reverse;
-	
+   margin: 30px;
+   width: 500px;
+   height: 600px;
+   
+   flex-direction: row-reverse;
+   
 }
 .first{
-	
-	width: 450px;
-	height: 300px;
-	border: 1px solid #F0FFF0;
+   
+   margin-bottom: 50px;
+   width: 500px;
+   height: 300px;
+   
+   
+   border: 1px solid #F0FFF0;
 }
 
-
 .second{
-	width: 450px;
-	height: 300px;
-	border: 1px solid #F0FFF0;
+   width: 500px;
+   height: 300px;
+   border: 1px solid #F0FFF0;
 }
 
 .third{
-	/*margin-top: 40px;*/
-	width:450px;
-	height: 300px;
-	border: 1px solid #F0FFF0;
+   margin-top: 50px;
+   
+   width: 500px;
+   height: 300px;
+   border: 1px solid #F0FFF0;
+}
+.space {
+	margin-top : 20px;
 }
 
 .notice_title {
-	font-weight: bold;
+   font-weight: bold;
 }
 
 .notice_date {
-	text-align: right;
-	font-weight: bold;
+   text-align: right;
+   font-weight: bold;
 }
 
 .board_date {
-	text-align: right;
+   text-align: right;
 }
 
 td a {
-	text-decoration: none;
-	color: black;
+   text-decoration: none;
+   color: black;
 }
 
 div.ordercard {
-	width:450px;
-	height: 220px;
-	/* background-color: white; */
-	margin: 0 auto;
+   width:450px;
+   height: 220px;
+   /* background-color: white; */
+   margin: 0 auto;
 }
 
 div.date {
-	text-align: center;
-	color: black;
-	font-size: 20px;
-	font-family: 'Noto Sans KR', sans-serif;
-	margin-top: 25px;
+   text-align: center;
+   color: black;
+   font-size: 20px;
+   font-family: 'Noto Sans KR', sans-serif;
+   margin-top: 25px;
 }
 
 div.cont {
-	text-align: center;
-	color: 	black;
-	font-size: 18px;
-	font-family: 'Noto Sans KR', sans-serif;
-	margin-top: 35px;
+   text-align: center;
+   color:    black;
+   font-size: 18px;
+   font-family: 'Noto Sans KR', sans-serif;
+   margin-top: 35px;
 }
 
 div.count {
-	text-align: center;
-	color: #1565C0;
-	font-size: 35px;
-	font-weight: bold;
-	font-family: 'Noto Sans KR', sans-serif;
-	margin-top: 35px;
+   text-align: center;
+   color: #1565C0;
+   font-size: 35px;
+   font-weight: bold;
+   font-family: 'Noto Sans KR', sans-serif;
+   margin-top: 35px;
 }
 
 </style>
@@ -108,8 +127,9 @@ div.count {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <jsp:include page="../include/admin_top.jsp" />
-
-<div class="big" align="center">
+	<div id="body-wrapper">
+	<div id="body-content">
+	<div class="big" align="center">
 	
 	<div class="small">
 	
@@ -120,7 +140,7 @@ div.count {
 			    	<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/admin_monthly.do'">+</button>
 				</div>
 		</nav>
-		<canvas id="shopsales" width="400" height="250"></canvas>
+		<div class="space"><canvas id="shopsales" width="400" height="250"></canvas></div>
 	</div>
 	
 	<div align="center" class="first">
@@ -130,7 +150,7 @@ div.count {
 			    	<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/admin_weekly.do'">+</button>
 				</div>
 		</nav>
-		<canvas id="wholesales" width="400" height="250"></canvas>
+		<div class="space"><canvas id="wholesales" width="400" height="250"></canvas></div>
 	</div>
 	
 	</div>
@@ -138,54 +158,21 @@ div.count {
 	<div class="small">
 	
 		<div class="second">
-		<c:set var="now" value="<%=new Date()%>" />
-  			<nav class="navbar navbar-light bg-light">
-  				<div class="container-fluid">
-			    	<a class="navbar-brand">발주요청</a>
-			    	<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/admin_order.do'">+</button>
-				</div>
-			</nav>
-			
-			<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-			
-				<div class="carousel-inner">
-
-					<div class="carousel-item active">
-						<div class="ordercard">
-							<div class="date"><fmt:formatDate value="${now }" pattern="YYYY-MM-dd" /></div>
-							<div class="count">${ordercount } 건</div>
-							<div class="cont"> total </div>
-						</div>
-					</div>
-					
-					<div class="carousel-item">
-						<img src="images/cardback.png" class="d-block w-100">
-						<div class="ordercard">
-							<h3>발주요청건</h3>
-						</div>
-					</div>
-					
-					<div class="carousel-item">
-						<img src="images/cardback.png" class="d-block w-100">
-						<div class="ordercard">
-							<h3>발주요청건</h3>
-						</div>
-					</div>
-					
-				</div>
-			
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    				<span class="visually-hidden">Previous</span>
-  				</button>
-  				
-  				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-    				<span class="visually-hidden">Next</span>
-  				</button>
-			</div>
-		
-		</div>
+      <c:set var="now" value="<%=new Date()%>" />
+           <nav class="navbar navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand">발주요청</a>
+                <button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/admin_order.do'">+</button>
+            </div>
+         </nav>
+         
+         <div class="ordercard">
+            <div class="date"><fmt:formatDate value="${now }" pattern="YYYY-MM-dd" /></div>
+            <div class="count">${ordercount } 건</div>
+            <div class="cont"> total </div>
+         </div>
+      
+      </div>
 		
 		<div class="third">
 			<nav class="navbar navbar-light bg-light">
@@ -230,8 +217,9 @@ div.count {
 	</div>
 	
 </div>
-
+</div>
 <jsp:include page="../include/shop_bottom.jsp" />
+</div>
 <script>
 let week=[];
 <c:set var="week" value="${week}" />
@@ -272,35 +260,35 @@ const config = new Chart(con, {
 		{
 			label: 'GAROSU',
 			data: garosu,
-			backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			backgroundColor: '#fd79a8',
 			borderColor: 'rgba(255, 99, 132, 0.2)',
 			borderWidth: 1,
 		},
 		{
 		label: 'GIMPO',
 		data: gimpo,
-		backgroundColor: 'rgba(255, 205, 86, 0.2)',
+		backgroundColor: '#ffeaa7',
 		borderColor: 'rgba(54, 162, 235, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'HONGDAE',
 		data: hongdae,
-		backgroundColor: 'rgba(75, 192, 192, 0.2)',
+		backgroundColor: '#55efc4',
 		borderColor: 'rgba(255, 206, 86, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'INCHEON',
 		data: incheon,
-		backgroundColor: 'rgba(54, 162, 235, 0.2)',
+		backgroundColor: '#74b9ff',
 		borderColor: 'rgba(75, 192, 192, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'YEOUIDO',
 		data: yeouido,
-		backgroundColor: 'rgba(153, 102, 255, 0.2)',
+		backgroundColor: '#a29bfe',
 		borderColor: 'rgba(153, 102, 255, 0.2)',
 		borderWidth: 1,
 		},
@@ -340,11 +328,11 @@ const myChart = new Chart(ctx, {
         datasets: [{
             data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
             backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+            	'#fd79a8',
+            	'#ffeaa7',
+                '#55efc4',
+                '#74b9ff',
+                '#a29bfe'
             ],
             borderColor: [
             	 'rgb(255, 99, 132)',

@@ -8,7 +8,14 @@
 <meta charset="UTF-8">
 <title>Apple store order page</title>
 <style type="text/css">
-		
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 	.kor{
 		display: flex;
 		
@@ -38,7 +45,7 @@
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-	
+
 	<c:set var="shopid" value="${shopId }" />
 	<div class="kor" align="center">
 	<div class="left">
@@ -113,6 +120,10 @@
 	        </c:if>
 		</table>
 		</div>
+	</div>
+
+	<div>
+	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
 </body>
 </html>

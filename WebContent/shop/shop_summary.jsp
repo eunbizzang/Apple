@@ -10,6 +10,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Insert title here</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
 .table-wrapper {
   width: 500px; height:500px;
   overflow: auto;
@@ -40,9 +53,12 @@ table {
 </head>
 <body>
 	<jsp:include page="../include/shop_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 	<div id="container">
 	<div class="item">
 	<div class="wrapper">
+		<c:set var="psales" value="${proddata}" />
 		<canvas id="prodsales" width="500" height="500"></canvas>
 		<table width="400">
 		<tr>
@@ -90,7 +106,6 @@ table {
 		</tr>
 	</table>
 	</form>
-	<c:set var="psales" value="${proddata}" />
 	<c:set var="dsales" value="${perioddata}" />
 	<c:set var="submitdata" value="${submitdata}" />
 	<p>${submitdata[0] }&nbsp;&nbsp;&nbsp;  ${submitdata[1] } - ${submitdata[2] }</p>
@@ -110,6 +125,9 @@ table {
 	</div>
 	</div>	
 </div>
+</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 <script>
 
 

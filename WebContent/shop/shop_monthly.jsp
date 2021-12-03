@@ -10,6 +10,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Insert title here</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
 #container1 {
     width:100%;
     display:flex; flex-flow:row wrap;
@@ -26,6 +39,8 @@
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 <c:set var="month" value="${monthlabel}" />	
 <div id="container1">
 <div class="item">
@@ -199,6 +214,9 @@
 <canvas id="yemonthsales" width="400" height="250"></canvas>
 </div>
 
+</div>
+</div>
+<jsp:include page="../include/shop_bottom.jsp" />
 </div>
 <script>
 /* <h4>Apple 가로수길	</h4>

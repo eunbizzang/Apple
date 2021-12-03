@@ -10,11 +10,11 @@
 <title>Apple store sales report page</title>
 
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-body{
-font-family: 'Nanum Gothic', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
 }
+
    div.row {
       display: flex;
       
@@ -57,8 +57,7 @@ font-family: 'Nanum Gothic', sans-serif;
 </head>
 <body>
 
-<jsp:include page="../include/shop_top.jsp" />
-
+	<jsp:include page="../include/shop_top.jsp" />
 	<div class="row">
 		<div class="left">
 		<div align="center" class="center">
@@ -143,5 +142,7 @@ font-family: 'Nanum Gothic', sans-serif;
 		</table>
 		</div>
 	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+
 </body>
 </html>

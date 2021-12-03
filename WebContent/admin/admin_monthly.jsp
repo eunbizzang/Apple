@@ -6,10 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Insert title here</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#body-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 150px; /* footer의 높이 */
+}
 #container1 {
     width:100%;
     display:flex; flex-flow:row wrap;
@@ -26,13 +40,17 @@
 <body>
 
 	<jsp:include page="../include/admin_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 <c:set var="month" value="${monthlabel}" />	
 <div id="container1">
 <div class="item">
 	<form method="post" 
 			action="<%=request.getContextPath() %>/admin_monthly_check.do">
-	<input type="month" id="month" name="month">
-	<button type="submit">Check</button>
+	<div  class=" col-lg-4">
+	<input class="form-control" type="month" id="month" name="month">
+	<button  class="btn btn-outline-secondary" type="submit">Check</button></div>
+	
 	</form>
 <canvas id="shopsales" width="900" height="250"></canvas>
 </div>
@@ -198,6 +216,9 @@
 <c:set var="yethistotal" value="${yethistotal}" />
 <canvas id="yemonthsales" width="400" height="250"></canvas>
 </div>
+</div>
+</div>
+<jsp:include page="../include/shop_bottom.jsp" />
 
 </div>
 <script>

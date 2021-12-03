@@ -13,6 +13,17 @@
 </style>
 <style type="text/css">
 
+	div.notice {
+		width: 1000px;
+		height: 30px;
+		font-size: 20px;
+		font-weight: bold;
+		font-family: 'Gothic A1', sans-serif;
+		text-align: left;
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
+
 	tr th {
 		text-align: center;
 		background: #EEEEEE;
@@ -53,8 +64,10 @@
 
 	<div align="center">
 		
-		<h3>공지사항</h3>
-		<br>
+		<div class="notice">
+			공지사항
+			<button type="button" style="margin-left: 850px" class="btn btn-outline-dark btn-sm" onclick="location.href='<%=request.getContextPath() %>/admin_board_write.do'">글작성</button>
+		</div>
 		
 		<table border="0" cellspacing="0" width="1000">
 			
@@ -86,13 +99,6 @@
 			</c:if>
 			
 			<tr> <td colspan="5"></td> </tr>
-			
-			<tr>
-				<td colspan="4"> </td>
-				<td>
-					<button type="button" class="btn btn-dark" onclick="location.href='<%=request.getContextPath() %>/admin_board_write.do'">글작성</button>
-				</td>
-			</tr>
 		
 		</table>
 		
@@ -115,6 +121,8 @@
 	 	</c:if>
 	
 	</div>
+
+	<jsp:include page="../include/shop_bottom.jsp" />
 
 </body>
 </html>

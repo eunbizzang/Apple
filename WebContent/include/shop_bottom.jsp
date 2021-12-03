@@ -6,27 +6,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+	flex: 1;
+}
 .info{
-	position: relative;
-	min-height: 100%;
-	margin-top: 100px;
-	
+	position: absolute;
+	width: 100%;
+	height: 130px;
+	bottom: 0px;
 	background-color: #263343;
 	color: white;
 	text-align: center;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .box{
-	height: 100px;
+	height: 130px;
 	position: absoulte;
 	bottom: 0;
 	left: 0;
 }
 
 .down{
-	margin-top: 8px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 

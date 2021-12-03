@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/1c8b531657.js" crossorigin="anonymous"></script>
 <style type="text/css">
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .login h3{
 	color: white;
 }

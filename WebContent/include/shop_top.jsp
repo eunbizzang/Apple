@@ -10,15 +10,10 @@
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/1c8b531657.js" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <style type="text/css">
-
-body{
-	margin: 0;
-	font-family: ''Source Sans Pro', sans-serif;
-	
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .cate_a {
@@ -197,7 +192,7 @@ body{
 			</ul>
 		</li>
 		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매  출</a>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">매  출</a>
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">주간 매출</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_monthly.do">월 매출</a></li>

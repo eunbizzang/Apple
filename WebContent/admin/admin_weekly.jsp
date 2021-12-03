@@ -11,6 +11,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Apple store sales summary here</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 #container {
     justify-content: center;
     display:flex; flex-flow:row wrap;
@@ -70,9 +75,7 @@
 		</tr>
 	</table>
 	</div>
-
-
-
+	<jsp:include page="../include/shop_bottom.jsp" />
 <script>
 let shopdata=[];
 <c:set var="sales" value="${shopsales}" />

@@ -29,7 +29,7 @@ public class ShopMonthlyCheckAction implements Action {
 
 		String thismonth = month;
 		// month set for labels
-		String[] months = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
+		String[] months = {lastmonth.substring(5)+"월", thismonth.substring(5)+"월"};
 		request.setAttribute("monthlabel", months);
 		
 		// garosu month date
