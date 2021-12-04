@@ -22,7 +22,7 @@ body {
 
 #body-content {
     margin-top: 0px;
-    padding-bottom: 170px; /* footer의 높이 */
+    padding-bottom: 150px; /* footer의 높이 */
 }
 .big{
    
@@ -260,35 +260,35 @@ const config = new Chart(con, {
 		{
 			label: 'GAROSU',
 			data: garosu,
-			backgroundColor: '#fd79a8',
+			backgroundColor: 'rgba(255, 99, 132, 0.4)',
 			borderColor: 'rgba(255, 99, 132, 0.2)',
 			borderWidth: 1,
 		},
 		{
 		label: 'GIMPO',
 		data: gimpo,
-		backgroundColor: '#ffeaa7',
+		backgroundColor: 'rgba(255, 205, 86, 0.4)',
 		borderColor: 'rgba(54, 162, 235, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'HONGDAE',
 		data: hongdae,
-		backgroundColor: '#55efc4',
+		backgroundColor: 'rgba(75, 192, 192, 0.4)',
 		borderColor: 'rgba(255, 206, 86, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'INCHEON',
 		data: incheon,
-		backgroundColor: '#74b9ff',
+		backgroundColor: 'rgba(54, 162, 235, 0.4)',
 		borderColor: 'rgba(75, 192, 192, 0.2)',
 		borderWidth: 1,
 		},
 		{
 		label: 'YEOUIDO',
 		data: yeouido,
-		backgroundColor: '#a29bfe',
+		backgroundColor: 'rgba(153, 102, 255, 0.4)',
 		borderColor: 'rgba(153, 102, 255, 0.2)',
 		borderWidth: 1,
 		},
@@ -328,11 +328,11 @@ const myChart = new Chart(ctx, {
         datasets: [{
             data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
             backgroundColor: [
-            	'#fd79a8',
-            	'#ffeaa7',
-                '#55efc4',
-                '#74b9ff',
-                '#a29bfe'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
             	 'rgb(255, 99, 132)',

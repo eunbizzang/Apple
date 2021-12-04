@@ -31,9 +31,9 @@ public class AdminMonthlyAction implements Action {
 		System.out.println(thismonth);
 		System.out.println(lastmonth);
 		// month set for labels
-		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월", thismonth.substring(0,7)};
+		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
 		request.setAttribute("monthlabel", month);
-		
+		request.setAttribute("thismonth", thismonth);
 		// garosu month date
 		int galasttotal = dao.getMonthSales("garosu", lastmonth);
 		int gathistotal = dao.getMonthSales("garosu", thismonth);

@@ -54,80 +54,78 @@
    <div id="container">
    <div class="item">
    <div class="wrapper" align="center">
-      <canvas id="prodsales" width="500" height="500"></canvas>
-      <table width="400" class="tb2">
-      <tr>
-         <th>제품군</th><th>판매대수</th>
-      </tr>
-      <tr>
-         <td> iPad</td>
-         <td> ${psales[0]} </td>
-      </tr>
-      <tr>
-         <td> iPhone</td>
-         <td> ${psales[1]} </td>
-      </tr>
-      <tr>
-         <td> AirPods</td>
-         <td> ${psales[2]} </td>
-      </tr>
-      <tr>
-         <td> AppleWatch</td>
-         <td> ${psales[3]} </td>
-      </tr>
-   </table>
-   </div>
-   </div>
-   <div class="item" align="center">
-   <div class="wrapper">
-   <form method="post" 
-         action="<%=request.getContextPath() %>/admin_summary_check.do">
-   <table class="tb1">
-      <tr>
-         <td>검색 기간&nbsp;&nbsp;</td>
-         <td><input type="date" name="sdate">&nbsp;&nbsp;&nbsp;&nbsp;-</td>
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="edate"></td>
-      </tr>
-      <tr>
-         <td>검색 매장&nbsp;&nbsp;</td>
-         <td><select name="shopname" required>
-                     <option value="garosu" selected>Apple 가로수길</option>
-                     <option value="yeouido">Apple 여의도점</option>
-                     <option value="hongdae">프리스비 홍대점</option>
-                     <option value="gimpo">윌리스 김포공항</option>
-                     <option value="incheon">윌리스 인천터미널점</option>
-         </select></td>
-         <td align="right"><button type="submit">확인</button></td>
-      </tr>
-   </table>
-   </form>
-   <c:set var="psales" value="${proddata}" />
-   <c:set var="dsales" value="${perioddata}" />
-   <c:set var="submitdata" value="${submitdata}" />
-   <p>${submitdata[0] }&nbsp;&nbsp;&nbsp;  ${submitdata[1] } - ${submitdata[2] }</p>
-   <div class='table-wrapper'>
-   <table width="400" align="center">
-      <tr>
-         <th>매출 일자</th><th>매출액</th>
-      </tr>
-      <c:forEach var="i" items="${dsales}">
-      <tr>
-         <td> ${i.key}</td>
-         <td> ${i.value} </td>
-      </tr>
-      </c:forEach>
-   </table>
-   </div>
-   </div>
-   </div>   
-</div>
-</div>
-<jsp:include page="../include/shop_bottom.jsp" />
+		<c:set var="psales" value="${proddata}" />
+      	<canvas id="prodsales" width="500" height="500"></canvas>
+      	<table width="400" class="tb2">
+      	<tr>
+			<th>제품군</th><th>판매대수</th>
+		</tr>
+      	<tr>
+         	<td> iPad</td>
+         	<td> ${psales[0]} </td>
+			</tr>
+      	<tr>
+         	<td> iPhone</td>
+         	<td> ${psales[1]} </td>
+      	</tr>
+      	<tr>
+         	<td> AirPods</td>
+         	<td> ${psales[2]} </td>
+	      </tr>
+	      <tr>
+	         <td> AppleWatch</td>
+	         <td> ${psales[3]} </td>
+	      </tr>
+	   </table>
+	   </div>
+	   </div>
+	   <div class="item" align="center">
+	   <div class="wrapper">
+	   <form method="post" 
+	         action="<%=request.getContextPath() %>/admin_summary_check.do">
+	   <table class="tb1">
+	      <tr>
+	         <td>검색 기간&nbsp;&nbsp;</td>
+	         <td><input type="date" name="sdate">&nbsp;&nbsp;&nbsp;&nbsp;-</td>
+	         <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="edate"></td>
+	      </tr>
+	      <tr>
+	         <td>검색 매장&nbsp;&nbsp;</td>
+	         <td><select name="shopname" required>
+	                     <option value="garosu" selected>Apple 가로수길</option>
+	                     <option value="yeouido">Apple 여의도점</option>
+	                     <option value="hongdae">프리스비 홍대점</option>
+	                     <option value="gimpo">윌리스 김포공항</option>
+	                     <option value="incheon">윌리스 인천터미널점</option>
+	         </select></td>
+	         <td align="right"><button type="submit">확인</button></td>
+	      </tr>
+	   </table>
+	   </form>
+	   <c:set var="psales" value="${proddata}" />
+	   <c:set var="dsales" value="${perioddata}" />
+	   <c:set var="submitdata" value="${submitdata}" />
+	   <p>${submitdata[0] }&nbsp;&nbsp;&nbsp;  ${submitdata[1] } - ${submitdata[2] }</p>
+	   <div class='table-wrapper'>
+	   <table width="400" align="center">
+	      <tr>
+	         <th>매출 일자</th><th>매출액</th>
+	      </tr>
+	      <c:forEach var="i" items="${dsales}">
+	      <tr>
+	         <td> ${i.key}</td>
+	         <td> ${i.value} </td>
+	      </tr>
+	      </c:forEach>
+	   </table>
+	   </div>
+	   </div>
+	   </div>   
 	</div>
+	</div>
+	<jsp:include page="../include/shop_bottom.jsp" />
+</div>
 <script>
-
-
-
 let proddata=[];
 <c:forEach items="${psales}" var="sales">
 proddata.push('${sales}');

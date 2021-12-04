@@ -283,8 +283,8 @@ const line = new Chart(l, {
 			  datasets: [
 			    {
 			      data: monthData,
-			      borderColor: '#55E6C1',
-			      backgroundColor: '#9AECDB',
+			      borderColor: 'rgba(153, 102, 255, 0.2)',
+			      backgroundColor: 'rgba(153, 102, 255, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -313,10 +313,10 @@ const pieChart = new Chart(pie, {
             label: '제품별 매출액',
             data: proddata,
             backgroundColor: [
-            	'#fd79a8',
-            	'#ffeaa7',
-                '#55efc4',
-                '#74b9ff'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(54, 162, 235, 0.4)'
             ],
             borderColor: [
             	'rgba(255, 99, 132, 0.2)',

@@ -28,6 +28,7 @@ public class AdminMonthlyCheckAction implements Action {
 		}
 
 		String thismonth = month;
+		request.setAttribute("thismonth", thismonth);
 		// month set for labels
 		String[] months = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
 		request.setAttribute("monthlabel", months);

@@ -47,10 +47,7 @@ body {
 <div class="item">
 	<form method="post" 
 			action="<%=request.getContextPath() %>/admin_monthly_check.do">
-	<div  class=" col-lg-4">
-	<input class="form-control" type="month" id="month" name="month">
-	<button  class="btn btn-outline-secondary" type="submit">Check</button></div>
-	
+	<input type="month" id="month" name="month" onchange="this.form.submit()">
 	</form>
 <canvas id="shopsales" width="900" height="250"></canvas>
 </div>
@@ -228,7 +225,13 @@ body {
 <h4>윌리스 인천터미널점	</h4>
 <h4>Apple 여의도 점	</h4> */
 
-document.getElementById('month').value= new Date().toISOString().slice(0, 7);
+<c:set var="thismonth" value="${thismonth}" />
+<c:if test="${!empty thismonth}">
+document.getElementById("month").value = '${thismonth}';
+</c:if>
+<c:if test="${empty thismonth}">
+document.getElementById("month").value = new Date().toISOString().slice(0, 7);
+</c:if>
 
 let label=[];
 <c:forEach items="${month}" var="month">

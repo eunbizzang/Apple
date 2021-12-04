@@ -33,7 +33,25 @@ body {
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
 }
-.item { padding: 8px;  }
+.item { 
+	padding: 8px;  
+	margin:auto;
+}
+#box {
+width:940px;
+}
+#date {
+	margin-bottom:20px;
+	margin-right: 35px;
+}
+input {
+  width:250px;
+  height:40px;
+  font-size:20px;
+  padding: 8px;  
+  border: 2px solid #D3D3D3;
+  border-radius:5px;
+}
 </style>	
 </head>
 <body>
@@ -43,29 +61,30 @@ body {
 	<div id="body-content">
 <c:set var="month" value="${monthlabel}" />	
 <div id="container1">
-<div class="item">
+<div class="item" id="box">
+	<div id="date" align="right">
 	<form method="post" 
 			action="<%=request.getContextPath() %>/shop_monthly_check.do">
-	<input type="month" id="month" name="month">
-	<button type="submit">Check</button>
-	</form>
-<canvas id="shopsales" width="900" height="250"></canvas>
+			
+	<input type="month" id="month" name="month" onchange="this.form.submit()">
+	</form></div>
+<canvas id="shopsales" width="890" height="200"></canvas>
 </div>
 <div class="item">
 <h4>Apple 가로수길	</h4><br>
 <table width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${galasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"  value="${galasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${gathistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3" value="${gathistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${gathistotal-galasttotal} 원</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gathistotal-galasttotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -89,17 +108,19 @@ body {
 <h4>윌리스 김포공항	</h4>
 <table width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${gilasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gilasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${githistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${githistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${githistotal-gilasttotal} 원</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${githistotal-gilasttotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -120,17 +141,19 @@ body {
 <h4>프리스비 홍대점	</h4>
 <table width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${holasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${holasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${hothistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hothistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${hothistotal-holasttotal} 원</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hothistotal-holasttotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -153,17 +176,19 @@ body {
 <h4>윌리스 인천터미널점	</h4>
 <table width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${inlasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inlasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${inthistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inthistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${inthistotal-inlasttotal} 원</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inthistotal-inlasttotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -186,17 +211,19 @@ body {
 <h4>Apple 여의도 점	</h4>
 <table width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${yelasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yelasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${yethistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yethistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${yethistotal-yelasttotal} 원</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yethistotal-yelasttotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -219,13 +246,13 @@ body {
 <jsp:include page="../include/shop_bottom.jsp" />
 </div>
 <script>
-/* <h4>Apple 가로수길	</h4>
-<h4>윌리스 김포공항	</h4>
-<h4>프리스비 홍대점	</h4>
-<h4>윌리스 인천터미널점	</h4>
-<h4>Apple 여의도 점	</h4> */
-
-document.getElementById('month').value= new Date().toISOString().slice(0, 7);
+<c:set var="thismonth" value="${thismonth}" />
+<c:if test="${!empty thismonth}">
+document.getElementById("month").value = '${thismonth}';
+</c:if>
+<c:if test="${empty thismonth}">
+document.getElementById("month").value = new Date().toISOString().slice(0, 7);
+</c:if>
 
 let label=[];
 <c:forEach items="${month}" var="month">
@@ -242,7 +269,7 @@ const garosuChart = new Chart(garosu, {
             data: [${galasttotal}, ${gathistotal}],
             backgroundColor: [
             	'rgba(211,211,211)',
-            	'rgba(255, 99, 132, 0.2)'
+            	'rgba(255, 99, 132, 0.4)'
             ],
             borderColor: [
             	'rgb(169,169,169)',
@@ -282,7 +309,7 @@ const galine = new Chart(gal, {
 			      label: label[1],
 			      data: gamonthData,
 			      borderColor: 'rgba(255, 99, 132, 0.2)',
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			      backgroundColor: 'rgba(255, 99, 132, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -306,7 +333,7 @@ const gimpoChart = new Chart(gimpo, {
             data: [${gilasttotal}, ${githistotal}],
             backgroundColor: [
             	'rgba(211,211,211)',
-            	'rgba(255, 205, 86, 0.2)'
+            	'rgba(255, 205, 86, 0.4)'
             ],
             borderColor: [
             	'rgb(169,169,169)',
@@ -346,7 +373,7 @@ const gimpoline = new Chart(gimpol, {
 			    {
 			      data: gimonthData,
 			      borderColor: 'rgba(255, 205, 86)',
-			      backgroundColor: 'rgba(255, 205, 86, 0.2)',
+			      backgroundColor: 'rgba(255, 205, 86, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -370,7 +397,7 @@ const hongdaeChart = new Chart(hongdae, {
             data: [${holasttotal}, ${hothistotal}],
             backgroundColor: [
             	'rgba(211,211,211)',
-            	'rgba(75, 192, 192, 0.2)'
+            	'rgba(75, 192, 192, 0.4)'
             ],
             borderColor: [
             	'rgb(169,169,169)',
@@ -410,7 +437,7 @@ const holine = new Chart(hol, {
 			      label: label[1],
 			      data: homonthData,
 			      borderColor: 'rgba(75, 192, 192)',
-			      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			      backgroundColor: 'rgba(75, 192, 192, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -434,7 +461,7 @@ const incheonChart = new Chart(incheon, {
             data: [${inlasttotal}, ${inthistotal}],
             backgroundColor: [
             	'rgba(211,211,211)',
-            	'rgba(54, 162, 235, 0.2)'
+            	'rgba(54, 162, 235, 0.4)'
             ],
             borderColor: [
             	'rgb(169,169,169)',
@@ -474,7 +501,7 @@ const inline = new Chart(inl, {
 			      label: label[1],
 			      data: inmonthData,
 			      borderColor: 'rgba(54, 162, 235)',
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+			      backgroundColor: 'rgba(54, 162, 235, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -498,7 +525,7 @@ const yeouidoChart = new Chart(yeouido, {
             data: [${yelasttotal}, ${yethistotal}],
             backgroundColor: [
             	'rgba(211,211,211)',
-            	'rgba(153, 102, 255, 0.2)'
+            	'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
             	'rgb(169,169,169)',
@@ -538,7 +565,7 @@ const yeline = new Chart(yel, {
 			      label: label[1],
 			      data: yemonthData,
 			      borderColor: 'rgba(153, 102, 255)',
-			      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+			      backgroundColor: 'rgba(153, 102, 255, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -566,11 +593,11 @@ const myChart = new Chart(ctx, {
         datasets: [{
             data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
             backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
             	 'rgb(255, 99, 132)',

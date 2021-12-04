@@ -31,6 +31,8 @@ body {
     justify-content: center;
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr ; 
+    margin-bottom:30px;
+    margin-top:30px;
 }
 table.type05 {
   border-collapse: separate;
@@ -39,14 +41,16 @@ table.type05 {
   line-height: 1.2;
   border-top: 1px solid #ccc;
   margin: 10px 10px;
+  font-size:15px;
+}
+p {
+	font-size:18px;
 }
 table.type05 th {
   width: 650px;
   padding: 10px;
-  font-weight: bold;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
-  background: #efefef;
 }
 table.type05 td {
   width: 350px;
@@ -57,7 +61,6 @@ table.type05 td {
 .wrapper {
   width: 500px; height:500px;
   border-spacing: 10;
-  border:0.5px solid lightgrey;
 }
 </style>
 </head>
@@ -69,13 +72,13 @@ table.type05 td {
 <div id="container">
 <div class="item">
 <div class="wrapper">
-    <span>전체 매출(최근 1주일)</span>
+    <p align="center"><img src="./images/week.png" width="28" height="28">&nbsp;&nbsp;&nbsp;주간 매출 (전체매장)</p>
 <canvas id="wholesales" width="450" height="450"></canvas>
 </div>
 </div>
 <div class="item">
 <div class="wrapper">
-    <span>매장별 매출</span>
+    <p align="center"><img src="./images/shop.png" width="28" height="28">&nbsp;&nbsp;&nbsp;매장별 매출</p>
 <canvas id="shopsales" width="450" height="450"></canvas>
 </div>
 </div>
@@ -137,11 +140,11 @@ const myChart = new Chart(ctx, {
             label: 'WEEKLY SALES REPORT',
             data: shopdata,
             backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
             	 'rgb(255, 99, 132)',
@@ -202,35 +205,35 @@ const config = new Chart(con, {
 				    {
 				      label: '가로수',
 				      data: garosu,
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				      backgroundColor: 'rgba(255, 99, 132, 0.4)',
 				      borderColor: 'rgba(255, 99, 132, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				      label: '김포',
 				      data: gimpo,
-				      backgroundColor: 'rgba(255, 205, 86, 0.2)',
+				      backgroundColor: 'rgba(255, 205, 86, 0.4)',
 				      borderColor: 'rgba(54, 162, 235, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				      label: '홍대',
 				      data: hongdae,
-				      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+				      backgroundColor: 'rgba(75, 192, 192, 0.4)',
 				      borderColor: 'rgba(255, 206, 86, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				        label: '인천',
 				        data: incheon,
-				        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+				        backgroundColor: 'rgba(54, 162, 235, 0.4)',
 				        borderColor: 'rgba(75, 192, 192, 0.2)',
 					    borderWidth: 1,
 				    },
 				    {
 				        label: '여의도',
 				        data: yeouido,
-				        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+				        backgroundColor: 'rgba(153, 102, 255, 0.4)',
 				        borderColor: 'rgba(153, 102, 255, 0.2)',
 					    borderWidth: 1,
 				      },

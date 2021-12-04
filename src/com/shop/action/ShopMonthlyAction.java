@@ -28,7 +28,7 @@ public class ShopMonthlyAction implements Action {
 		String thismonth = format.format(cal.getTime()).substring(0,7);
 		cal.add(Calendar.MONTH, -1);
 		String lastmonth = format.format(cal.getTime()).substring(0,7);
-		
+		request.setAttribute("thismonth", thismonth);
 		// month set for labels
 		String[] month = {lastmonth.substring(5,7)+"월", thismonth.substring(5,7)+"월"};
 		request.setAttribute("monthlabel", month);

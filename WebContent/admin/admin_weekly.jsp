@@ -91,11 +91,11 @@ const myChart = new Chart(ctx, {
             label: 'WEEKLY SALES REPORT',
             data: shopdata,
             backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(255, 205, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
             	 'rgb(255, 99, 132)',
@@ -156,35 +156,35 @@ const config = new Chart(con, {
 				    {
 				      label: 'GAROSU',
 				      data: garosu,
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+				      backgroundColor: 'rgba(255, 99, 132, 0.4)',
 				      borderColor: 'rgba(255, 99, 132, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				      label: 'GIMPO',
 				      data: gimpo,
-				      backgroundColor: 'rgba(255, 205, 86, 0.2)',
+				      backgroundColor: 'rgba(255, 205, 86, 0.4)',
 				      borderColor: 'rgba(54, 162, 235, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				      label: 'HONGDAE',
 				      data: hongdae,
-				      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+				      backgroundColor: 'rgba(75, 192, 192, 0.4)',
 				      borderColor: 'rgba(255, 206, 86, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
 				        label: 'INCHEON',
 				        data: incheon,
-				        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+				        backgroundColor: 'rgba(54, 162, 235, 0.4)',
 				        borderColor: 'rgba(75, 192, 192, 0.2)',
 					    borderWidth: 1,
 				    },
 				    {
 				        label: 'YEOUIDO',
 				        data: yeouido,
-				        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+				        backgroundColor: 'rgba(153, 102, 255, 0.4)',
 				        borderColor: 'rgba(153, 102, 255, 0.2)',
 					    borderWidth: 1,
 				      },
