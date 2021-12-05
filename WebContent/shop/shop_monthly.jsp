@@ -49,8 +49,58 @@ input {
   height:40px;
   font-size:20px;
   padding: 8px;  
-  border: 2px solid #D3D3D3;
+  border: 2px solid #DCDCDC;
   border-radius:5px;
+}
+.table {
+  border-collapse: collapse;
+  font-size:15px;
+}  
+.table th {
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+p.garosu:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(255, 99, 132, 0.4);
+}
+p.gimpo:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(255, 205, 86, 0.4);
+}
+p.hongdae:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(75, 192, 192, 0.4);
+}
+p.incheon:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(54, 162, 235, 0.4);
+}
+p.yeouido:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(153, 102, 255, 0.4);
+}
+.red{
+	color:#dc143c;
+}
+.blue{
+	color:#0000cd;
 }
 </style>	
 </head>
@@ -71,23 +121,23 @@ input {
 <canvas id="shopsales" width="890" height="200"></canvas>
 </div>
 <div class="item">
-<h4>Apple 가로수길	</h4><br>
-<table width="230">
+<p class="garosu">Apple 가로수길</p>
+<table class="table" width="250">
 	<tr>
-		<td> ${month[0] }</td>
+		<th> ${month[0] }</th>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"  value="${galasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] }</td>
+		<th> ${month[1] }</th>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3" value="${gathistotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> 전월대비 </td>
-		<td><fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${gathistotal-galasttotal}"/> 원</td>
+		<th> 전월대비 </th>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gathistotal-galasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
-		<td> (%) </td>
+		<th> (%) </th>
 		<td id="check"> 
 		<fmt:formatNumber value="${(gathistotal-galasttotal)/galasttotal*100}" pattern=".00"/>%</td>
 	</tr>
@@ -105,8 +155,8 @@ input {
 </div>
 <div id="container2">
 <div class="item">
-<h4>윌리스 김포공항	</h4>
-<table width="230">
+<p class="gimpo">윌리스 김포공항	</p>
+<table class="table" width="250">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -119,8 +169,8 @@ input {
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td><fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${githistotal-gilasttotal}"/> 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${githistotal-gilasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -138,8 +188,8 @@ input {
 <canvas id="gimonthsales" width="400" height="250"></canvas>
 </div>
 <div class="item">
-<h4>프리스비 홍대점	</h4>
-<table width="230">
+<p class="hongdae">프리스비 홍대점	</p>
+<table class="table" width="250">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -152,8 +202,8 @@ input {
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td><fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${hothistotal-holasttotal}"/> 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hothistotal-holasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -173,8 +223,8 @@ input {
 </div>
 <div id="container2">
 <div class="item">
-<h4>윌리스 인천터미널점	</h4>
-<table width="230">
+<p class="incheon">윌리스 인천터미널</p>
+<table class="table" width="230">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -187,8 +237,8 @@ input {
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td><fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${inthistotal-inlasttotal}"/> 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inthistotal-inlasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -208,8 +258,8 @@ input {
 </div>
 
 <div class="item">
-<h4>Apple 여의도 점	</h4>
-<table width="230">
+<p class="yeouido">Apple 여의도 점	</p>
+<table class="table" width="230">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -222,8 +272,8 @@ input {
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td><fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${yethistotal-yelasttotal}"/> 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yethistotal-yelasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -246,6 +296,17 @@ input {
 <jsp:include page="../include/shop_bottom.jsp" />
 </div>
 <script>
+
+$('.zero').each(function() {
+	  if (parseFloat($(this).text()) > 0) {
+	    
+	    $(this).prepend('+ ')
+	    $(this).addClass('red');
+	  }else if(parseFloat($(this).text()) < 0) {
+		$(this).addClass('blue');
+	}
+});
+
 <c:set var="thismonth" value="${thismonth}" />
 <c:if test="${!empty thismonth}">
 document.getElementById("month").value = '${thismonth}';

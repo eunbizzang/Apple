@@ -541,6 +541,36 @@ public class SalesDAO {
 		return total;
 	} // getMonthSales()메서드 end;
 	
+	// 월 매출 총 합계를 불러오는 메서드
+		public int getTotalSales(String sdate, String edate, String shopid) {
+			int total = 0;
+			
+			try {
+				openConn();
+				sql = "select sum(price*sales_no)  " + 
+						"from sales left join prod " + 
+						"on sales.pname = prod.pname  " + 
+						"where shop_id = ? and " + 
+						"sales_date between to_date(? , 'YYYY/MM/DD') " + 
+						"and to_date(? || ' 23:59:59', 'YYYY/MM/DD HH24:MI:SS')";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, shopid);
+				pstmt.setString(2, sdate);
+				pstmt.setString(3, edate);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					total = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			return total;
+		} // getMonthSales()메서드 end;
+	
 	// 월간 매출 리스트를 불러오는 메서드
 	public HashMap<String, Integer> getMonthList(String month, String shopid) {
 		HashMap<String, Integer> result = new LinkedHashMap<String, Integer>();

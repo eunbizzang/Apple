@@ -167,7 +167,7 @@ div.count_main {
 			<div class="container-fluid">
 				<c:set var="label" value="${label}" />
 				<a class="navbar-brand">${label}월 매출</a>
-				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
+				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_monthly.do'">+</button>
 			</div>
 		</nav>
 		<div class="space">
@@ -178,7 +178,7 @@ div.count_main {
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand">주간 제품 판매량</a>
-				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
+				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_weekly.do'">+</button>
 			</div>
 		</nav>
 		<div class="space"><canvas id="prodsales" width="500" height="230"></canvas></div>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@ body {
   padding: 0;
   height: 100%;
 }
-.wow{
+.container{
    height: 100%;
    display: flex;
    justify-content: center;
@@ -25,52 +26,92 @@ body {
      align-items: center;
 }
 
-.wow1{
-   margin-top: 50px;
+.form{
    margin-bottom: 50px;
+   text-align: center;
+}
+.title {
+	margin-bottom: 30px;
+	font-size : 30px;
 }
 
+table.line {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.2;
+  margin: 10px 10px;
+  font-size:15px;
+}
+table.line th {
+  width: 650px;
+  padding: 10px;
+  vertical-align: top;
+}
+table.line td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+}
+.input {
+  height:35px;
+  font-size:15px;
+  background-color: white;
+  padding: 2px;  
+  border: 1px solid lightgrey;
+  border-radius:5px;
+}
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
-	<div class="wow">
+	<div class="container">
 	
-	<h3>발주 내역</h3>
+	<p class="title">발주 내역</p>
 	
-	<div class="wow1">
-	
+	<div class="form">
 	<form method="post"
 			action="<%=request.getContextPath() %>/shop_order_check_again.do">
-			<input type="date" name="date1" required>
-			<input type="date" name="date2" required>
-			&nbsp;&nbsp;&nbsp;상태 : 
-			<select name="search_field" required>
-				<option value="all">전체</option>
-				<option value="order">요청</option>
-				<option value="order_ok">발주승인</option>
-				<option value="order_cancel">발주취소</option>
-			</select>
-			<input type="submit" value="확인">
+			<table width="600">
+			<tr>
+			<td>
+			<input class="input" type="date" name="date1" required>
+			</td>
+			<td>-</td>
+			<td>
+			<input class="input" type="date" name="date2" required>
+			</td>
+			<td>상태 : <select class="input" name="search_field" required>
+						<option value="all">전체</option>
+						<option value="order">요청</option>
+						<option value="order_ok">발주승인</option>
+						<option value="order_cancel">발주취소</option>
+					</select>
+					</td>
+					<td>
+			<input class="input" type="submit" style="width:60px;" value="확인">
+			</td>
+			</tr>
+			</table>
 		</form>
 	</div>
-	<div class="wow2">
-		<table width="800">
+		<table class="line" style ='width : 1000px;'>
 		<c:set var="list" value="${orderlist }" />
 			<c:if test="${!empty list }">
 			<tr>
-	      		<th>요청 코드</th><th>요청제품</th><th>요청 일자</th><th>상태</th><th>본사 확인</th><th>코멘트</th>
+	      		<th>요청 코드</th><th>요청제품</th><th>요청 일자</th>
+	      		<th>상태</th><th>본사 확인</th><th>코멘트</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 			<tr>
 				<td> ${dto.getOrder_code() } </td>
 	            <td> ${dto.getPnum() } </td>
-	            <td> ${dto.getOrder_date() } </td>
+	            <td> ${fn:substring(dto.getOrder_date(),0,16) } </td>
 	            <td> ${dto.getOrder_check() } </td>
-	            <td> <c:if test="${!empty dto.getOrder_comment() }">
-	            	${dto.getOrderok_date() }</c:if>
-	            	<c:if test="${empty dto.getOrder_comment() }">
+	            <td> <c:if test="${!empty dto.getOrderok_date() }">
+	            	${fn:substring(dto.getOrderok_date(),0,16) }</c:if>
+	            	<c:if test="${empty dto.getOrderok_date() }">
 	             	미확인</c:if> 
 	            </td>
 	            <td>
@@ -84,7 +125,6 @@ body {
 	        </c:if>
 		</table>
 	</div>
-</div>
 <div>
 <jsp:include page="../include/shop_bottom.jsp" />
 </div>

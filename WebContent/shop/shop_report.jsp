@@ -33,7 +33,6 @@ body {
         margin-right: 70px;
         
         border-width: 1px;
-        border-color: gray;
    }
    
    .center{
@@ -45,14 +44,25 @@ body {
         
    }
    
-   .table{
-   		margin-top: 50px;
+   .ttable{
+	margin-top:10px;
+	margin-bottom: 50px;
+	font-size:15px;
    }
    
-   table {
-      margin-left:auto;
-      margin-right:auto;
+   .ftable{
+	margin-top:10px;
+	margin-bottom: 50px;
+	font-size:15px;
    }
+   .input {
+  height:35px;
+  font-size:15px;
+  background-color: white;
+  padding: 2px;  
+  border: 1px solid lightgrey;
+  border-radius:5px;
+}
 </style>
 </head>
 <body>
@@ -61,30 +71,30 @@ body {
 	<div class="row">
 		<div class="left">
 		<div align="center" class="center">
-		<h4>${shopName } 매출</h4>
-        <h3>매출 보고</h3>
+		<p>${shopName } 매출</p>
+        <p>매출 보고</p>
 		</div>
 		<c:set var="shopid" value="${shopId }" />
 		<form method="post" 
 			action="<%=request.getContextPath() %>/shop_report_ok.do"
 			onsubmit = "return confirm('매출을 전송하시겠습니까?');">
-			<input type="hidden" name="shopid" value="${shopid }">
-		<table>
+			<input type="hidden"  class="input" name="shopid" value="${shopid }">
+		<table class="table">
 		<tr>
 			<td>매출일자</td>
 			<td>
-				<input type ="date" name = "date" required></td>
+				<input  class="input" type ="date" id="today" name = "date" required></td>
 		</tr>
 		<tr>	
 			<td>매장명</td>
 			<td>
-				<input value="${shopName }" readonly>
+				<input  class="input" value="${shopName }" readonly>
 			</td>
 		</tr>	
 		<tr>
 			<td>상품명</td>
 			<td>
-				<select name="pnumname" required>
+				<select  class="input" name="pnumname" required>
 	            	   <option value="PAD001iPadPro" selected>iPadPro [PAD001]</option>
 	            	   <option value="PAD002iPadAir">iPadAir [PAD002]</option>
 	            	   <option value="PAD003iPad">iPad [PAD003]</option>
@@ -102,12 +112,12 @@ body {
 					</select></td>
 			<tr>
 				<td>판매수량</td>
-				<td><input type="number" min="0" name="sales_no" required></td>
+				<td><input  class="input" type="number" min="0" name="sales_no" required></td>
 			</tr>
 			<tr>
 	            <td colspan="2" align="center">
-	               <input type="submit" value="매출등록">&nbsp;&nbsp;&nbsp;
-	         	   <input type="reset" value="다시작성">
+	               <input  class="input" type="submit" value="매출등록">&nbsp;&nbsp;&nbsp;
+	         	   <input  class="input" type="reset" value="다시작성">
 				</td>
 			</tr>	
 		</table>
@@ -143,6 +153,10 @@ body {
 		</div>
 	</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
+<script>
+	const d = new Date();
+	document.getElementById("today").value = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
 
+</script>
 </body>
 </html>

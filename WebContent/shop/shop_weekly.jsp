@@ -31,32 +31,30 @@ body {
     justify-content: center;
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr ; 
-    margin-bottom:30px;
-    margin-top:30px;
+    margin-bottom:50px;
 }
-table.type05 {
+table.line {
+
   border-collapse: separate;
   border-spacing: 1px;
   text-align: center;
   line-height: 1.2;
-  border-top: 1px solid #ccc;
   margin: 10px 10px;
   font-size:15px;
 }
-p {
-	font-size:18px;
+p.title {
+	font-size:20px;
+	padding: 10px;
+	text-align:center;
 }
-table.type05 th {
-  width: 650px;
+table.line th {
   padding: 10px;
   vertical-align: top;
-  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
 }
-table.type05 td {
-  width: 350px;
+table.line td {
   padding: 10px;
   vertical-align: top;
-  border-bottom: 1px solid #ccc;
 }
 .wrapper {
   width: 500px; height:500px;
@@ -72,23 +70,23 @@ table.type05 td {
 <div id="container">
 <div class="item">
 <div class="wrapper">
-    <p align="center"><img src="./images/week.png" width="28" height="28">&nbsp;&nbsp;&nbsp;주간 매출 (전체매장)</p>
+<p class="title">주간 매출 (전체매장)</p>
 <canvas id="wholesales" width="450" height="450"></canvas>
 </div>
 </div>
 <div class="item">
 <div class="wrapper">
-    <p align="center"><img src="./images/shop.png" width="28" height="28">&nbsp;&nbsp;&nbsp;매장별 매출</p>
+<p class="title">매장별 매출</p>
 <canvas id="shopsales" width="450" height="450"></canvas>
 </div>
 </div>
 </div>
 <div align="center">
-	<table width="1000" class="type05">
+	<table width="1100" class="line">
 		<tr>
-			<th scope="row">매장명</th>
+			<th scope="cols">매장명</th>
 			<c:set var="week" value="${week}" />
-			<c:forEach var="week" items="${week}"><td>${week}</td></c:forEach>
+			<c:forEach var="week" items="${week}"><th scope="cols">${week}</th></c:forEach>
 		</tr>
 		<c:set var="garosu" value="${garosu}" />
 		<c:set var="gimpo" value="${gimpo}" />
@@ -98,27 +96,32 @@ table.type05 td {
 		<tr>
 			<th scope="row"> Apple 가로수길 </th>
 			<c:forEach var="garosu" items="${garosu}">
-			<td>${garosu }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${garosu }"/></td></c:forEach>
 		</tr>
 		<tr>
 			<th scope="row"> 윌리스 김포공항 </th>
 			<c:forEach var="gimpo" items="${gimpo}">
-			<td>${gimpo }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gimpo }"/></td></c:forEach>
 		</tr>
 		<tr>
 			<th scope="row"> 프리스비 홍대점 </th>
 			<c:forEach var="hongdae" items="${hongdae}">
-			<td>${hongdae }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hongdae }"/></td></c:forEach>
 		</tr>
 		<tr>
 			<th scope="row"> 윌리스 인천터미널점 </th>
 			<c:forEach var="incheon" items="${incheon}">
-			<td>${incheon }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${incheon }"/></td></c:forEach>
 		</tr>
 		<tr>
 			<th scope="row"> Apple 여의도 점 </th>
 			<c:forEach var="yeouido" items="${yeouido}">
-			<td>${yeouido }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yeouido }"/></td></c:forEach>
 		</tr>
 	</table>
 	</div>

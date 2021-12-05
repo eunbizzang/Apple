@@ -1214,6 +1214,8 @@ public class OrderDAO {
 					dto.setOrder_date(rs.getString("order_date"));
 					dto.setOrder_check(rs.getString("order_check"));
 					dto.setOrder_code(rs.getString("order_code"));
+					dto.setOrder_comment(rs.getString("order_comment"));
+					dto.setOrderok_date(rs.getString("orderok_date"));
 					
 					list.add(dto);
 				}
@@ -1243,6 +1245,8 @@ public class OrderDAO {
 					dto.setOrder_date(rs.getString("order_date"));
 					dto.setOrder_check(rs.getString("order_check"));
 					dto.setOrder_code(rs.getString("order_code"));
+					dto.setOrder_comment(rs.getString("order_comment"));
+					dto.setOrderok_date(rs.getString("orderok_date"));
 					
 					list.add(dto);
 				}
@@ -1272,6 +1276,8 @@ public class OrderDAO {
 					dto.setOrder_date(rs.getString("order_date"));
 					dto.setOrder_check(rs.getString("order_check"));
 					dto.setOrder_code(rs.getString("order_code"));
+					dto.setOrder_comment(rs.getString("order_comment"));
+					dto.setOrderok_date(rs.getString("orderok_date"));
 					
 					list.add(dto);
 				}

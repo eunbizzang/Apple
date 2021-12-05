@@ -187,8 +187,8 @@ body {
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재  고</a>
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재고관리</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order.do">발주</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order_check.do">발주현황</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order.do">발주 폼</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order_check.do">발주내역</a></li>
 			</ul>
 		</li>
 		

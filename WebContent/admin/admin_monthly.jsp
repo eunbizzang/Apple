@@ -34,7 +34,30 @@ body {
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
 }
-.item { padding: 8px;  }
+.item { 
+	padding: 8px;  }
+table.line {
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.2;
+  border-top: 1px solid #ccc;
+  margin: 10px 10px;
+  font-size:15px;
+}
+table.line th {
+  width: 650px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background-color:#DCDCDC;
+}
+table.line td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+}
 </style>	
 </head>
 <body>
@@ -53,7 +76,7 @@ body {
 </div>
 <div class="item">
 <h4>Apple 가로수길	</h4><br>
-<table width="230">
+<table width="230"  class="line">
 	<tr>
 		<td> ${month[0] } 매출</td>
 		<td> ${galasttotal} 원</td>

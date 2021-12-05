@@ -30,21 +30,19 @@ public class ShopSummaryCheckAction implements Action {
 		HashMap<String, Integer> saleslist = dao.allSales(sdate, edate, shopid);
 		System.out.println(saleslist);
 		request.setAttribute("perioddata", saleslist);
-
-		if(shopid.equals("garosu")) {
-			shopname="Apple 가로수길";
-		}else if(shopid.equals("yeouido")) {
-			shopname="Apple 여의도점";
-		}else if(shopid.equals("hongdae")) {
-			shopname="프리스비 홍대점";
-		}else if(shopid.equals("gimpo")) {
-			shopname="윌리스 김포공항";
-		}else if(shopid.equals("incheon")) {
-			shopname="윌리스 인천터미널점";
-		}
+		int total = dao.getTotalSales(sdate, edate, shopid);
+		request.setAttribute("total", total);
+		
+		/*
+		 * if(shopid.equals("garosu")) { shopname="Apple 가로수길"; }else
+		 * if(shopid.equals("yeouido")) { shopname="Apple 여의도점"; }else
+		 * if(shopid.equals("hongdae")) { shopname="프리스비 홍대점"; }else
+		 * if(shopid.equals("gimpo")) { shopname="윌리스 김포공항"; }else
+		 * if(shopid.equals("incheon")) { shopname="윌리스 인천터미널점"; }
+		 */
 		
 		// for submitted data
-		String[] submitdata = {shopname, sdate, edate};
+		String[] submitdata = {shopid, sdate, edate};
 		request.setAttribute("submitdata", submitdata);
 		
 		ActionForward forward = new ActionForward();
