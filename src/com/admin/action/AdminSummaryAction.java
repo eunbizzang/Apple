@@ -37,11 +37,10 @@ public class AdminSummaryAction implements Action {
 		HashMap<String, Integer> saleslist = dao.allSales(onebefore, today, shopid);
 		System.out.println(saleslist);
 		request.setAttribute("perioddata", saleslist);
+		int total = dao.getTotalSales(onebefore, today, shopid);
+		request.setAttribute("total", total);
 		
-		// for submitted data
-		String[] submitdata = {"Apple 가로수길", onebefore, today};
-		request.setAttribute("submitdata", submitdata);
-				
+			
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);

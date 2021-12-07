@@ -24,11 +24,12 @@ body {
     padding-bottom: 170px; /* footer의 높이 */
 }
 .table-wrapper {
-  width: 450px; height:400px;
+  width: 450px; height:380px;
   overflow: auto;
   border-radius:5px;
-  background-color: #fffafa;
-  padding: 10px;
+  padding: 25px;
+  border-radius:5px;
+  border: solid 3px #B0C4DE;
 }
 table {
   border-collapse: separate;
@@ -39,6 +40,11 @@ table {
   width: 500px; height:650px;
   border-spacing: 10px;
   padding: auto;
+}
+.title {
+	margin-top: 30px;
+	font-size : 25px;
+	font-weight: bold;
 }
 #container {
     width:100%;
@@ -55,23 +61,33 @@ table {
   border: 1px solid lightgrey;
   border-radius:5px;
 }
-.margin {
-	margin-top: 50px;
-}
 .graph {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
 .total {
 	width: 450px;
-	margin-top:10px;
-	margin-bottom: 50px;
+	margin-top:40px;
+	margin-bottom: 10px;
 	font-size:20px;
+	font-weight: bold;
+	color:#483D8B;
 }
 .selected {
 	width: 430px;
 	font-size:18px;
+	margin-top:30px;
 }
+.boxt {
+	width:400px;
+	text-align:center;
+  border-collapse: separate;
+  text-align: center;
+  margin: 2px 10px;
+  
+}
+
+  
 </style>	
 </head>
 <body>
@@ -83,7 +99,7 @@ table {
 	<div class="wrapper" align="center">
 		<c:set var="psales" value="${proddata}" />
 		<div class="graph"><canvas id="prodsales" width="400" height="400"></canvas></div>
-		<table width="400">
+		<table class="boxt" width="400">
 		<tr>
 			<th>제품군</th><th>판매대수</th>
 		</tr>
@@ -109,31 +125,9 @@ table {
 	<div class="item">
 	<div class="wrapper" align="center">
 	<c:set var="dsales" value="${perioddata}" />
-	<div class='margin'>
-	<div class='table-wrapper'>
-	<table width="400">
-		<tr>
-			<th>매출 일자</th><th>매출액</th>
-		</tr>
-		<c:forEach var="i" items="${dsales}">
-		<tr>
-			<td> ${i.key}</td>
-			<td>  <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${i.value}"/> </td>
-		</tr>
-		</c:forEach>
-	</table>
-	</div>
-	</div>
-	<table class="total">
-		<tr>
-			<td>매출 총액</td><td><c:set var="total" value="${total}" />
-			<fmt:formatNumber type="number" maxFractionDigits="3" value="${total}"/> 원</td>
-		</tr>
-	</table>
+	<p class="title">매출 조회</p>
 	<form method="post" 
 			action="<%=request.getContextPath() %>/shop_summary_check.do">
-	
 	<table class="selected">
 		<tr>
 			<td>기간</td>
@@ -153,6 +147,27 @@ table {
 		</tr>
 	</table>
 	</form>
+	<table class="total">
+		<tr>
+			<td>조회 기간 매출 총액</td><td><c:set var="total" value="${total}" />
+			<fmt:formatNumber type="number" maxFractionDigits="3" value="${total}"/> 원</td>
+		</tr>
+	</table>
+	<div class='table-wrapper'>
+	<table class="boxt">
+		<tr>
+			<th>매출 일자</th><th>매출액</th>
+		</tr>
+		<c:forEach var="i" items="${dsales}">
+		<tr>
+			<td> ${i.key}</td>
+			<td>  <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${i.value}"/> 원</td>
+		</tr>
+		</c:forEach>
+	</table>
+	</div>
+	
 	</div>
 	</div>	
 </div>
@@ -192,20 +207,20 @@ const pieChart = new Chart(pie, {
             label: '제품별 매출액',
             data: proddata,
             backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
             ],
             borderColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+            	'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)'
             ],
             borderWidth: 1
         }]

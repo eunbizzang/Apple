@@ -23,6 +23,11 @@ public class AdminMainAction implements Action {
 		// 발주 데이터
 	    OrderDAO odao = OrderDAO.getInstance();
 	    int odto = odao.getMainOrderCount();
+	    int garosucnt = odao.getShopOrderCount("garosu");
+	    int yeouidocnt = odao.getShopOrderCount("yeouido");
+	    int hongdaecnt = odao.getShopOrderCount("hongdae");
+	    int gimpocnt = odao.getShopOrderCount("gimpo");
+	    int incheoncnt = odao.getShopOrderCount("incheon");
 	    
 	    // Board 데이터
 	    BoardDAO ndao = BoardDAO.getInstance();
@@ -44,7 +49,7 @@ public class AdminMainAction implements Action {
 	 	} // week[6]=today, week[0] = a week before;
 
 	 	// Dateset for lastmonth, thismonth
-	 	cal.add(Calendar.MONTH, 1);
+	 	cal.add(Calendar.MONTH, 0);
 	 	String thismonth = format.format(cal.getTime()).substring(0,7);
 	 	
 	 	System.out.println(thismonth);
@@ -103,7 +108,11 @@ public class AdminMainAction implements Action {
 	    request.setAttribute("ordercount", odto);
 	    request.setAttribute("noticelist", ndto);
 	    request.setAttribute("boardlist", bdto);
-	    
+	    request.setAttribute("gacount", garosucnt);
+    	request.setAttribute("ycount", yeouidocnt);
+    	request.setAttribute("hcount", hongdaecnt);
+    	request.setAttribute("gicount", gimpocnt);
+    	request.setAttribute("icount", incheoncnt);
 	    
 	    request.setAttribute("garosu", garosu);
 		request.setAttribute("gimpo", gimpo);

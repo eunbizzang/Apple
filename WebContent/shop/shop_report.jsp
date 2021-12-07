@@ -17,44 +17,59 @@ body {
 
    div.row {
       display: flex;
-      
       justify-content: center;
       align-items: center;
-      
-      width: 800px;
-     
+      width: 900px;
       margin-top: 80px;
       margin-left: auto;
       margin-right: auto;
    }
    div.left {
-   
-   		width: 350px;
+   		width: 400px;
         margin-right: 70px;
-        
         border-width: 1px;
    }
    
-   .center{
-   		margin-bottom: 50px;
-   }
-   
    div.right {
+   		margin-top:0px;
    		width: 350px;
         
    }
-   
+   .title {
+	margin-top: 30px;
+	font-size : 20px;
+	text-align: center;
+	margin-bottom: 30px;
+}
    .ttable{
+   width: 310px;
+  border-collapse: separate;
+  text-align: center;
+  margin: 2px 10px;
 	margin-top:10px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 	font-size:15px;
    }
-   
+.table-wrapper {
+  width: 350px; height:300px;
+  overflow: auto;
+  border-radius:5px;
+  padding: 10px;
+  border-radius:5px;
+  border: solid 3px #B0C4DE;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
    .ftable{
+   width:400px;
+  border-collapse: separate;
+  margin: 2px 10px;
 	margin-top:10px;
 	margin-bottom: 50px;
 	font-size:15px;
+	padding:20px;
    }
+
    .input {
   height:35px;
   font-size:15px;
@@ -62,7 +77,26 @@ body {
   padding: 2px;  
   border: 1px solid lightgrey;
   border-radius:5px;
+  margin-top:5px;
 }
+  .button {
+  margin-top:60px;
+  height:40px;
+background-color:white;
+  font-size:15px;  
+  border: 1px solid lightgrey;
+  border-radius:5px;
+}
+   .today{
+	width: 300px;
+	border-collapse: separate;
+	text-align: right;
+	margin: 2px 10px;
+	margin-bottom: 10px;
+	font-size:20px;
+	font-weight: bold;
+	color:#483D8B;
+   }
 </style>
 </head>
 <body>
@@ -70,16 +104,14 @@ body {
 	<jsp:include page="../include/shop_top.jsp" />
 	<div class="row">
 		<div class="left">
-		<div align="center" class="center">
-		<p>${shopName } 매출</p>
-        <p>매출 보고</p>
-		</div>
+		<p class="title">${shopName } 매출<br>
+			매출 보고</p>
 		<c:set var="shopid" value="${shopId }" />
 		<form method="post" 
 			action="<%=request.getContextPath() %>/shop_report_ok.do"
 			onsubmit = "return confirm('매출을 전송하시겠습니까?');">
 			<input type="hidden"  class="input" name="shopid" value="${shopid }">
-		<table class="table">
+		<table class="ftable">
 		<tr>
 			<td>매출일자</td>
 			<td>
@@ -116,18 +148,19 @@ body {
 			</tr>
 			<tr>
 	            <td colspan="2" align="center">
-	               <input  class="input" type="submit" value="매출등록">&nbsp;&nbsp;&nbsp;
-	         	   <input  class="input" type="reset" value="다시작성">
+	               <input  class="button" type="submit" value="매출등록">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	         	   <input  class="button" type="reset" value="다시작성">
 				</td>
 			</tr>	
 		</table>
 	   	</form>
 	   	</div>
-	  	<div class="right" align="center">
+	  	<div class="right">
 		<c:set var="now" value="<%=new Date() %>" /> 
-		<h3><fmt:formatDate value="${now }" type="date" dateStyle="full" /></h3>
-		<h3>매출보고 내역</h3>
-		<table width="300" class="table">
+		<p class="title"><fmt:formatDate value="${now }" type="date" dateStyle="full" /><br>
+		매출보고 내역</p>
+		<div class="table-wrapper">
+		<table class="ttable">
 		<c:set var="list" value="${salesList }" />
 		<c:set var="total" value="${total }" />
 			<c:if test="${!empty list }">
@@ -144,9 +177,10 @@ body {
 			</c:forEach>
 	        </c:if>
 		</table>
-	    <table align = "center">     
+		</div>
+	    <table class="today">     
 	         <tr>
-	         	<td>${shopName } 일 매출 :&nbsp;&nbsp;</td>
+	         	<td>매출 총액</td>
 	         	<td><fmt:formatNumber value="${total}"/>원</td>
 	         </tr>
 		</table>

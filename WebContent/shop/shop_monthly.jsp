@@ -49,8 +49,8 @@ input {
   height:40px;
   font-size:20px;
   padding: 8px;  
-  border: 2px solid #DCDCDC;
-  border-radius:5px;
+  	border-radius:5px;
+  	border: solid 3px #B0C4DE;
 }
 .table {
   border-collapse: collapse;
@@ -224,7 +224,7 @@ p.yeouido:before {
 <div id="container2">
 <div class="item">
 <p class="incheon">윌리스 인천터미널</p>
-<table class="table" width="230">
+<table class="table" width="250">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -259,7 +259,7 @@ p.yeouido:before {
 
 <div class="item">
 <p class="yeouido">Apple 여의도 점	</p>
-<table class="table" width="230">
+<table class="table" width="250">
 	<tr>
 		<td> ${month[0] }</td>
 		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
@@ -329,7 +329,7 @@ const garosuChart = new Chart(garosu, {
         datasets: [{
             data: [${galasttotal}, ${gathistotal}],
             backgroundColor: [
-            	'rgba(211,211,211)',
+            	'rgba(211,211,211, 0.4)',
             	'rgba(255, 99, 132, 0.4)'
             ],
             borderColor: [
@@ -344,17 +344,20 @@ const garosuChart = new Chart(garosu, {
             display: false
         },
     	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    	 scales: {
+             yAxes: [{
+                 display: true,
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
     }
 });
 
 let gamonthList=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
-gamonthList.push('${i.key}');
+gamonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let gamonthData=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
@@ -393,7 +396,7 @@ const gimpoChart = new Chart(gimpo, {
         datasets: [{
             data: [${gilasttotal}, ${githistotal}],
             backgroundColor: [
-            	'rgba(211,211,211)',
+            	'rgba(211,211,211, 0.4)',
             	'rgba(255, 205, 86, 0.4)'
             ],
             borderColor: [
@@ -408,17 +411,20 @@ const gimpoChart = new Chart(gimpo, {
             display: false
         },
     	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    	 scales: {
+             yAxes: [{
+                 display: true,
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
     }
 });
 
 let gimonthList=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
-gimonthList.push('${i.key}');
+gimonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let gimonthData=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
@@ -457,7 +463,7 @@ const hongdaeChart = new Chart(hongdae, {
         datasets: [{
             data: [${holasttotal}, ${hothistotal}],
             backgroundColor: [
-            	'rgba(211,211,211)',
+            	'rgba(211,211,211, 0.4)',
             	'rgba(75, 192, 192, 0.4)'
             ],
             borderColor: [
@@ -472,17 +478,20 @@ const hongdaeChart = new Chart(hongdae, {
             display: false
         },
     	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    	 scales: {
+             yAxes: [{
+                 display: true,
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
     }
 });
 
 let homonthList=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
-homonthList.push('${i.key}');
+homonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let homonthData=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
@@ -521,7 +530,7 @@ const incheonChart = new Chart(incheon, {
         datasets: [{
             data: [${inlasttotal}, ${inthistotal}],
             backgroundColor: [
-            	'rgba(211,211,211)',
+            	'rgba(211,211,211, 0.4)',
             	'rgba(54, 162, 235, 0.4)'
             ],
             borderColor: [
@@ -536,17 +545,20 @@ const incheonChart = new Chart(incheon, {
             display: false
         },
     	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    	 scales: {
+             yAxes: [{
+                 display: true,
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
     }
 });
 
 let inmonthList=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
-inmonthList.push('${i.key}');
+inmonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let inmonthData=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
@@ -585,7 +597,7 @@ const yeouidoChart = new Chart(yeouido, {
         datasets: [{
             data: [${yelasttotal}, ${yethistotal}],
             backgroundColor: [
-            	'rgba(211,211,211)',
+            	'rgba(211,211,211, 0.4)',
             	'rgba(153, 102, 255, 0.4)'
             ],
             borderColor: [
@@ -600,17 +612,20 @@ const yeouidoChart = new Chart(yeouido, {
             display: false
         },
     	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+    	 scales: {
+             yAxes: [{
+                 display: true,
+                 ticks: {
+                     beginAtZero: true
+                 }
+             }]
+         }
     }
 });
 
 let yemonthList=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
-yemonthList.push('${i.key}');
+yemonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let yemonthData=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
@@ -650,7 +665,7 @@ const ctx = document.getElementById('shopsales');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['GAROSU', 'GIMPO', 'HONGDAE', 'INCHEON', 'YEOUIDO'],
+        labels: ['가로수', '김포', '홍대', '인천', '여의도'],
         datasets: [{
             data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
             backgroundColor: [

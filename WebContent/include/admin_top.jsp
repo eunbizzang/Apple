@@ -31,21 +31,12 @@ body {
 	margin-bottom: 30px;
 }
 
-
-.logo{
-	font-size:24px;
-	color:white;
-}
-
-.logo i{
-	color:white;
-}
-
 .menu{
 	display: flex;
 	list-style: none;
 	padding-left: 0;
 	z-index: 1;
+	margin-top: 17px;
 }
 
 .menu li{
@@ -79,7 +70,7 @@ body {
 
 .menu ul li:hover a{
 	border-radius: 4px;
-	background-color: lightgray;
+	background-color: white;
 	
 }
 
@@ -118,7 +109,7 @@ body {
 }
 
 .menu li:hover > a{
-	background-color: lightgray;
+	background-color: white;
 	color: black;
 	border-radius: 4px;
 }
@@ -128,6 +119,7 @@ body {
 	color: white;
 	display: flex;
 	padding-left: 0;
+	margin-top: 17px;
 
 }
 
@@ -138,7 +130,7 @@ body {
 .fa-user-plus {
    
    font-size: 25px;
-   margin-right: 50px;
+   margin-right: 30px;
    text-decoration: none;
    color: white;
 }
@@ -175,8 +167,7 @@ body {
 <nav class="bar" >
 	
 	<div class="logo">
-		<i class="fab fa-apple"></i>
-		<a class="cate_a" href="">매장관리</a>
+		<img src="images/mainlogo.png">
 	</div>
 	
 	<ul class="menu">
@@ -207,13 +198,13 @@ body {
 	</ul>
 	
 	<ul class="logout">
-		<li> <a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
+		<li> <span style="font-size: 15px">매장추가&nbsp;&nbsp;</span><a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
 		<li> <a class="cate_a" href="#">관리자 &nbsp;</a> </li>
 		<li><i class="fas fa-sign-in-alt"></i></li>
 		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>
 	</ul>
+	
 </nav>
-
 
 </body>
 </html>

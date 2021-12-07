@@ -36,6 +36,8 @@
 	}
 	
 	.ac{
+		border: 3px solid #B0C4DE;
+	    border-radius:5px;
 		display: flex;
 	}
 	table {

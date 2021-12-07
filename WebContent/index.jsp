@@ -104,6 +104,7 @@ div.login2 {
 	font-size: 1.0em;
 	letter-spacing: 2px;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .hr {
@@ -125,7 +126,7 @@ div.login2 {
 <body>
 	
 	<div class="main_top">
-		<img class="img" src="images/applelogo.png">
+		<img class="img" src="images/homelogo.png">
 	</div>
 	<div class="main_bottom">
 	<div class="back_login">

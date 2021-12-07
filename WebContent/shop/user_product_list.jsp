@@ -55,8 +55,8 @@ body {
 		color: black;
 	}
 	
-	tr:hover {
-    	background-color:#CCCCCC;
+	.color:hover {
+    	border: solid 2px #B0C4DE;
 	}
 
 </style>
@@ -79,7 +79,7 @@ body {
 	      <c:set var="list" value="${shoplist }" />
 	      <c:if test="${!empty list }">
 	         <c:forEach items="${list }" var="dto">
-	            <tr>
+	            <tr class="color">
 	            
 	               <td> ${dto.getPnum()} </td>
 	               <td> ${dto.getPname()} </td>

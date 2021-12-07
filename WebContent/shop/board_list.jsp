@@ -16,7 +16,7 @@
 	div.notice {
 		width: 1000px;
 		height: 30px;
-		font-size: 20px;
+		font-size: 25px;
 		font-weight: bold;
 		font-family: 'Gothic A1', sans-serif;
 		text-align: left;
@@ -33,7 +33,9 @@
 	tr {
 		height: 60px;
 	}
-	
+	.color:hover {
+    	border: solid 2px #B0C4DE;
+	}
 	td {
 		text-align: center;
 		font-family: 'Gothic A1', sans-serif;
@@ -55,15 +57,17 @@
 		text-decoration: none;
 		color: black;
 	}
-
+.center {
+ 	margin-bottom:40px;
+ 	
+}
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/shop_top.jsp" />
 
-	<div align="center">
-		
+		<div class="center"align="center">
 		<div class="notice">
 			공지사항
 		</div>
@@ -78,7 +82,7 @@
 			
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
-					<tr>
+					<tr class="color">
 						<td>${dto.getBoard_no() }</td>
 						<td>${dto.getBoard_code() }</td>
 						<td> <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${dto.getBoard_no() }&page=${page } ">
@@ -102,26 +106,24 @@
 		</table>
 		
 		<c:if test="${page <= endBlock && page != 1 }">
-	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=1'"><<</button>
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do?page=1'">⏴</button>
 		</c:if>
  	
  		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 	 		<c:if test="${i == page }">
-	 			<button type="button" class="btn btn-dark" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=${i }'">${i }</button>
+	 			<button type="button" class="btn btn-dark" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do?page=${i }'">${i }</button>
 	 		</c:if>
 	 		
 	 		<c:if test="${i != page }">
-	 			<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=${i }'">${i }</button>
+	 			<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do?page=${i }'">${i }</button>
 	 		</c:if>
  		</c:forEach>
  	
 	 	<c:if test="${allPage > 1 && page != endBlock }">
-	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/admin_board_list.do?page=${endBlock }'">>></button>
+	 		<button type="button" class="btn btn-light" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do?page=${endBlock }'">⏵</button>
 	 	</c:if>
 	
 	</div>
-
-<jsp:include page="../include/shop_bottom.jsp" />
 
 </body>
 </html>

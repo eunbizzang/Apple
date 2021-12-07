@@ -5,8 +5,159 @@
 <head>
     <meta charset="utf-8">
     <title>Apple 매장 정보</title>
-<style>
+<script src="https://kit.fontawesome.com/1c8b531657.js" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+body {
+  margin:0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.cate_a {
+	text-decoration: none;
+	color: white;
+}
+
+.bar{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #263343;
+	padding: 8px 12px;
+	
+	margin-bottom: 30px;
+}
+
+.menu{
+	display: flex;
+	list-style: none;
+	padding-left: 0;
+	z-index: 1;
+	margin-top: 17px;
+}
+
+.menu li{
+	padding: 8px 20px;
+	
+	margin:5px 30px;
+	float: left;
+	position: relative;
+	padding:0;
+	
+}
+
+.menu li a{
+	display: block;
+	margin:0;
+	padding: 7px 8px;
+}
+
+.menu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position:absolute;
+	left:0;
+	top: 38px;
+	width: 105px;
+	background: #263343;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.menu ul li:hover a{
+	border-radius: 4px;
+	background-color: white;
+	
+}
+
+.menu ul li{
+	float: none;
+	margin:0;
+	padding: 0;
+	font-size: 13px;
+	
+	display: none;
+}
+
+.menu ul{
+	list-style: none;
+	margin:0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 38px;
+	width: 105px;
+	background: #263343;
+	text-align: center;
+	opacity: 0;
+}
+
+.menu li:hover ul{
+	opacity: 1;
+}
+
+.menu li:hover ul li{
+	height: 35px;
+	overflow: visible;
+	padding: 0;
+	
+	display: block;
+}
+
+.menu li:hover > a{
+	background-color: white;
+	color: black;
+	border-radius: 4px;
+}
+
+.logout{
+	list-style: none;
+	color: white;
+	display: flex;
+	padding-left: 0;
+	margin-top: 17px;
+
+}
+
+.logout li {
+	padding: 3px;
+}
+
+.fa-user-plus {
+   
+   font-size: 25px;
+   margin-right: 30px;
+   text-decoration: none;
+   color: white;
+}
+@media screen and (max-width: 666px) {
+	.bar{
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 8px 24px;
+	}
+	
+	.menu{
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.menu li{
+	width: 100%;
+	text-align: center;
+	}
+	
+	.logout{
+		justify-content: center;
+		width: 100%;
+	}
+	
+}
 body {
   font-family: 'Noto Sans KR', sans-serif;
   flex-direction: column;
@@ -21,11 +172,15 @@ body {
     padding-bottom: 170px; /* footer의 높이 */
 }
 .wrapper {
-	width: 510px; height:650px;
+	width: 560px; height:670px;
 	text-align: center;/*중앙정렬*/
-	margin-top : 20px;
+	margin-top : 50px;
+	margin-bottom : 10px;
 	margin-left : auto;
 	margin-right : auto;
+	padding:20px;
+	background-color:rgb(171,205,239, 0.4);
+	border-radius:5px;
 }
 .infomenu{
 	text-align: center;/*중앙정렬*/
@@ -40,6 +195,7 @@ body {
 	line-height:40px;
 	vertical-align:middle;
 	text-align:center;
+	cursor: pointer;
 }
 .infomenu a{
    font-weight: 500;/*폰트굵기*/
@@ -49,7 +205,8 @@ body {
 .infomenu a:after {/*after 가상요소*/
 	display:block;/*a요소를 블록 요소라고 선언*/
 	content: '';
-	border-bottom: solid 2px #57606f;
+	margin-bottom: 20px;
+	border-bottom: solid  3px #B0C4DE;
 	transform: scaleX(0);/*크기를 0으로 줌으로써 평상시엔 밑줄 없음*/
 	transition: transform 250ms ease-in-out; /*변형 방식*/
 	line-height: 40px;
@@ -75,10 +232,63 @@ body {
 	font-size:20px;
 	font-weight: bold;
 }
+.map {
+	margin-top:30px;
+	margin-left:13px;
+	width:500px; 
+	height:350px;
+}
+.infoback {
+	padding : 10px;
+	margin:10px;
+	background-color:white;
+}
 </style>
 </head>
 <body>
-	<jsp:include page="../include/admin_top.jsp" />
+
+	<nav class="bar" >
+	
+	<div class="logo">
+		<img src="../images/mainlogo.png">
+	</div>
+	
+	<ul class="menu">
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_main.do">Home</a></li>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">매  장</a>
+			<ul class="sub">
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">Shop Info</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_list.do">제품관리</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_board_list.do">공지사항</a></li>
+			</ul>
+		</li>
+		
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재  고</a>
+			<ul class="sub">
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재고관리</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_order.do">발주현황</a></li>
+			</ul>
+		</li>
+		
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">매  출</a>
+			<ul class="sub">
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">주간 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_monthly.do">월 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">매장별 매출</a></li>
+			</ul>
+		</li>
+		
+	</ul>
+	
+	<ul class="logout">
+		<li> <span style="font-size: 15px">매장추가&nbsp;&nbsp;</span><a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
+		<li> <a class="cate_a" href="#">관리자 &nbsp;</a> </li>
+		<li><i class="fas fa-sign-in-alt"></i></li>
+		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>
+	</ul>
+	
+</nav>
+	
 	<div id="body-wrapper">
 	<div id="body-content">
 	<div class = "infomenu">
@@ -92,16 +302,16 @@ body {
 	</div>
 	
 	<div class="wrapper">
+		
+	<div class="infoback">
 		<p id="shopname">Apple 가로수길</p>
 		<div id="info" align="center">
 		<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
 		<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
 		<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
 		<p><img src="../images/man.png" width="18" height="18"> 담당매니저 : 표은비</p>
-		</div>
-		<div id="map" style="width:500px; height:400px;"></div>
-	</div>
-	</div>
+		</div></div>
+		<div id="map" class="map"></div></div></div>
 	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>

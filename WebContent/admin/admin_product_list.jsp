@@ -32,11 +32,17 @@
 	}
 	
 	.ac{
+		border: 3px solid #B0C4DE;
+	    border-radius:5px;
 		display: flex;
 	}
 	table {
 		margin : 25px;
 	}
+.btnwidth {
+	text-align: right;
+	margin-right : 160px; 
+}
 </style>
 </head>
 <body>
@@ -47,7 +53,7 @@
 	<div id="body-content">
 	<div align="center">
 	      <h2>상품 리스트</h2>
-	   <br>
+	      <div class="btnwidth"><a class="btn btn-outline-dark" href="<%=request.getContextPath() %>/admin_product_input.do">제품추가</a></div> 
 	     <c:set var="list" value="${productListpho }" />
 	      <c:if test="${!empty list }">
 	      
@@ -147,20 +153,7 @@
 	                        &nbsp;&nbsp;|&nbsp;&nbsp;
 	                  <a class="btn btn-outline-danger" href="<%=request.getContextPath() %>/admin_product_delete.do?pnum=${dto.getPnum() }">삭 제</a>
 	                  </td>
-
 	         </c:forEach>
-	         
-	         
-   
-	   </table>
-	   <table>
-	   <tr>
-	      	<td colspan="5">
-	      		<a class="btn btn-outline-dark" href="<%=request.getContextPath() %>/admin_product_input.do">제품추가</a> 
-	      		<br>
-	      	</td>
-
-	      </tr>
 	   </table>
 	   </c:if>
 	   

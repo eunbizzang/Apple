@@ -46,6 +46,7 @@ body {
 	list-style: none;
 	padding-left: 0;
 	z-index: 1;
+	margin-top: 17px;
 }
 
 .menu li{
@@ -79,7 +80,7 @@ body {
 
 .menu ul li:hover a{
 	border-radius: 4px;
-	background-color: lightgray;
+	background-color: white;
 	
 }
 
@@ -119,7 +120,7 @@ body {
 }
 
 .menu li:hover > a{
-	background-color: lightgray;
+	background-color: white;
 	color: black;
 	border-radius: 4px;
 }
@@ -129,6 +130,7 @@ body {
 	color: white;
 	display: flex;
 	padding-left: 0;
+	margin-top: 17px;
 
 }
 
@@ -169,8 +171,7 @@ body {
 <nav class="bar" >
 	
 	<div class="logo">
-		<i class="fab fa-apple"></i>
-		<a class="cate_a" href="">매장관리</a>
+		<img class="img" src="images/mainlogo.png">
 	</div>
 	
 	<ul class="menu">
@@ -196,7 +197,7 @@ body {
 			<ul class="sub">
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">주간 매출</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_monthly.do">월 매출</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매장별 매출</a></li>
+				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매출 조회</a></li>
 				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_report.do">매출 보고</a></li>
 			</ul>
 		</li>

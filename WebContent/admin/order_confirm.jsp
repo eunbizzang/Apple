@@ -13,67 +13,171 @@
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-}
-.num{
+
+	body {
+	  font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.num{
 		text-align:center;
 	}
 	
 	.top{
-		display: flex;
-		justify-content: center;
+		/* display: flex;
+		justify-content: center; */
 		margin-top: 50px;
+		position: relative;
 	}
-
+	
+	.notice_name {
+		width: 1105px;
+		height: 30px;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: left;
+		font-family: 'Gotdic A1', sans-serif;
+		margin-left: 410px;
+	}
+	
+	.notice_select {
+		width: 1100px;
+		height: 80px;
+		margin-top: 30px;
+		margin-left: 410px;
+		padding-top: 20px;
+		padding-left: 20px;
+		border: 3px solid #B0C4DE;
+	    border-radius:5px;
+	}
+	
+	.notice_title {
+		margin-left: 20px;
+		margin-right: 10px;
+	}
+	
+	.select_hr {
+		margin-left: 410px;
+	}
+	
+	#selectbtn {
+		margin-left: 215px;
+	}
+	
 	.all{
 		display: flex;
 		justify-content: center;
-		margin-top: 80px;
+		margin-top: 40px;
+	}
+	
+	.input {
+	  height:35px;
+	  font-size:15px;
+	  background-color: white;
+	  padding: 2px;  
+	  border: 1px solid lightgrey;
+	  border-radius:5px;
 	}
 
 	.ordertable {
 		
 		width: 500px;
-		height: 300px;
+		height: 500px;
 		
 	}
 	
 	.ordercontent {
 		
-		margin-left: 100px;
-		
+		margin-left: 80px;
+		margin-bottom:50px;
 		width:500px;
 		height: 500px;
+		
 	}
+	
+	.lefttable tr th {
+		text-align: center;
+		background: #EEEEEE;
+		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	.lefttable tr {
+		height: 40px;
+	}
+	
+	.lefttable td {
+		text-align: center;
+		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	.leftatble h3 {
+		text-align: center;
+		font-family: 'Gothic A1', sans-serif;
+		left: 150px;
+		top: 50px;
+	}
+	
+	.righttable tr th {
+		text-align: left;
+		background: #EEEEEE;
+		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	.righttable th td {
+		background: #EEEEEE;
+	}
+	#body-wrapper {
+    height: 100%;
+    position: relative;
+	}
+
+#body-content {
+    margin-top: 0px;
+    padding-bottom: 170px; /* footer의 높이 */
+}
+	
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/admin_top.jsp" />
 	
+	<div id="body-wrapper">
+	<div id="body-content">
 	<div class="top">
-	<form method="post" action="<%=request.getContextPath() %>/admin_order.do">
-		<input type="date" name="date1" required>
-		<input type="date" name="date2" required>
-		&nbsp;&nbsp;&nbsp;매장 :
-			<select name="search_shop" required>
-				<option value="all">전체</option>
-				<option value="yeouido">Apple 여의도</option>
-				<option value="garosu">Apple 가로수길</option>
-				<option value="hongdae">프리스비 홍대</option>
-				<option value="gimpo">윌리스 김포공항</option>
-				<option value="incheon">윌리스 인천터미널</option>
-			</select>
-		&nbsp;&nbsp;&nbsp;상태 : 
-		<select name="search_field" required>
-			<option value="all">전체</option>
-			<option value="order">요청</option>
-			<option value="order_ok">발주승인</option>
-			<option value="order_cancel">발주취소</option>
-		</select>
-		<input type="submit" value="확인">
-	</form>
+	
+		<div class="notice_name">
+			<img src="images/add.png" width="20" height="20">&nbsp;발주 요청 현황
+		</div>
+		
+		<div class="notice_select">
+			<form method="post" action="<%=request.getContextPath() %>/admin_order.do">
+				<span style="font-weight: bold;" class="notice_title">날짜</span>
+				<input type="date" name="date1" class="input" required>
+				~
+				<input type="date" name="date2" class="input" required>
+				&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;" class="notice_title">매장</span>
+					<select name="search_shop" class="input" required>
+						<option value="all">전체</option>
+						<option value="yeouido">Apple 여의도</option>
+						<option value="garosu">Apple 가로수길</option>
+						<option value="hongdae">프리스비 홍대</option>
+						<option value="gimpo">윌리스 김포공항</option>
+						<option value="incheon">윌리스 인천터미널</option>
+					</select>
+				&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;" class="notice_title">상태</span>
+				<select name="search_field" class="input" required>
+					<option value="all">전체</option>
+					<option value="order">요청</option>
+					<option value="order_ok">발주승인</option>
+					<option value="order_cancel">발주취소</option>
+				</select>
+
+				<input type="submit" value="확인" class="btn btn-primary btn-sm" id="selectbtn">
+
+			</form>
+			
+		</div>
+		
 	</div>
 	
 	
@@ -81,17 +185,32 @@ body {
 	<c:set var="list" value="${List }" />
 	
 	<div class="ordertable">
+	
+		<%-- <input type="hidden" name="jsearch_shop" value="${shop }">
+		<input type="hidden" name="jdate1" value="${date1 }">
+		<input type="hidden" name="jdate2" value="${date2 }">
+		<input type="hidden" name="jsearch_field" value="${field }">
+		 --%>
+		<table border="0" cellspacing="0" width="500" class="lefttable">
 		
-		<table border="0" cellspacing="0" width="500">
-			<tr>
-				<th>요청번호</th> <th>요청매장</th> <th>요청날짜</th> <th>상태</th>
-			</tr>
+			<colgroup>
+				<col width="25%">
+				<col width="25%">
+				<col width="25%">
+				<col width="25%">
+			</colgroup>
+			
+			<thead>
+				<tr>
+					<th>요청번호</th> <th>요청매장</th> <th>요청날짜</th> <th>상태</th>
+				</tr>
+			</thead>
 			
 			<c:if test="${!empty list }">
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<%-- <td> <input type="button" name="code" value="${dto.getOrder_code() }" onclick="loaction.href='admin_order_cont.do?code=${dto.getOrder_code() }"> </td> --%>
-						<td> <a href="<%=request.getContextPath() %>/admin_order.do?code=${dto.getOrder_code() }">${dto.getOrder_code() }</a></td>
+						<td> <a href="<%=request.getContextPath() %>/admin_order.do?code=${dto.getOrder_code() }&jshop=${shop }&jdate1=${date1 }&jdate2${date2 }&jfield=${field }">${dto.getOrder_code() }</a></td>
 						<td> ${dto.getShop_id() } </td>
 						<td> ${dto.getOrder_date().substring(0, 10) } </td>
 						<td> ${dto.getOrder_check() } </td>
@@ -121,80 +240,110 @@ body {
 	<c:if test="${!empty cont }">
 		<div class="ordercontent">
 			<form method="post" action="<%=request.getContextPath() %>/admin_update.do">
-			<table border="1" cellspacing="0" width="600">
-				<tr>
-					<td colspan="2" align="center">
-						<h3>발주 요청 확인서</h3>
-					</td>
-				</tr>
+			
+			<table border="0" cellspacing="0" width="500" style="border-color: gray" class="rigthtable">
+			
+				<colgroup>
+					<col width="30%">
+					<col width="70%">
+				</colgroup>
 				
-				<tr>
-					<th>발주코드</th>
-					<td> <input name="order_code" value="${cont.getOrder_code() }" readonly></td>
-				</tr>
+				<thead>
+					<tr>
+						<td colspan="2" align="center" style="font-size: 20px">발주 요청 확인서</td>
+					</tr>
+				</thead>
 				
-				<tr>
-					<th>매장</th>
-					<td> <input value="${cont.getShop_name() }" readonly></td>
-				</tr>
+				<tbody>
+					<tr>
+						<th scope="row">발주코드</th>
+						<td> 
+							<input class="form-control" name="order_code" type="text" aria-label="default input example" value="${cont.getOrder_code() }" readonly>
+						<td>
+					</tr>
 				
-				<tr>
-					<th>매장코드</th>
-					<td> <input name="shop_id" value="${cont.getShop_id() }" readonly></td>
-				</tr>
+					<tr>
+						<th scope="row">요청매장</th>
+						<td> 
+							<input class="form-control" aria-label="default input example" value="${cont.getShop_name() }" readonly>
+						<td>
+					</tr>
 				
-				<tr>
-					<th>제품명</th>
-					<td> <input value="${cont.getPname() }" readonly></td>
-				</tr>
+					<tr>
+						<th scope="row">매장코드</th>
+						<td> 
+							<input class="form-control" name="shop_id" aria-label="default input example" value="${cont.getShop_id() }" readonly>
+						<td>
+					</tr>
 				
-				<tr>
-					<th>제품코드</th>
-					<td> <input name="pnum" value="${cont.getPnum() }" readonly></td>
-				</tr>
+					<tr>
+						<th scope="row">제품명</th>
+						<td> 
+							<input class="form-control" aria-label="default input example" value="${cont.getPname() }" readonly>
+						<td>
+					</tr>
+				
+					<tr>
+						<th scope="row">제품코드</th>
+						<td> 
+							<input class="form-control" name="pnum" aria-label="default input example" value="${cont.getPnum() }" readonly>
+						<td>
+					</tr>
 
-				<tr>
-					<th>발주 수량</th>
-						<c:if test="${!empty cont.getOrderok_date() }">
-							<td> <input value="${cont.getOrder_no() }" readonly> </td>
-						</c:if>
-						
-						<c:if test="${empty cont.getOrderok_date() }">
-							<td> <input type="number" name="order_no" value="${cont.getOrder_no() }" min="1" max="100"> </td>
-						</c:if>
-				</tr>
+					<tr>
+						<th scope="row">발주 수량</th>
+							<c:if test="${!empty cont.getOrderok_date() }">
+								<td> 
+									<input class="form-control" aria-label="default input example" value="${cont.getOrder_no() }" readonly>
+								<td>
+							</c:if>
+							
+							<c:if test="${empty cont.getOrderok_date() }">
+								<td> 
+									<input type="number" class="form-control" name="order_no" aria-label="default input example"  value="${cont.getOrder_no() }" min="1" max="100">
+								<td>
+							</c:if>
+					</tr>
 				
 				<!-- 본사에서 발주 승인 시에는 상세 내역에 현재 매장 수량이 나타나지 않도록(본사/매장 둘다) -->
 				<c:if test="${cont.getOrder_check() != '발주승인'}">
 				
 				<tr>
-					<th>현재 매장 수량</th>
-					<td> <input name="now_no" value="${cont.getNow_no() }"> </td>
+					<th scope="row">현재 매장 수량</th>
+					<td> 
+						<input class="form-control" name="now_no" aria-label="default input example" value="${cont.getNow_no() }" readonly>
+					<td>
 				</tr>
 				
 				</c:if>
 				
 				<tr>
-					<th>발주 시각</th>
-					<td> <input value="${cont.getOrder_date() }" readonly></td>
+					<th scope="row">발주 시각</th>
+					<td> 
+						<input class="form-control" aria-label="default input example" value="${cont.getOrder_date() }" readonly>
+					<td>
 				
 				<c:if test="${!empty cont.getOrderok_date() }">
 					<tr>
-						<th>처리 시각</th>
-						<td> <input value="${cont.getOrderok_date() }" readonly> </td>
+						<th scope="row">처리 시각</th>
+						<td> 
+							<input class="form-control" aria-label="default input example" value="${cont.getOrderok_date() }" readonly>
+						<td>
 					</tr>
 				</c:if>
 				
 				<tr>
 					<c:if test="${!empty cont.getOrderok_date() }">
-						<th>진행 상황</th>
-						<td> <input value="${cont.getOrder_check() }" readonly> </td>
+						<th scope="row">진행 상황</th>
+						<td> 
+							<input class="form-control" aria-label="default input example" value="${cont.getOrder_check() }" readonly>
+						<td>
 					</c:if>
 						
 					<c:if test="${empty cont.getOrderok_date() }">
-						<th>처리 방법</th>
+						<th scope="row">처리 방법</th>
 						<td>
-							<select name="order_check"> 
+							<select class="form-select" aria-label="Default select example" name="order_check">
 								<option value="confirm">발주승인</option>
 								<option value="cancel">발주취소</option>
 							</select>
@@ -203,32 +352,33 @@ body {
 				</tr>
 				
 				<tr>
-					<th>Comment</th>
+					<th scope="row">Comment</th>
 					<td>
 						<c:if test="${!empty cont.getOrderok_date() }">
-							<textarea rows="2" cols="65" readonly>${cont.getOrder_comment() }</textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly>${cont.getOrder_comment() }</textarea>
 						</c:if>
 						
 						<c:if test="${empty cont.getOrderok_date() }">
-							<textarea rows="2" cols="65" name="order_comment"></textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" name="order_comment" rows="3">${cont.getOrder_comment() }</textarea>
 						</c:if>
 					</td>
 				</tr>
 
-				
+				<c:if test="${empty cont.getOrderok_date() }">
 				<tr>
 					<td colspan="2" align="right">
-					<%-- <a href="<%=request.getContextPath() %>/admin_order_cancel.do?check=${cont.getOrder_code() }">
-						<img src="<%=request.getContextPath() %>/images/cancelled.png" border="0" width="80" height="80">
-					</a> --%>
-					<input type="submit" value="확인">
+						<input type="reset" value="초기화" class="btn btn-primary">
+						<input type="submit" value="승인" class="btn btn-primary">
+					</td>
 				</tr>
-				
+				</c:if>
 			</table>
 			</form>
 		</div>
 	</c:if>
 	</div>
+	</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 </body>
 </html>

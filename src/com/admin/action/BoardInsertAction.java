@@ -37,7 +37,6 @@ public class BoardInsertAction implements Action {
 		);
 		
 		String board_code = multi.getParameter("board_code").trim();
-		String board_writer = multi.getParameter("board_writer").trim();
 		String board_title = multi.getParameter("board_title").trim();
 		String board_content = multi.getParameter("board_content").trim();
 		
@@ -46,7 +45,7 @@ public class BoardInsertAction implements Action {
 		BoardDTO dto = new BoardDTO();
 
 		dto.setBoard_code(board_code);
-		dto.setBoard_writer(board_writer);
+		dto.setBoard_writer("admin");
 		dto.setBoard_title(board_title);
 		dto.setBoard_cont(board_content);
 		dto.setBoard_image(board_image);

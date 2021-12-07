@@ -33,7 +33,6 @@ public class BoardUpdateOkAction implements Action {
 		int board_page = Integer.parseInt(multi.getParameter("board_page"));
 		
 		String board_code = multi.getParameter("board_code").trim();
-		String board_writer = multi.getParameter("board_writer").trim();
 		String board_title = multi.getParameter("board_title").trim();
 		String board_content = multi.getParameter("board_content").trim();
 		String board_img_new = multi.getFilesystemName("board_image_New");
@@ -45,7 +44,7 @@ public class BoardUpdateOkAction implements Action {
 		BoardDTO dto = new BoardDTO();
 		dto.setBoard_no(board_no);
 		dto.setBoard_code(board_code);
-		dto.setBoard_writer(board_writer);
+		dto.setBoard_writer("admin");
 		dto.setBoard_title(board_title);
 		dto.setBoard_cont(board_content);
 		dto.setBoard_image(board_img_new);

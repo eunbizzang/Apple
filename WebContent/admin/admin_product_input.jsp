@@ -22,8 +22,16 @@ body {
 		text-align: center;
 		background: #EEEEEE;
 	}
-
 	
+	.input {
+	  height:35px;
+	  font-size:15px;
+	  background-color: white;
+	  padding: 2px;  
+	  border: 1px solid lightgrey;
+	  border-radius:5px;
+	}
+
 </style>
 </head>
 <body>
@@ -42,28 +50,28 @@ body {
 	         
 	         <tr>
 	            <th>상품 이미지</th>
-	            <td> <input type="file" name="pimage"> <br> </td>
+	            <td> <input class="form-control form-control-sm" id="formFileSm" type="file" name="pimage"> <br> </td>
 	         </tr>
 	         
 	         
 	         <tr>
 	            <th>상품번호</th>
-	            <td> <input name="pnum"> </td>
+	            <td> <input name="pnum" class="input"> </td>
 	         </tr>
 	         
 	         <tr>
 	            <th>상품 이름</th>
-	            <td> <input name="pname"> </td>
+	            <td> <input name="pname" class="input"> </td>
 	         </tr>
         	         
 	         <tr>
 	            <th>상품 가격</th>
-	            <td> <input name="price" maxlength="8"> </td>
+	            <td> <input name="price" maxlength="8" class="input"> </td>
 	         </tr>
 	         
 	         <tr>
 	            <th>상품 정보</th>
-	            <td><textarea name = "pcont" rows="5" cols="50"></textarea> </td>
+	            <td><textarea class="form-control" id="exampleFormControlTextarea1" name="pcont" rows="5" cols="80"></textarea> </td>
 	         </tr>
 	         
 	         

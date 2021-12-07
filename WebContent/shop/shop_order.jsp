@@ -29,7 +29,11 @@ body {
 		height:200px;
 	}
 	.title{
-		margin-top:30px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		font-size:20px;
+	}
+	.ftitle{
 		margin-bottom: 30px;
 		font-size:20px;
 	}
@@ -38,9 +42,10 @@ body {
 		margin-left: 100px;
 	}
 	.order {
-		margin-top:30px;
-		margin-bottom: 70px;
+		margin-top:50px;
+		margin-bottom: 40px;
 		font-size:18px;
+		width: 300px;
 	}
 	.order td {
   padding: 5px;
@@ -49,6 +54,7 @@ body {
 .table {
   border-collapse: collapse;
   align:center;
+  font-size:15px;
 }  
 .table th {
   padding: 10px;
@@ -61,7 +67,12 @@ body {
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
-	
+	.form {
+	margin-top:30px;
+    border: solid 3px #B0C4DE;
+  border-radius: 5px;
+  padding: 20px 50px 20px 50px;
+}
 	input[type='number']{
     width: 80px;
 	} 
@@ -77,7 +88,7 @@ body {
   height:35px;
   font-size:15px;
   background-color: white;
-  padding: 2px;  
+  padding: 5px;  
   border: 1px solid lightgrey;
   border-radius:5px;
 }
@@ -108,14 +119,15 @@ body {
 		</table>
 		</div>
 		<div class="right">
+		<div class="form">
 		<form method="post" 
 		action="<%=request.getContextPath() %>/shop_order_ok.do"
 		onsubmit = "return confirm('본사에 발주 요청 하시겠습니까?');">
-		<p class="title" align="center"><img src="./images/form.png" width="25" height="25"><br>발주 폼</p>
+		<p class="ftitle" align="center"><img src="./images/form.png" width="25" height="25"><br>발주 폼</p>
 		<table class="order">
 			<tr>
 				<td>상품</td>
-				<td>
+				<td colspan="2">
 					<select class="input" name="pnum" required>
 						<option value="PAD001" selected>iPadPro [PAD001]</option>
 		            	<option value="PAD002">iPadAir [PAD002]</option>
@@ -133,15 +145,17 @@ body {
 		            	<option value="WCH003">AppleWatch3 [WCH003]</option>             	
 					</select>
 				</td>
+			</tr>
+			<tr>
 				<td>수량</td>
-				<td><input class="input" size="3" type="number" min="0" name="order_no" required></td>
-	            <td colspan="2" align="center">
+				<td><input class="input" size="3" type="number" min="0" name="order_no" value="1" required></td>
+	            <td>
 	               <input type="submit" class="input" style="width:60px;" value="전송">&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>	
 		</table>
 		</form>
-		
+		</div>
 		<p class="title" align="center">발주내역 (요청중)</p>
 		<div class="tsize">
 		<table  class="table" width="700" >

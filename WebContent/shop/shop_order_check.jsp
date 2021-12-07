@@ -27,12 +27,13 @@ body {
 }
 
 .form{
-   margin-bottom: 50px;
+   margin-bottom: 20px;
    text-align: center;
 }
 .title {
-	margin-bottom: 30px;
-	font-size : 30px;
+	margin-bottom: 50px;
+	font-size : 25px;
+	font-weight: bold;
 }
 
 table.line {
@@ -60,6 +61,15 @@ table.line td {
   padding: 2px;  
   border: 1px solid lightgrey;
   border-radius:5px;
+}
+.table-wrapper {
+  width: 1100px; height:420px;
+  overflow: auto;
+  border-radius:5px;
+  background-color: #fffafa;
+  padding: 25px;
+  /* border: 1px solid lightgrey; */
+  border: solid 3px #B0C4DE;
 }
 </style>
 </head>
@@ -96,17 +106,19 @@ table.line td {
 			</table>
 		</form>
 	</div>
+	<div class="table-wrapper">
 		<table class="line" style ='width : 1000px;'>
 		<c:set var="list" value="${orderlist }" />
 			<c:if test="${!empty list }">
 			<tr>
-	      		<th>요청 코드</th><th>요청제품</th><th>요청 일자</th>
+	      		<th>요청 코드</th><th>요청제품</th><th>수량</th><th>요청 일자</th>
 	      		<th>상태</th><th>본사 확인</th><th>코멘트</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 			<tr>
 				<td> ${dto.getOrder_code() } </td>
 	            <td> ${dto.getPnum() } </td>
+	            <td> ${dto.getOrder_no() } </td>
 	            <td> ${fn:substring(dto.getOrder_date(),0,16) } </td>
 	            <td> ${dto.getOrder_check() } </td>
 	            <td> <c:if test="${!empty dto.getOrderok_date() }">
@@ -118,12 +130,14 @@ table.line td {
 	            	<c:if test="${!empty dto.getOrder_comment() }">
 	            	${dto.getOrder_comment() }</c:if>
 	            	<c:if test="${empty dto.getOrder_comment() }">
-	             	없음</c:if>
+	            	<div class="sent">발주완료</div>
+	             	</c:if>
 	            </td>
 	         </tr>
 			</c:forEach>
 	        </c:if>
 		</table>
+	</div>
 	</div>
 <div>
 <jsp:include page="../include/shop_bottom.jsp" />

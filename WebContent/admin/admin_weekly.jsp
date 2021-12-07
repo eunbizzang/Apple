@@ -12,36 +12,87 @@
 <title>Apple store sales summary here</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap');
+#body-wrapper {
+	    min-height: 100%;
+	    position: relative;
+}
+	
+#body-content {
+	   margin-top: 0px;
+	   padding-bottom: 150px; /* footer의 높이 */
+}
 body {
   font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
-
 #container {
+    margin-left:400px;
+	width:1090px;
+	height:570px;
+	padding:20px;
+  	border-radius:5px;
+  	border: solid 3px #B0C4DE;
     justify-content: center;
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr ; 
+    margin-bottom:20px;
+}
+table.line {
+
+  border-collapse: separate;
+  border-spacing: 1px;
+  text-align: center;
+  line-height: 1.2;
+  margin: 10px 10px;
+  font-size:15px;
+}
+p.title {
+	font-size:20px;
+	padding: 10px;
+	text-align:center;
+}
+table.line th {
+  padding: 10px;
+  vertical-align: top;
+  background: #f3f6f7;
+}
+table.line td {
+  padding: 10px;
+  vertical-align: top;
+}
+.wrapper {
+  width: 500px; height:500px;
+  border-spacing: 10;
 }
 </style>
 </head>
 <body>
 
 	<jsp:include page="../include/admin_top.jsp" />
+	<div id="body-wrapper">
+	<div id="body-content">
 <div id="container">
 <div class="item">
-    <span>전체 매출(최근 1주일)</span>
-<canvas id="wholesales" width="400" height="400"></canvas>
+<div class="wrapper">
+<p class="title">주간 매출 (전체매장)</p>
+<canvas id="wholesales" width="450" height="450"></canvas>
+</div>
 </div>
 <div class="item">
-    <span>매장별 매출</span>
-<canvas id="shopsales" width="400" height="400"></canvas>
+<div class="wrapper">
+<p class="title">매장별 매출</p>
+<canvas id="shopsales" width="450" height="450"></canvas>
+</div>
 </div>
 </div>
 <div align="center">
-	<table width="900">
+	<table width="1100" class="line">
 		<tr>
-			<th>매장명</th>
+			<th scope="cols">매장명</th>
 			<c:set var="week" value="${week}" />
-			<c:forEach var="week" items="${week}"><th>${week}</th></c:forEach>
+			<c:forEach var="week" items="${week}"><th scope="cols">${week}</th></c:forEach>
 		</tr>
 		<c:set var="garosu" value="${garosu}" />
 		<c:set var="gimpo" value="${gimpo}" />
@@ -49,33 +100,40 @@ body {
 		<c:set var="incheon" value="${incheon}" />
 		<c:set var="yeouido" value="${yeouido}" />
 		<tr>
-			<td> Apple 가로수길 </td>
+			<th scope="row"> Apple 가로수길 </th>
 			<c:forEach var="garosu" items="${garosu}">
-			<td>${garosu }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${garosu }"/></td></c:forEach>
 		</tr>
 		<tr>
-			<td> 윌리스 김포공항 </td>
+			<th scope="row"> 윌리스 김포공항 </th>
 			<c:forEach var="gimpo" items="${gimpo}">
-			<td>${gimpo }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gimpo }"/></td></c:forEach>
 		</tr>
 		<tr>
-			<td> 프리스비 홍대점 </td>
+			<th scope="row"> 프리스비 홍대점 </th>
 			<c:forEach var="hongdae" items="${hongdae}">
-			<td>${hongdae }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hongdae }"/></td></c:forEach>
 		</tr>
 		<tr>
-			<td> 윌리스 인천터미널점 </td>
+			<th scope="row"> 윌리스 인천터미널점 </th>
 			<c:forEach var="incheon" items="${incheon}">
-			<td>${incheon }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${incheon }"/></td></c:forEach>
 		</tr>
 		<tr>
-			<td> Apple 여의도 점 </td>
+			<th scope="row"> Apple 여의도 점 </th>
 			<c:forEach var="yeouido" items="${yeouido}">
-			<td>${yeouido }</td></c:forEach>
+			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yeouido }"/></td></c:forEach>
 		</tr>
 	</table>
 	</div>
+	</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
+	</div>
 <script>
 let shopdata=[];
 <c:set var="sales" value="${shopsales}" />
@@ -86,7 +144,7 @@ const ctx = document.getElementById('shopsales');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['GAROSU', 'GIMPO', 'HONGDAE', 'INCHEON', 'YEOUIDO'],
+        labels: ['가로수', '김포', '홍대', '인천', '여의도'],
         datasets: [{
             label: 'WEEKLY SALES REPORT',
             data: shopdata,
@@ -120,7 +178,7 @@ const myChart = new Chart(ctx, {
 let week=[];
 <c:set var="week" value="${week}" />
 <c:forEach items="${week}" var="week">
-week.push('${week}');
+week.push('${week}'.substring(5, 10));
 </c:forEach>
 let garosu=[];
 <c:set var="garosu" value="${garosu}" />
@@ -154,35 +212,35 @@ const config = new Chart(con, {
 				  labels: week,
 				  datasets: [
 				    {
-				      label: 'GAROSU',
+				      label: '가로수',
 				      data: garosu,
 				      backgroundColor: 'rgba(255, 99, 132, 0.4)',
 				      borderColor: 'rgba(255, 99, 132, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				      label: 'GIMPO',
+				      label: '김포',
 				      data: gimpo,
 				      backgroundColor: 'rgba(255, 205, 86, 0.4)',
 				      borderColor: 'rgba(54, 162, 235, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				      label: 'HONGDAE',
+				      label: '홍대',
 				      data: hongdae,
 				      backgroundColor: 'rgba(75, 192, 192, 0.4)',
 				      borderColor: 'rgba(255, 206, 86, 0.2)',
 				      borderWidth: 1,
 				    },
 				    {
-				        label: 'INCHEON',
+				        label: '인천',
 				        data: incheon,
 				        backgroundColor: 'rgba(54, 162, 235, 0.4)',
 				        borderColor: 'rgba(75, 192, 192, 0.2)',
 					    borderWidth: 1,
 				    },
 				    {
-				        label: 'YEOUIDO',
+				        label: '여의도',
 				        data: yeouido,
 				        backgroundColor: 'rgba(153, 102, 255, 0.4)',
 				        borderColor: 'rgba(153, 102, 255, 0.2)',

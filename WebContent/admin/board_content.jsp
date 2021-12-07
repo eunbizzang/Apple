@@ -28,7 +28,7 @@
 	div.notice {
 		width: 1000px;
 		height: 30px;
-		font-size: 20px;
+		font-size: 25px;
 		font-weight: bold;
 		font-family: 'Gothic A1', sans-serif;
 		text-align: left;
@@ -64,8 +64,8 @@
 	
 		<div class="notice">
 		공지사항
-			<button type="button" style="margin-left: 820px" class="btn btn-outline-dark btn-sm" onclick="location.href='admin_board_update.do?num=${dto.getBoard_no() }&page=${Page }'">수정</button>
-			<button type="button" class="btn btn-outline-dark btn-sm" onclick="if(confirm('게시글을 삭제하시겠습니까?')) {
+			<button type="button" style="margin-left: 770px" class="btn btn-outline-dark" onclick="location.href='admin_board_update.do?num=${dto.getBoard_no() }&page=${Page }'">수정</button>
+			<button type="button" class="btn btn-outline-dark" onclick="if(confirm('게시글을 삭제하시겠습니까?')) {
 																location.href='admin_board_delete.do?num=${dto.getBoard_no() }&page=${Page }'
 																} else { return; }">삭제</button>
 		</div>

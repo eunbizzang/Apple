@@ -18,7 +18,15 @@ td,tr {
 	tr th {
 		text-align: center;
 		background: #EEEEEE;
-		font-family: 'Gothic A1', sans-serif;
+	}
+	
+	.input {
+	  height:35px;
+	  font-size:15px;
+	  background-color: white;
+	  padding: 2px;  
+	  border: 1px solid lightgrey;
+	  border-radius:5px;
 	}
 
 </style>
@@ -43,7 +51,7 @@ td,tr {
 	            <td>
 	               <img src="<%=request.getContextPath() %>/upload/${dto.getPimage() }"
 	               		width="100" height="100">
-	               <input type="file" name="pimage_New">
+	               <input class="form-control form-control-sm" id="formFileSm" type="file" name="pimage_New">
 	               <%-- 이미지를 수정하지 않고 그대로 사용할 경우에는
 	                                     상품 등록시 입력한 이미지를 그대로 사용하여 히든으로 넘겨줄 예정. --%>
 	               <input type="hidden" name="pimage_Old"
@@ -54,28 +62,27 @@ td,tr {
 	         <tr>
 	            <th>상품 번호</th>
 	            <td> <input name="pnum"
-	                      value="${dto.getPnum() }"> </td>
+	                      value="${dto.getPnum() }" class="input"> </td>
 	         </tr>
 	         
 	         <tr>
 	            <th>상품이름</th>
 	            <td> <input name="pname"
-	                     value="${dto.getPname() }"> </td>
+	                     value="${dto.getPname() }" class="input"> </td>
 	         </tr>
 	                  
 	         
 	         <tr>
 	            <th>상품 가격</th>
 	            <td> <input name="price" maxlength="8"
-	                      value="${dto.getPrice() }"> </td>
+	                      value="${dto.getPrice() }" class="input"> </td>
 	         </tr>
 	         
 	         <tr>
 	            <th>상품 정보</th>
-	            <td> <textarea name = "pcont" rows="5" cols="50">${dto.getPcont() }</textarea> </td>
+	            <td> <textarea class="form-control" id="exampleFormControlTextarea1" name="pcont" rows="5" cols="80">${dto.getPcont() }</textarea> </td>
 	         </tr>
-	         
-	         
+
 	         <tr>
 	            <td colspan="2" align="center">
 	               <input class="btn btn-outline-secondary" type="submit" value="상품수정">&nbsp;&nbsp;&nbsp;

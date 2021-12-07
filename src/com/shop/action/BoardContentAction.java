@@ -21,11 +21,20 @@ public class BoardContentAction implements Action {
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		BoardDTO dto = dao.getBoardCont(board_no);
+		BoardDTO prevdto = dao.getBoardCont(board_no-1);
+		BoardDTO nextdto = dao.getBoardCont(board_no+1);
+		int ncnt = dao.getBoardCount();
+		
+		int prevpage = board_no % 10;
 		
 		String image = dto.getBoard_image();
 		
 		request.setAttribute("Cont", dto);
+		request.setAttribute("pCont", prevdto);
+		request.setAttribute("nCont", nextdto);
+		request.setAttribute("ncnt", ncnt);
 		request.setAttribute("Page", board_page);
+		request.setAttribute("pPage", prevpage);
 		request.setAttribute("image", image);
 		
 		ActionForward forward = new ActionForward();

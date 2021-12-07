@@ -21,7 +21,7 @@
 	div.notice {
 			width: 900px;
 			height: 30px;
-			font-size: 20px;
+			font-size: 25px;
 			font-weight: bold;
 			font-family: 'Gotdic A1', sans-serif;
 			text-align: left;
@@ -117,8 +117,8 @@
 				<tfoot>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="button" value="취소" class="btn btn-outline-dark btn-sm" onclick="location.href='admin_board_list.do?page=1'">
-							<input type="submit" value="수정" class="btn btn-outline-dark btn-sm">
+							<input type="button" value="취소" class="btn btn-outline-dark" onclick="history.back()">
+							<input type="submit" value="수정" class="btn btn-outline-dark">
 						</td>
 					</tr>
 				</tfoot>

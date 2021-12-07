@@ -22,7 +22,7 @@ body {
 
 #body-content {
     margin-top: 0px;
-    padding-bottom: 150px; /* footer의 높이 */
+    padding-bottom: 170px; /* footer의 높이 */
 }
 #container1 {
     width:100%;
@@ -35,28 +35,73 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
 }
 .item { 
-	padding: 8px;  }
-table.line {
-  border-collapse: separate;
-  border-spacing: 1px;
-  text-align: center;
-  line-height: 1.2;
-  border-top: 1px solid #ccc;
-  margin: 10px 10px;
+	padding: 8px;  
+	margin:auto;
+}
+#box {
+width:940px;
+}
+#date {
+	margin-bottom:20px;
+	margin-right: 35px;
+}
+input {
+  width:250px;
+  height:40px;
+  font-size:20px;
+  padding: 8px;  
+  	border-radius:5px;
+  	border: solid 3px #B0C4DE;
+}
+.table {
+  border-collapse: collapse;
   font-size:15px;
-}
-table.line th {
-  width: 650px;
+}  
+.table th {
   padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
-  background-color:#DCDCDC;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
-table.line td {
-  width: 350px;
+.table td {
   padding: 10px;
-  vertical-align: top;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ddd;
+}
+p.garosu:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(255, 99, 132, 0.4);
+}
+p.gimpo:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(255, 205, 86, 0.4);
+}
+p.hongdae:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(75, 192, 192, 0.4);
+}
+p.incheon:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(54, 162, 235, 0.4);
+}
+p.yeouido:before {
+	margin-right: 10px;
+	font-size:23px;
+    content: ' \25A0';
+    color:rgba(153, 102, 255, 0.4);
+}
+.red{
+	color:#dc143c;
+}
+.blue{
+	color:#0000cd;
 }
 </style>	
 </head>
@@ -67,31 +112,33 @@ table.line td {
 	<div id="body-content">
 <c:set var="month" value="${monthlabel}" />	
 <div id="container1">
-<div class="item">
+<div class="item" id="box">
+	<div id="date" align="right">
 	<form method="post" 
 			action="<%=request.getContextPath() %>/admin_monthly_check.do">
+			
 	<input type="month" id="month" name="month" onchange="this.form.submit()">
-	</form>
-<canvas id="shopsales" width="900" height="250"></canvas>
+	</form></div>
+<canvas id="shopsales" width="890" height="200"></canvas>
 </div>
 <div class="item">
-<h4>Apple 가로수길	</h4><br>
-<table width="230"  class="line">
+<p class="garosu">Apple 가로수길</p>
+<table class="table" width="250">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${galasttotal} 원</td>
+		<th> ${month[0] }</th>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"  value="${galasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${gathistotal} 원</td>
+		<th> ${month[1] }</th>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3" value="${gathistotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> 전월대비 </td>
-		<td>
-		 ${gathistotal-galasttotal} 원</td>
+		<th> 전월대비 </th>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gathistotal-galasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
-		<td> (%) </td>
+		<th> (%) </th>
 		<td id="check"> 
 		<fmt:formatNumber value="${(gathistotal-galasttotal)/galasttotal*100}" pattern=".00"/>%</td>
 	</tr>
@@ -109,20 +156,22 @@ table.line td {
 </div>
 <div id="container2">
 <div class="item">
-<h4>윌리스 김포공항	</h4>
-<table width="230">
+<p class="gimpo">윌리스 김포공항	</p>
+<table class="table" width="250">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${gilasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${gilasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${githistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${githistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${githistotal-gilasttotal} 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${githistotal-gilasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -140,20 +189,22 @@ table.line td {
 <canvas id="gimonthsales" width="400" height="250"></canvas>
 </div>
 <div class="item">
-<h4>프리스비 홍대점	</h4>
-<table width="230">
+<p class="hongdae">프리스비 홍대점	</p>
+<table class="table" width="250">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${holasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${holasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${hothistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hothistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${hothistotal-holasttotal} 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${hothistotal-holasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -173,20 +224,22 @@ table.line td {
 </div>
 <div id="container2">
 <div class="item">
-<h4>윌리스 인천터미널점	</h4>
-<table width="230">
+<p class="incheon">윌리스 인천터미널</p>
+<table class="table" width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${inlasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inlasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${inthistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inthistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${inthistotal-inlasttotal} 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${inthistotal-inlasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -206,20 +259,22 @@ table.line td {
 </div>
 
 <div class="item">
-<h4>Apple 여의도 점	</h4>
-<table width="230">
+<p class="yeouido">Apple 여의도 점	</p>
+<table class="table" width="230">
 	<tr>
-		<td> ${month[0] } 매출</td>
-		<td> ${yelasttotal} 원</td>
+		<td> ${month[0] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yelasttotal}"/> 원</td>
 	</tr>
 	<tr>
-		<td> ${month[1] } 매출</td>
-		<td> ${yethistotal} 원</td>
+		<td> ${month[1] }</td>
+		<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yethistotal}"/> 원</td>
 	</tr>
 	<tr>
 		<td> 전월대비 </td>
-		<td>
-		 ${yethistotal-yelasttotal} 원</td>
+		<td><div class="zero"><fmt:formatNumber type="number" maxFractionDigits="3"
+		 value="${yethistotal-yelasttotal}"/> 원</div></td>
 	</tr>
 	<tr>
 		<td> (%) </td>
@@ -236,17 +291,22 @@ table.line td {
 <c:set var="yethistotal" value="${yethistotal}" />
 <canvas id="yemonthsales" width="400" height="250"></canvas>
 </div>
+
 </div>
 </div>
 <jsp:include page="../include/shop_bottom.jsp" />
-
 </div>
+
 <script>
-/* <h4>Apple 가로수길	</h4>
-<h4>윌리스 김포공항	</h4>
-<h4>프리스비 홍대점	</h4>
-<h4>윌리스 인천터미널점	</h4>
-<h4>Apple 여의도 점	</h4> */
+$('.zero').each(function() {
+	  if (parseFloat($(this).text()) > 0) {
+	    
+	    $(this).prepend('+ ')
+	    $(this).addClass('red');
+	  }else if(parseFloat($(this).text()) < 0) {
+		$(this).addClass('blue');
+	}
+});
 
 <c:set var="thismonth" value="${thismonth}" />
 <c:if test="${!empty thismonth}">
@@ -261,41 +321,41 @@ let label=[];
 label.push('${month}');
 </c:forEach>
 
-// garosu
+//garosu
 const garosu = document.getElementById('gashopsales');
 const garosuChart = new Chart(garosu, {
-    type: 'bar',
-    data: {
-        labels: label,
-        datasets: [{
-            data: [${galasttotal}, ${gathistotal}],
-            backgroundColor: [
-            	'rgba(211,211,211)',
-            	'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-            	'rgb(169,169,169)',
-            	 'rgb(255, 99, 132)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
-            display: false
-        },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  type: 'bar',
+  data: {
+      labels: label,
+      datasets: [{
+          data: [${galasttotal}, ${gathistotal}],
+          backgroundColor: [
+          	'rgba(211,211,211)',
+          	'rgba(255, 99, 132, 0.4)'
+          ],
+          borderColor: [
+          	'rgb(169,169,169)',
+          	 'rgb(255, 99, 132)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
+          display: false
+      },
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
 
 let gamonthList=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
-gamonthList.push('${i.key}');
+gamonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let gamonthData=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
@@ -311,7 +371,7 @@ const galine = new Chart(gal, {
 			      label: label[1],
 			      data: gamonthData,
 			      borderColor: 'rgba(255, 99, 132, 0.2)',
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			      backgroundColor: 'rgba(255, 99, 132, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -328,38 +388,38 @@ const galine = new Chart(gal, {
 //gimpo
 const gimpo = document.getElementById('gishopsales');
 const gimpoChart = new Chart(gimpo, {
-    type: 'bar',
-    data: {
-        labels: label,
-        datasets: [{
-            data: [${gilasttotal}, ${githistotal}],
-            backgroundColor: [
-            	'rgba(211,211,211)',
-            	'rgba(255, 205, 86, 0.2)'
-            ],
-            borderColor: [
-            	'rgb(169,169,169)',
-            	 'rgb(255, 205, 86)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
-            display: false
-        },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  type: 'bar',
+  data: {
+      labels: label,
+      datasets: [{
+          data: [${gilasttotal}, ${githistotal}],
+          backgroundColor: [
+          	'rgba(211,211,211)',
+          	'rgba(255, 205, 86, 0.4)'
+          ],
+          borderColor: [
+          	'rgb(169,169,169)',
+          	 'rgb(255, 205, 86)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
+          display: false
+      },
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
 
 let gimonthList=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
-gimonthList.push('${i.key}');
+gimonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let gimonthData=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
@@ -375,7 +435,7 @@ const gimpoline = new Chart(gimpol, {
 			    {
 			      data: gimonthData,
 			      borderColor: 'rgba(255, 205, 86)',
-			      backgroundColor: 'rgba(255, 205, 86, 0.2)',
+			      backgroundColor: 'rgba(255, 205, 86, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -389,41 +449,41 @@ const gimpoline = new Chart(gimpol, {
 		});
 //gimpo end
 
-// hongdae
+//hongdae
 const hongdae = document.getElementById('hoshopsales');
 const hongdaeChart = new Chart(hongdae, {
-    type: 'bar',
-    data: {
-        labels: label,
-        datasets: [{
-            data: [${holasttotal}, ${hothistotal}],
-            backgroundColor: [
-            	'rgba(211,211,211)',
-            	'rgba(75, 192, 192, 0.2)'
-            ],
-            borderColor: [
-            	'rgb(169,169,169)',
-            	 'rgb(75, 192, 192)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
-            display: false
-        },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  type: 'bar',
+  data: {
+      labels: label,
+      datasets: [{
+          data: [${holasttotal}, ${hothistotal}],
+          backgroundColor: [
+          	'rgba(211,211,211)',
+          	'rgba(75, 192, 192, 0.4)'
+          ],
+          borderColor: [
+          	'rgb(169,169,169)',
+          	 'rgb(75, 192, 192)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
+          display: false
+      },
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
 
 let homonthList=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
-homonthList.push('${i.key}');
+homonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let homonthData=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
@@ -439,7 +499,7 @@ const holine = new Chart(hol, {
 			      label: label[1],
 			      data: homonthData,
 			      borderColor: 'rgba(75, 192, 192)',
-			      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			      backgroundColor: 'rgba(75, 192, 192, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -453,41 +513,41 @@ const holine = new Chart(hol, {
 		});
 //hongdae end
 
-// incheon
+//incheon
 const incheon = document.getElementById('inshopsales');
 const incheonChart = new Chart(incheon, {
-    type: 'bar',
-    data: {
-        labels: label,
-        datasets: [{
-            data: [${inlasttotal}, ${inthistotal}],
-            backgroundColor: [
-            	'rgba(211,211,211)',
-            	'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-            	'rgb(169,169,169)',
-            	 'rgb(54, 162, 235)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
-            display: false
-        },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  type: 'bar',
+  data: {
+      labels: label,
+      datasets: [{
+          data: [${inlasttotal}, ${inthistotal}],
+          backgroundColor: [
+          	'rgba(211,211,211)',
+          	'rgba(54, 162, 235, 0.4)'
+          ],
+          borderColor: [
+          	'rgb(169,169,169)',
+          	 'rgb(54, 162, 235)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
+          display: false
+      },
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
 
 let inmonthList=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
-inmonthList.push('${i.key}');
+inmonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let inmonthData=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
@@ -503,7 +563,7 @@ const inline = new Chart(inl, {
 			      label: label[1],
 			      data: inmonthData,
 			      borderColor: 'rgba(54, 162, 235)',
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+			      backgroundColor: 'rgba(54, 162, 235, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -517,41 +577,41 @@ const inline = new Chart(inl, {
 		});
 //incheon end
 
-// yeouido
+//yeouido
 const yeouido = document.getElementById('yeshopsales');
 const yeouidoChart = new Chart(yeouido, {
-    type: 'bar',
-    data: {
-        labels: label,
-        datasets: [{
-            data: [${yelasttotal}, ${yethistotal}],
-            backgroundColor: [
-            	'rgba(211,211,211)',
-            	'rgba(153, 102, 255, 0.2)'
-            ],
-            borderColor: [
-            	'rgb(169,169,169)',
-            	 'rgb(153, 102, 255)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
-            display: false
-        },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  type: 'bar',
+  data: {
+      labels: label,
+      datasets: [{
+          data: [${yelasttotal}, ${yethistotal}],
+          backgroundColor: [
+          	'rgba(211,211,211)',
+          	'rgba(153, 102, 255, 0.4)'
+          ],
+          borderColor: [
+          	'rgb(169,169,169)',
+          	 'rgb(153, 102, 255)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
+          display: false
+      },
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
 
 let yemonthList=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
-yemonthList.push('${i.key}');
+yemonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let yemonthData=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
@@ -567,7 +627,7 @@ const yeline = new Chart(yel, {
 			      label: label[1],
 			      data: yemonthData,
 			      borderColor: 'rgba(153, 102, 255)',
-			      backgroundColor: 'rgba(153, 102, 255, 0.2)',
+			      backgroundColor: 'rgba(153, 102, 255, 0.4)',
 			      fill: 'start'
 			    }
 			  ]
@@ -581,44 +641,49 @@ const yeline = new Chart(yel, {
 		});
 //yeouido end
 
-// shop monthly sales
+//shop monthly sales
+let shopdata=[];
+<c:set var="sales" value="${shopsales}" />
+<c:forEach items="${sales}" var="sales">
+shopdata.push('${sales}');
+</c:forEach>
 const ctx = document.getElementById('shopsales');
 const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['GAROSU', 'GIMPO', 'HONGDAE', 'INCHEON', 'YEOUIDO'],
-        datasets: [{
-            data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
-            backgroundColor: [
-            	'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)'
-            ],
-            borderColor: [
-            	 'rgb(255, 99, 132)',
-                 'rgb(255, 205, 86)',
-                 'rgb(75, 192, 192)',
-                 'rgb(54, 162, 235)',
-                 'rgb(153, 102, 255)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    	legend: {
+  type: 'bar',
+  data: {
+      labels: ['가로수', '김포', '홍대', '인천', '여의도'],
+      datasets: [{
+          data: [${gathistotal},${githistotal},${hothistotal},${inthistotal},${yethistotal}],
+          backgroundColor: [
+          	'rgba(255, 99, 132, 0.4)',
+              'rgba(255, 205, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(153, 102, 255, 0.4)'
+          ],
+          borderColor: [
+          	 'rgb(255, 99, 132)',
+               'rgb(255, 205, 86)',
+               'rgb(75, 192, 192)',
+               'rgb(54, 162, 235)',
+               'rgb(153, 102, 255)'
+          ],
+          borderWidth: 1
+      }]
+  },
+  options: {
+  	legend: {
 	        display: false
 	    },
-    	responsive: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+  	responsive: false,
+      scales: {
+          y: {
+              beginAtZero: true
+          }
+      }
+  }
 });
-// monthly shop sales end
+//monthly shop sales end
 </script>
 </body>
 </html>

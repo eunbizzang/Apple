@@ -84,7 +84,7 @@ public class OrderDAO {
 	}  // closeConn() 메서드 end
 	
 	// getMainOrderCount() 메소드
-	// admin 메인 화면에서 출력되는 발주내역 개수 ('요청'만, 모든 매장)
+	// admin 메인 화면에서 출력되는 발주내역 개수 ('요청'만, 모든 매장, 매장별)
 	public int getMainOrderCount() {
 		
 		int count = 0;

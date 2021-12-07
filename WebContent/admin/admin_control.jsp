@@ -47,7 +47,7 @@ body {
 		color: black;
 	}
 	tr:hover {
-    	background-color:#CCCCCC;
+    	border: solid 2px #B0C4DE;
 	}
 
 </style>

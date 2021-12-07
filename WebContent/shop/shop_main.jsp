@@ -31,9 +31,7 @@ body {
    margin: 50px auto;
    width: 1100px;
    height: 800px;
-   
    display: flex;
-   /* border: 1px solid #F0FFF0; */
    
 }
 
@@ -49,24 +47,26 @@ body {
    
    margin-bottom: 50px;
    width: 500px;
-   height: 300px;
+   height: 320px;
    
-   
-   border: 1px solid #F0FFF0;
+	  border: 3px solid #B0C4DE;
+	  border-radius:5px;
 }
 
 .second{
    width: 500px;
-   height: 300px;
-   border: 1px solid #F0FFF0;
+   height: 320px;
+	  border: 3px solid #B0C4DE;
+	  border-radius:5px;
 }
 
 .third{
    margin-top: 50px;
    
    width: 500px;
-   height: 300px;
-   border: 1px solid #F0FFF0;
+   height: 320px;
+	  border: 3px solid #B0C4DE;
+	  border-radius:5px;
 }
 
 .space {
@@ -152,6 +152,23 @@ div.count_main {
    font-family: 'Noto Sans KR', sans-serif;
    margin-top: 85px;
 }
+
+.navbar {
+	margin-bottom: 12px;
+}
+.tcover {
+		width:430px;
+	}
+	.plusbtn {
+		width: 40px;
+		height: 40px;
+		border: 3px solid #B0C4DE;
+	  border-radius:5px;
+	  background-color: white;
+	}
+	.plusbtn:hover {
+	background-color: #B0C4DE;
+}
 </style>
 
 </head>
@@ -167,21 +184,21 @@ div.count_main {
 			<div class="container-fluid">
 				<c:set var="label" value="${label}" />
 				<a class="navbar-brand">${label}월 매출</a>
-				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_monthly.do'">+</button>
+				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_monthly.do'">+</button>
 			</div>
 		</nav>
 		<div class="space">
-		<canvas id="shopsales" width="500" height="230"></canvas></div>
+		<canvas id="shopsales" width="450" height="220"></canvas></div>
 	</div>
    
 	<div align="center" class="first">
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand">주간 제품 판매량</a>
-				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_weekly.do'">+</button>
+				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_weekly.do'">+</button>
 			</div>
 		</nav>
-		<div class="space"><canvas id="prodsales" width="500" height="230"></canvas></div>
+		<div class="space"><canvas id="prodsales" width="450" height="220"></canvas></div>
 	</div>
    
 	</div>
@@ -193,7 +210,7 @@ div.count_main {
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand">발주요청 진행현황</a>
-				<button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
+				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
             </div>
 		</nav>
          
@@ -221,13 +238,13 @@ div.count_main {
          <nav class="navbar navbar-light bg-light">
               <div class="container-fluid">
                 <a class="navbar-brand">공지사항</a>
-                <button type="button" class="btn btn-outline-dark" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do'">+</button>
+                <button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do'">+</button>
             </div>
          </nav>
          
          <c:set var="notice" value="${noticelist }" />
          <c:set var="board" value="${boardlist }" />
-         
+         <div class="tcover">
          <table class="table">
             <tbody>
                <c:if test="${!empty notice }">
@@ -255,6 +272,7 @@ div.count_main {
                </c:if>
               </tbody>
          </table>
+         </div>
       </div>
       
    </div>
@@ -269,7 +287,7 @@ div.count_main {
 // monthly report
 let monthList=[];
 <c:forEach var="i" items="${monthlysaleslist}">
-monthList.push('${i.key}');
+monthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 let monthData=[];
 <c:forEach var="i" items="${monthlysaleslist}">

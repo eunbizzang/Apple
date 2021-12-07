@@ -28,10 +28,16 @@ body {
   height: 100%;
 }
 #container {
+	margin-left:400px;
+	width:1090px;
+	height:570px;
+	padding:20px;
+  	border-radius:5px;
+  	border: solid 3px #B0C4DE;
     justify-content: center;
     display:flex; flex-flow:row wrap;
     grid-template-columns: 1fr 1fr ; 
-    margin-bottom:50px;
+    margin-bottom:20px;
 }
 table.line {
 
