@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
+import com.shops.model.ProductDTO;
 import com.shops.model.SalesDAO;
 import com.shops.model.SalesDTO;
+import com.shops.model.ShopDAO;
 
 public class ShopReportAction implements Action {
 
@@ -19,6 +21,7 @@ public class ShopReportAction implements Action {
 		// TODO Auto-generated method stub
 
 		SalesDAO dao = SalesDAO.getInstance();
+		ShopDAO sdao = ShopDAO.getInstance();
 		
 		HttpSession session = request.getSession();
 		String shopid = (String)session.getAttribute("shopId");
@@ -26,8 +29,9 @@ public class ShopReportAction implements Action {
 		List<SalesDTO> list = dao.salesToday(shopid);
 		
 		int total = dao.totalToday(shopid);
+		List<ProductDTO> plist = sdao.getProduct();
 		
-		
+		request.setAttribute("plist", plist);
 		request.setAttribute("salesList", list);
 		request.setAttribute("total", total);
 		

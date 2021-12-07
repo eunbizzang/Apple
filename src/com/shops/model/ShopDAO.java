@@ -119,4 +119,30 @@ public class ShopDAO {
 		
 		return list;
 	}
+
+	public List<ProductDTO> getProduct() {
+		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
+		try {
+			openConn();
+			sql = "select pname, pnum from prod";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductDTO dto = new ProductDTO();
+				dto.setPnum(rs.getString("pnum"));
+				dto.setPname(rs.getString("pname"));
+		
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}
 }

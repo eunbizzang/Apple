@@ -130,7 +130,7 @@
     position: relative;
 	}
 
-#body-content {
+	#body-content {
     margin-top: 0px;
     padding-bottom: 170px; /* footer의 높이 */
 }
@@ -141,8 +141,6 @@
 
 	<jsp:include page="../include/admin_top.jsp" />
 	
-	<div id="body-wrapper">
-	<div id="body-content">
 	<div class="top">
 	
 		<div class="notice_name">
@@ -377,8 +375,6 @@
 		</div>
 	</c:if>
 	</div>
-	</div>
-	<jsp:include page="../include/shop_bottom.jsp" />
-	</div>
+	
 </body>
 </html>

@@ -169,6 +169,12 @@ div.count_main {
 	.plusbtn:hover {
 	background-color: #B0C4DE;
 }
+
+.table {
+	width: 400px;
+	height: 220px;
+	font-size:12px;
+}
 </style>
 
 </head>
@@ -250,7 +256,7 @@ div.count_main {
                <c:if test="${!empty notice }">
                   <c:forEach items="${notice }" var="ndto">
                       <tr>
-                         <td class="notice_title">
+                         <td class="notice_title" colspan="2">
                             <!-- <img src="images/notice3.png" width="41" height="21">&nbsp; --> 
                             <span class="badge rounded-pill bg-warning text-dark">공지</span> &nbsp;
                             <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${ndto.getBoard_no() }&page=1 ">
@@ -263,7 +269,7 @@ div.count_main {
                 <c:if test="${!empty board }">
                    <c:forEach items="${board }" var="bdto">
                      <tr>
-                        <td>[${bdto.getBoard_code() }] &nbsp;
+                        <td colspan="2">[${bdto.getBoard_code() }] &nbsp;
                            <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${bdto.getBoard_no() }&page=1 ">
                             ${bdto.getBoard_title() } </a> </td>
                         <td class="board_date">${bdto.getBoard_date().substring(0, 10) }</td>

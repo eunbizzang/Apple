@@ -11,6 +11,7 @@ import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
 import com.shops.model.OrderDAO;
 import com.shops.model.OrderDTO;
+import com.shops.model.ProductDTO;
 import com.shops.model.ShopDAO;
 import com.shops.model.ShopDTO;
 
@@ -26,6 +27,9 @@ public class ShopOrderAction implements Action {
 		
 		List<ShopDTO> list = dao.getShopList(shopid);
 		List<OrderDTO> orderlist = odao.getOrderList(shopid);
+		List<ProductDTO> plist = dao.getProduct();
+		
+		request.setAttribute("plist", plist);
 		request.setAttribute("prodList", list);
 		request.setAttribute("orderlist", orderlist);
 		ActionForward forward = new ActionForward();

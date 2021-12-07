@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import com.shops.controller.Action;
 import com.shops.controller.ActionForward;
+import com.shops.model.ProductDTO;
 import com.shops.model.SalesDAO;
 import com.shops.model.SalesDTO;
+import com.shops.model.ShopDAO;
 import com.shops.model.ShopprodDAO;
 
 public class ShopReportOkAction implements Action {
@@ -32,6 +34,7 @@ public class ShopReportOkAction implements Action {
 		dto.setPname(pname);
 		dto.setSales_no(sales_no);
 		
+		ShopDAO sdao = ShopDAO.getInstance();
 		SalesDAO dao = SalesDAO.getInstance();
 		int check = dao.salesInsert(dto, pnum, sales_no, shopid);
 		
@@ -42,7 +45,9 @@ public class ShopReportOkAction implements Action {
 		
 		List<SalesDTO> list = dao.salesToday(shopid);
 		int total = dao.totalToday(shopid);
+		List<ProductDTO> plist = sdao.getProduct();
 		
+		request.setAttribute("plist", plist);
 		request.setAttribute("salesList", list);
 		request.setAttribute("total", total);
 		

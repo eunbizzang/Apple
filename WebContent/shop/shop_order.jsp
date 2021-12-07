@@ -128,21 +128,11 @@ body {
 			<tr>
 				<td>상품</td>
 				<td colspan="2">
+					<c:set var="plist" value="${plist }" />
 					<select class="input" name="pnum" required>
-						<option value="PAD001" selected>iPadPro [PAD001]</option>
-		            	<option value="PAD002">iPadAir [PAD002]</option>
-		            	<option value="PAD003">iPad [PAD003]</option>
-		            	<option value="PAD004">iPadmini [PAD004]</option>
-		            	<option value="PHO001">iPhone13Pro [PHO001]</option>	            	
-		            	<option value="PHO002" >iPhone13 [PHO002]</option>
-		            	<option value="PHO003">iPhone13mini [PHO003]</option>
-		            	<option value="PHO004">iPhoneSE [PHO004]</option>
-		            	<option value="POD001">AirPodsPro [POD001]</option>
-		            	<option value="POD002">AirPods3 [POD002]</option>	            	
-		            	<option value="POD003">AirPods2 [POD003]</option>
-		            	<option value="WCH001">AppleWatch7 [WCH001]</option>
-		            	<option value="WCH002">AppleWatchSE [WCH002]</option>
-		            	<option value="WCH003">AppleWatch3 [WCH003]</option>             	
+						<c:forEach items="${plist }" var="dto">
+						<option value="${dto.getPnum() }">${dto.getPname() } [${dto.getPnum() }]</option>
+		            	</c:forEach>     	
 					</select>
 				</td>
 			</tr>

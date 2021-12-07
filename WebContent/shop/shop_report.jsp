@@ -127,21 +127,11 @@ background-color:white;
 			<td>상품명</td>
 			<td>
 				<select  class="input" name="pnumname" required>
-	            	   <option value="PAD001iPadPro" selected>iPadPro [PAD001]</option>
-	            	   <option value="PAD002iPadAir">iPadAir [PAD002]</option>
-	            	   <option value="PAD003iPad">iPad [PAD003]</option>
-	            	   <option value="PAD004iPadmini">iPadmini [PAD004]</option>
-	            	   <option value="PHO001iPhone13Pro">iPhone13Pro [PHO001]</option>	            	
-	            	   <option value="PHO002iPhone13" >iPhone13 [PHO002]</option>
-	            	   <option value="PHO003iPhone13mini">iPhone13mini [PHO003]</option>
-	            	   <option value="PHO004iPhoneSE">iPhoneSE [PHO004]</option>
-	            	   <option value="POD001AirPodsPro">AirPodsPro [POD001]</option>
-	            	   <option value="POD002AirPods3">AirPods3 [POD002]</option>	            	
-	            	   <option value="POD003AirPods2">AirPods2 [POD003]</option>
-	            	   <option value="WCH001AppleWatch7">AppleWatch7 [WCH001]</option>
-	            	   <option value="WCH002AppleWatchSE">AppleWatchSE [WCH002]</option>
-	            	   <option value="WCH003AppleWatch3">AppleWatch3 [WCH003]</option>             	
-					</select></td>
+				<c:set var="plist" value="${plist }" />
+					<c:forEach items="${plist }" var="dto">
+					<option value="${dto.getPnum()}${dto.getPnum()}">${dto.getPname() } [${dto.getPnum() }]</option>
+		            </c:forEach>
+	            </select></td>
 			<tr>
 				<td>판매수량</td>
 				<td><input  class="input" type="number" min="0" name="sales_no" required></td>
