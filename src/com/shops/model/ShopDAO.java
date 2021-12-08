@@ -125,7 +125,7 @@ public class ShopDAO {
 		
 		try {
 			openConn();
-			sql = "select pname, pnum from prod";
+			sql = "select pname, pnum from prod order by pnum";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			

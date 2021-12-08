@@ -18,128 +18,109 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 #body-wrapper {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
-
 #body-content {
-    margin-top: 0px;
-    padding-bottom: 170px; /* footer의 높이 */
+  margin-top: 0px;
+  padding-bottom: 170px; /* footer의 높이 */
 }
 .big{
-   
-   margin: 50px auto;
-   width: 1100px;
-   height: 800px;
-   display: flex;
-   
+  margin: 50px auto;
+  width: 1100px;
+  height: 800px;
+  display: flex;  
 }
-
 .small{
-   margin: 30px;
-   width: 500px;
-   height: 600px;
-   
-   flex-direction: row-reverse;
-   
+  margin: 30px;
+  width: 500px;
+  height: 600px; 
+  flex-direction: row-reverse; 
 }
 .first{
-   
-   margin-bottom: 50px;
-   width: 500px;
-   height: 320px;
-   
-	  border: 3px solid #B0C4DE;
-	  border-radius:5px;
+  margin-bottom: 50px;
+  width: 500px;
+  height: 320px;
+  border: 3px solid #B0C4DE;
+  border-radius:5px;
 }
-
 .second{
-   width: 500px;
-   height: 320px;
-	  border: 3px solid #B0C4DE;
-	  border-radius:5px;
+  width: 500px;
+  height: 320px;
+  border: 3px solid #B0C4DE;
+  border-radius:5px;
 }
-
 .third{
-   margin-top: 50px;
-   
-   width: 500px;
-   height: 320px;
-	  border: 3px solid #B0C4DE;
-	  border-radius:5px;
+  margin-top: 50px; 
+  width: 500px;
+  height: 320px;
+  border: 3px solid #B0C4DE;
+  border-radius:5px;
 }
-
 .space {
-	margin-top : 20px;
+  margin-top : 20px;
 }
 .notice_title {
-   font-weight: bold;
+  font-weight: bold;
 }
-
 .notice_date {
-   text-align: right;
-   font-weight: bold;
+  text-align: right;
+  font-weight: bold;
 }
-
 .board_date {
-   text-align: right;
+  text-align: right;
 }
-
 td a {
-   text-decoration: none;
-   color: black;
+  text-decoration: none;
+  color: black;
 }
-
 div.ordercard {
-   display: flex;
-   width: 450px;
-   height: 220px;
+  display: flex;
+  width: 450px;
+  height: 220px;
 }
-
 div.date {
-   position: absolute;
-   width: 450px;
-   height: 45px;
-   text-align: center;
-   color: black;
-   font-size: 20px;
-   font-family: 'Noto Sans KR', sans-serif;
-   padding-top: 20px;
+  position: absolute;
+  width: 450px;
+  height: 45px;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding-top: 20px;
 }
-
 div.request {
-   flex: 1;
+  flex: 1;
 }
-
 div.cont {
-   width: 150px;
-   height: 30px;
-   text-align: center;
-   color:    black;
-   font-size: 15px;
-   font-family: 'Noto Sans KR', sans-serif;
-   margin-top: 43px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  color:    black;
+  font-size: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 43px;
 }
 
 div.count {
-   width: 150px;
-   height: 15px;
-   text-align: center;
-   color: #757575;
-   font-size: 30px;
-   font-weight: bold;
-   font-family: 'Noto Sans KR', sans-serif;
-   margin-top: 95px;
+  width: 150px;
+  height: 15px;
+  text-align: center;
+  color: #757575;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 95px;
 }
 
 div.cont_main {
-   width: 150px;
-   height: 30px;
-   text-align: center;
-   color:    black;
-   font-size: 18px;
-   font-family: 'Noto Sans KR', sans-serif;
-   margin-top: 46px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  color:    black;
+  font-size: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-top: 46px;
 }
 
 div.count_main {
@@ -157,7 +138,7 @@ div.count_main {
 	margin-bottom: 12px;
 }
 .tcover {
-		width:430px;
+		width:450px;
 	}
 	.plusbtn {
 		width: 40px;
@@ -173,131 +154,128 @@ div.count_main {
 .table {
 	width: 400px;
 	height: 220px;
-	font-size:12px;
+	font-size:10.5px;
 }
 </style>
 
 </head>
 <body>
-
 	<jsp:include page="../include/shop_top.jsp" />
 	<div id="body-wrapper">
-	<div id="body-content">
-	<div class="big" align="center">
-	<div class="small">
-	<div class="first">
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<c:set var="label" value="${label}" />
-				<a class="navbar-brand">${label}월 매출</a>
-				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_monthly.do'">+</button>
+		<div id="body-content">
+			<div class="big" align="center">
+				<div class="small">
+					<div class="first">
+						<nav class="navbar navbar-light bg-light">
+							<div class="container-fluid">
+								<c:set var="label" value="${label}" />
+								<a class="navbar-brand">${label}월 매출</a>
+								<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_monthly.do'">+</button>
+							</div>
+						</nav>
+						<div class="space">
+							<canvas id="shopsales" width="450" height="220"></canvas>
+						</div>
+					</div>
+   
+					<div align="center" class="first">
+						<nav class="navbar navbar-light bg-light">
+							<div class="container-fluid">
+								<a class="navbar-brand">주간 제품 판매량</a>
+								<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_weekly.do'">+</button>
+							</div>
+						</nav>
+						<div class="space">
+							<canvas id="prodsales" width="450" height="220"></canvas>
+						</div>
+					</div>
+				</div>
+	   			<div class="small">
+					<div class="second">
+					<c:set var="now" value="<%=new Date()%>" />
+						<nav class="navbar navbar-light bg-light">
+							<div class="container-fluid">
+								<a class="navbar-brand">발주요청 진행현황</a>
+								<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
+				            </div>
+						</nav>
+         				<div class="ordercard">
+            				<div class="date"><fmt:formatDate value="${now }" pattern="YYYY.MM.dd" /></div>
+               				<div class="request">
+                  				<div class="count">${okcount } 건
+                  				</div>
+                  				<div class="cont">승인
+                  				</div>
+               				</div>
+							<div class="request">
+			                	<div class="count_main">${ordercount } 건</div>
+			                	<div class="cont_main"> 요청 </div>
+							</div>
+	               			<div class="request">
+                  				<div class="count">
+                  					${cancelcount } 건
+                  				</div>
+                  				<div class="cont">
+                  					취소
+                  				</div>
+               				</div>
+         				</div>
+      				</div>
+      				<div class="third">
+				         <nav class="navbar navbar-light bg-light">
+				              <div class="container-fluid">
+				                <a class="navbar-brand">공지사항</a>
+				                <button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do'">+</button>
+				            </div>
+				         </nav>
+				         <c:set var="notice" value="${noticelist }" />
+				         <c:set var="board" value="${boardlist }" />
+				         <div class="tcover">
+					         <table class="table">
+					            <tbody>
+					               <c:if test="${!empty notice }">
+					                  <c:forEach items="${notice }" var="ndto">
+					                      <tr>
+					                         <td class="notice_title" colspan="2">
+					                            <!-- <img src="images/notice3.png" width="41" height="21">&nbsp; --> 
+					                            <span class="badge rounded-pill bg-warning text-dark">공지</span> &nbsp;
+					                            <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${ndto.getBoard_no() }&page=1 ">
+					                            ${ndto.getBoard_title() } </a> </td>
+					                         <td class="notice_date">${ndto.getBoard_date().substring(0, 10) }</td>
+					                      </tr>
+					                   </c:forEach>
+					                </c:if>
+					                   
+					                <c:if test="${!empty board }">
+					                   <c:forEach items="${board }" var="bdto">
+					                     <tr>
+					                        <td colspan="2">[${bdto.getBoard_code() }] &nbsp;
+					                           <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${bdto.getBoard_no() }&page=1 ">
+					                            ${bdto.getBoard_title() } </a> </td>
+					                        <td class="board_date">${bdto.getBoard_date().substring(0, 10) }</td>
+					                     </tr>
+					                  </c:forEach>
+					               </c:if>
+					              </tbody>
+					         </table>
+						</div>
+      				</div>
+   				</div>
 			</div>
-		</nav>
-		<div class="space">
-		<canvas id="shopsales" width="450" height="220"></canvas></div>
+		</div>
+	<c:set var="monthlysaleslist" value="${monthlysaleslist}" />
+	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
-   
-	<div align="center" class="first">
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand">주간 제품 판매량</a>
-				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_weekly.do'">+</button>
-			</div>
-		</nav>
-		<div class="space"><canvas id="prodsales" width="450" height="220"></canvas></div>
-	</div>
-   
-	</div>
-   
-	<div class="small">
-   
-	<div class="second">
-	<c:set var="now" value="<%=new Date()%>" />
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand">발주요청 진행현황</a>
-				<button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_order.do'">+</button>
-            </div>
-		</nav>
-         
-         <div class="ordercard">
-            <div class="date"><fmt:formatDate value="${now }" pattern="YYYY.MM.dd" /></div>
-               <div class="request">
-                  <div class="count">${okcount } 건</div>
-                  <div class="cont">승인</div>
-               </div>
-               
-               <div class="request">
-                  <div class="count_main">${ordercount } 건</div>
-                  <div class="cont_main"> 요청 </div>
-               </div>
-               
-               <div class="request">
-                  <div class="count">${cancelcount } 건</div>
-                  <div class="cont">취소</div>
-               </div>
-         </div>
-   
-      </div>
-      
-      <div class="third">
-         <nav class="navbar navbar-light bg-light">
-              <div class="container-fluid">
-                <a class="navbar-brand">공지사항</a>
-                <button type="button" class="plusbtn" onclick="location.href='<%=request.getContextPath() %>/shop_board_list.do'">+</button>
-            </div>
-         </nav>
-         
-         <c:set var="notice" value="${noticelist }" />
-         <c:set var="board" value="${boardlist }" />
-         <div class="tcover">
-         <table class="table">
-            <tbody>
-               <c:if test="${!empty notice }">
-                  <c:forEach items="${notice }" var="ndto">
-                      <tr>
-                         <td class="notice_title" colspan="2">
-                            <!-- <img src="images/notice3.png" width="41" height="21">&nbsp; --> 
-                            <span class="badge rounded-pill bg-warning text-dark">공지</span> &nbsp;
-                            <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${ndto.getBoard_no() }&page=1 ">
-                            ${ndto.getBoard_title() } </a> </td>
-                         <td class="notice_date">${ndto.getBoard_date().substring(0, 10) }</td>
-                      </tr>
-                   </c:forEach>
-                </c:if>
-                   
-                <c:if test="${!empty board }">
-                   <c:forEach items="${board }" var="bdto">
-                     <tr>
-                        <td colspan="2">[${bdto.getBoard_code() }] &nbsp;
-                           <a href="<%=request.getContextPath() %>/shop_board_content.do?num=${bdto.getBoard_no() }&page=1 ">
-                            ${bdto.getBoard_title() } </a> </td>
-                        <td class="board_date">${bdto.getBoard_date().substring(0, 10) }</td>
-                     </tr>
-                  </c:forEach>
-               </c:if>
-              </tbody>
-         </table>
-         </div>
-      </div>
-      
-   </div>
-   
-</div>
-</div>
-<c:set var="monthlysaleslist" value="${monthlysaleslist}" />
-<jsp:include page="../include/shop_bottom.jsp" />
-
-</div>
 <script>
 // monthly report
 let monthList=[];
 <c:forEach var="i" items="${monthlysaleslist}">
-monthList.push('${i.key}'.substring(5, 10));
+  monthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
+
 let monthData=[];
 <c:forEach var="i" items="${monthlysaleslist}">
-monthData.push('${i.value}');
+  monthData.push('${i.value}');
 </c:forEach>
 const l = document.getElementById('shopsales');
 const line = new Chart(l, {
@@ -325,7 +303,7 @@ const line = new Chart(l, {
 // prodsales
 let proddata=[];
 <c:forEach items="${psales}" var="sales">
-proddata.push('${sales}');
+  proddata.push('${sales}');
 </c:forEach>
 
 const pie = document.getElementById('prodsales');

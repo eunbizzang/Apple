@@ -15,148 +15,123 @@ body {
   margin:0;
   font-family: 'Noto Sans KR', sans-serif;
 }
-
 .cate_a {
-	text-decoration: none;
-	color: white;
+  text-decoration: none;
+  color: white;
 }
-
 .bar{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #263343;
-	padding: 8px 12px;
-	
-	margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #263343;
+  padding: 8px 12px;
+  margin-bottom: 30px;
 }
-
 .menu{
-	display: flex;
-	list-style: none;
-	padding-left: 0;
-	z-index: 1;
-	margin-top: 17px;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  z-index: 1;
+  margin-top: 17px;
 }
-
 .menu li{
-	padding: 8px 20px;
-	
-	margin:5px 30px;
-	float: left;
-	position: relative;
-	padding:0;
-	
+  padding: 8px 20px;
+  margin:5px 30px;
+  float: left;
+  position: relative;
+  padding:0;	
 }
 
 .menu li a{
-	display: block;
-	margin:0;
-	padding: 7px 8px;
+  display: block;
+  margin:0;
+  padding: 7px 8px;
 }
 
 .menu ul{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position:absolute;
-	left:0;
-	top: 38px;
-	width: 105px;
-	background: #263343;
-	text-align: center;
-	border-radius: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position:absolute;
+  left:0;
+  top: 38px;
+  width: 105px;
+  background: #263343;
+  text-align: center;
+  border-radius: 4px;
 }
-
 .menu ul li:hover a{
-	border-radius: 4px;
-	background-color: white;
-	
+  border-radius: 4px;
+  background-color: white;	
 }
-
 .menu ul li{
-	float: none;
-	margin:0;
-	padding: 0;
-	font-size: 13px;
-	
-	display: none;
+  float: none;
+  margin:0;
+  padding: 0;
+  font-size: 13px;	
+  display: none;
 }
-
 .menu ul{
-	list-style: none;
-	margin:0;
-	padding: 0;
-	position: absolute;
-	left: 0;
-	top: 38px;
-	width: 105px;
-	background: #263343;
-	text-align: center;
-	opacity: 0;
+  list-style: none;
+  margin:0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 38px;
+  width: 105px;
+  background: #263343;
+  text-align: center;
+  opacity: 0;
 }
-
 .menu li:hover ul{
-	opacity: 1;
+  opacity: 1;
 }
-
 .menu li:hover ul li{
-	height: 35px;
-	overflow: visible;
-	padding: 0;
-	
-	display: block;
+  height: 35px;
+  overflow: visible;
+  padding: 0;
+  display: block;
 }
-
 .menu li:hover > a{
-	background-color: white;
-	color: black;
-	border-radius: 4px;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
 }
-
 .logout{
-	list-style: none;
-	color: white;
-	display: flex;
-	padding-left: 0;
-	margin-top: 17px;
-
+  list-style: none;
+  color: white;
+  display: flex;
+  padding-left: 0;
+  margin-top: 17px;
 }
-
 .logout li {
-	padding: 3px;
+  padding: 3px;
 }
-
 .fa-user-plus {
-   
-   font-size: 25px;
-   margin-right: 30px;
-   text-decoration: none;
-   color: white;
+  font-size: 25px;
+  margin-right: 30px;
+  text-decoration: none;
+  color: white;
 }
 @media screen and (max-width: 666px) {
-	.bar{
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 8px 24px;
-	}
-	
-	.menu{
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
-	
-	.menu li{
-	width: 100%;
-	text-align: center;
-	}
-	
-	.logout{
-		justify-content: center;
-		width: 100%;
-	}
-	
+.bar{
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 24px;
+}	
+ .menu{
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.menu li{
+  width: 100%;
+  text-align: center;
+}
+.logout{
+  justify-content: center;
+  width: 100%;
+}
 }
 body {
   font-family: 'Noto Sans KR', sans-serif;
@@ -166,7 +141,6 @@ body {
     min-height: 100%;
     position: relative;
 }
-
 #body-content {
     margin-top: 0px;
     padding-bottom: 170px; /* footer의 높이 */
@@ -214,7 +188,6 @@ body {
 .infomenu a:hover:after {
    transform: scaleX(1);/*a 속성에 hover시 기존 크기로*/
 }
-
 .infomenu .menuLink {
 	text-decoration: none;
 	color: #4F4F4F;
@@ -222,12 +195,10 @@ body {
 	width: 170px;
 	font-size:17px;
 }
-
 #shopname {
 	font-size:30px;
 	font-weight: bold;
 }
-
 #title {
 	font-size:20px;
 	font-weight: bold;
@@ -246,82 +217,76 @@ body {
 </style>
 </head>
 <body>
-
+	<!-- MENU -->
 	<nav class="bar" >
-	
-	<div class="logo">
-		<img src="../images/mainlogo.png">
-	</div>
-	
-	<ul class="menu">
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_main.do">Home</a></li>
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">매  장</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">Shop Info</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_list.do">제품관리</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_board_list.do">공지사항</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재  고</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재고관리</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_order.do">발주현황</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">매  출</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">주간 매출</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_monthly.do">월 매출</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">매장별 매출</a></li>
-			</ul>
-		</li>
-		
-	</ul>
-	
-	<ul class="logout">
-		<li> <span style="font-size: 15px">매장추가&nbsp;&nbsp;</span><a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
-		<li> <a class="cate_a" href="#">관리자 &nbsp;</a> </li>
-		<li><i class="fas fa-sign-in-alt"></i></li>
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>
-	</ul>
-	
-</nav>
+		<div class="logo">
+			<img src="../images/mainlogo.png">
+		</div>
+		<ul class="menu">
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_main.do">Home</a></li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">매  장</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin/shop_info.jsp">Shop Info</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_list.do">제품관리</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_board_list.do">공지사항</a></li>
+				</ul>
+			</li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재  고</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_product_control.do">재고관리</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_order.do">발주현황</a></li>
+				</ul>
+			</li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">매  출</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_weekly.do">주간 매출</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_monthly.do">월 매출</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/admin_summary.do">매장별 매출</a></li>
+				</ul>
+			</li>	
+		</ul>
+		<ul class="logout">
+			<li> <span style="font-size: 15px">매장추가&nbsp;&nbsp;</span><a class="fas fa-user-plus" href="<%=request.getContextPath() %>/admin/shop_write.jsp"></a> </li>
+			<li> <a class="cate_a" href="#">관리자 &nbsp;</a> </li>
+			<li><i class="fas fa-sign-in-alt"></i></li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/admin_logout.do">Logout</a></li>
+		</ul>
+	</nav>
+	<!-- MENU END -->
 	
 	<div id="body-wrapper">
-	<div id="body-content">
-	<div class = "infomenu">
-		<ul>
-			<li><a class="menuLink" onclick="garosu()">Apple 가로수길</a></li>
-			<li><a class="menuLink" onclick="gimpo()">윌리스 김포공항</a></li>
-			<li><a class="menuLink" onclick="hongdae()">프리스비 홍대</a></li>
-			<li><a class="menuLink" onclick="incheon()">윌리스 인천터미널점</a></li>
-			<li><a class="menuLink" onclick="yeouido()">Apple 여의도</a></li>
-		</ul>
-	</div>
-	
-	<div class="wrapper">
-		
-	<div class="infoback">
-		<p id="shopname">Apple 가로수길</p>
-		<div id="info" align="center">
-		<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
-		<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
-		<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
-		<p><img src="../images/man.png" width="18" height="18"> 담당매니저 : 표은비</p>
-		</div></div>
-		<div id="map" class="map"></div></div></div>
+		<div id="body-content">
+			<div class = "infomenu">
+				<ul>
+					<li><a class="menuLink" onclick="garosu()">Apple 가로수길</a></li>
+					<li><a class="menuLink" onclick="gimpo()">윌리스 김포공항</a></li>
+					<li><a class="menuLink" onclick="hongdae()">프리스비 홍대</a></li>
+					<li><a class="menuLink" onclick="incheon()">윌리스 인천터미널점</a></li>
+					<li><a class="menuLink" onclick="yeouido()">Apple 여의도</a></li>
+				</ul>
+			</div>
+			<div class="wrapper">
+				<!-- SHOP information -->
+				<div class="infoback">
+					<p id="shopname">Apple 가로수길</p>
+					<div id="info" align="center">
+					<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
+					<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
+					<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
+					<p><img src="../images/man.png" width="18" height="18"> 담당매니저 : 표은비</p>
+					</div>
+				</div>
+				<!-- KAKAO map -->
+				<div id="map" class="map">
+				</div>
+			</div>
+		</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>
 <script>
-let container = document.getElementById('map');
-let options = {
-	center: new kakao.maps.LatLng(37.52081891686327, 127.02272035982348),
-	level: 3
-};
-			
+
+// shop information data
 let garosuinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 강남구 가로수길 43 (우)06028</p>"
 				+"<p><img src='../images/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
 				+"<p><img src='../images/phone.png' width='18' height='18'> 080-500-0029</p>"
@@ -346,14 +311,21 @@ let incheoninfo = "<p><img src='../images/location.png' width='18' height='18'> 
 				+"<p><img src='../images/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
 				+"<p><img src='../images/phone.png' width='18' height='18'> 032-242-2710</p>"
 				+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 이영훈</p>"
-	
-	
+
+// map set
+let container = document.getElementById('map');
+let options = {
+  center: new kakao.maps.LatLng(37.52081891686327, 127.02272035982348),
+  level: 3
+};	
+
 let map = new kakao.maps.Map(container, options);
 let marker = new kakao.maps.Marker({ 
-	position: map.getCenter() 
-	}); 
-	marker.setMap(map);	
+  position: map.getCenter() 
+}); 
+marker.setMap(map);	
 			
+// YEOUIDO
 function yeouido() {            
 		
 	document.getElementById("shopname").innerHTML = "Apple 여의도점";
@@ -368,7 +340,8 @@ function yeouido() {
 	}); 
 	marker.setMap(map);	
 }
-	
+
+// GIMPO
 function gimpo() {            
 		
 	document.getElementById("shopname").innerHTML = "윌리스 김포공항";
@@ -384,7 +357,8 @@ function gimpo() {
 	}); 
 	marker.setMap(map);	
 }
-	
+
+// GAROSU
 function garosu() {            
 	
 	document.getElementById("shopname").innerHTML = "Apple 가로수길";
@@ -400,7 +374,8 @@ function garosu() {
 	}); 
 	marker.setMap(map);	
 }
-	
+
+// HONGDAE
 function hongdae() {            
 	
 	document.getElementById("shopname").innerHTML = "프리스비 홍대";
@@ -416,7 +391,8 @@ function hongdae() {
 	}); 
 	marker.setMap(map);	
 }
-	
+
+// INCHEON
 function incheon() {            
 	
 	document.getElementById("shopname").innerHTML = "윌리스 인천터미널점";

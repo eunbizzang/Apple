@@ -22,7 +22,8 @@ public class ShopReportOkAction implements Action {
 		// TODO Auto-generated method stub
 
 		String shopid = request.getParameter("shopid");
-		String date = request.getParameter("date");
+		String date = request.getParameter("date").trim();
+		System.out.println(date);
 		String pnumname = request.getParameter("pnumname");
 		String pname = pnumname.substring(6);
 		String pnum = pnumname.substring(0,6);

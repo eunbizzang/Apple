@@ -213,7 +213,7 @@
 		margin-bottom: 12px;
 	}
 	.tcover {
-		width:430px;
+		width:450px;
 	}
 	.plusbtn {
 		width: 40px;
@@ -224,6 +224,12 @@
 	}
 	.plusbtn:hover {
 	background-color: #B0C4DE;
+}
+
+.table {
+	width: 400px;
+	height: 220px;
+	font-size:10.5px;
 }
 </style>
 

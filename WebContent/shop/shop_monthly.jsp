@@ -113,14 +113,17 @@ p.yeouido:before {
 			<div id="container1">
 				<div class="item" id="box">
 					<div id="date" align="right">
+					<!-- MONTH search form -->
 					<form method="post" 
 						action="<%=request.getContextPath() %>/shop_monthly_check.do">
 			
 						<input type="month" id="month" name="month" onchange="this.form.submit()">
 					</form>
 					</div>
+					<!-- whole store's Monthly sales graph -->
 					<canvas id="shopsales" width="890" height="200"></canvas>
 				</div>
+				<!-- GAROSU -->
 				<div class="item">
 					<p class="garosu">Apple 가로수길</p>
 					<table class="table" width="250">
@@ -155,6 +158,7 @@ p.yeouido:before {
 				</div>
 			</div>
 			<div id="container2">
+				<!-- GIMPO -->
 				<div class="item">
 					<p class="gimpo">윌리스 김포공항	</p>
 					<table class="table" width="250">
@@ -188,6 +192,7 @@ p.yeouido:before {
 					<c:set var="githistotal" value="${githistotal}" />
 					<canvas id="gimonthsales" width="400" height="250"></canvas>
 				</div>
+				<!-- HONGDAE -->
 				<div class="item">
 					<p class="hongdae">프리스비 홍대점	</p>
 					<table class="table" width="250">
@@ -223,6 +228,7 @@ p.yeouido:before {
 				</div>
 			</div>
 			<div id="container2">
+				<!-- INCHEON -->
 				<div class="item">
 					<p class="incheon">윌리스 인천터미널</p>
 					<table class="table" width="230">
@@ -256,6 +262,7 @@ p.yeouido:before {
 					<c:set var="inthistotal" value="${inthistotal}" />
 					<canvas id="inmonthsales" width="400" height="250"></canvas>
 				</div>
+				<!-- YEOUIDO -->
 				<div class="item">
 					<p class="yeouido">Apple 여의도 점	</p>
 					<table class="table" width="230">
@@ -295,6 +302,7 @@ p.yeouido:before {
 	</div>
 <script>
 
+// change color action for the sales data(+,-)
   $('.zero').each(function() {
 	  if (parseFloat($(this).text()) > 0) {
 		  $(this).prepend('+');
@@ -304,20 +312,24 @@ p.yeouido:before {
 			  }
   });
 
+// set data for the date input form
 <c:set var="thismonth" value="${thismonth}" />
+// set input form with thismonth
 <c:if test="${!empty thismonth}">
   document.getElementById("month").value = '${thismonth}';
 </c:if>
+// set input for with selected month
 <c:if test="${empty thismonth}">
   document.getElementById("month").value = new Date().toISOString().slice(0, 7);
 </c:if>
 
+// date label for selected month(thismonth & lastmonth)
 let label=[];
 <c:forEach items="${month}" var="month">
   label.push('${month}');
 </c:forEach>
 
- // garosu
+// GAROSU(selectedmonth, one month before)
 const garosu = document.getElementById('gashopsales');
 const garosuChart = new Chart(garosu, {
 	type: 'bar',
@@ -352,15 +364,18 @@ const garosuChart = new Chart(garosu, {
     }
 });
 
+// GAROSU monthly data(date)
 let gamonthList=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
   gamonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 
+// GAROSU monthly data(sales data)
 let gamonthData=[];
 <c:forEach var="i" items="${gamonthlysaleslist}">
   gamonthData.push('${i.value}');
 </c:forEach>
+
 const gal = document.getElementById('gamonthsales');
 const galine = new Chart(gal, {
 	type: 'line',
@@ -381,9 +396,10 @@ const galine = new Chart(gal, {
 			responsive: false,
 		  },
 		});
-//garosu end
+//GAROSU end
 
-//gimpo
+//GIMPO
+// GIMPO(selectedmonth, one month before)
 const gimpo = document.getElementById('gishopsales');
 const gimpoChart = new Chart(gimpo, {
   type: 'bar',
@@ -418,11 +434,13 @@ const gimpoChart = new Chart(gimpo, {
   }
 });
 
+//GIMPO monthly data(date)
 let gimonthList=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
   gimonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 
+//GIMPO monthly data(sales data)
 let gimonthData=[];
 <c:forEach var="i" items="${gimonthlysaleslist}">
   gimonthData.push('${i.value}');
@@ -449,9 +467,10 @@ const gimpoline = new Chart(gimpol, {
 			responsive: false,
 		  },
 		});
-//gimpo end
+//GIMPO end
 
-//hongdae
+//HONGDAE
+//HONGDAE (selectedmonth, one month before)
 const hongdae = document.getElementById('hoshopsales');
 const hongdaeChart = new Chart(hongdae, {
   type: 'bar',
@@ -486,11 +505,13 @@ const hongdaeChart = new Chart(hongdae, {
   }
 });
 
+//HONGDAE monthly data(date)
 let homonthList=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
   homonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 
+//HONGDAE monthly data(sales data)
 let homonthData=[];
 <c:forEach var="i" items="${homonthlysaleslist}">
   homonthData.push('${i.value}');
@@ -517,9 +538,10 @@ const holine = new Chart(hol, {
 			responsive: false,
 		  },
 		});
-//hongdae end
+//HONGDAE end
 
-//incheon
+//INCHEON
+//INCHEON(selectedmonth, one month before)
 const incheon = document.getElementById('inshopsales');
 const incheonChart = new Chart(incheon, {
   type: 'bar',
@@ -554,11 +576,13 @@ const incheonChart = new Chart(incheon, {
   }
 });
 
+//INCHEON monthly data(date)
 let inmonthList=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
  inmonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 
+//INCHEON monthly data(sales data)
 let inmonthData=[];
 <c:forEach var="i" items="${inmonthlysaleslist}">
  inmonthData.push('${i.value}');
@@ -585,9 +609,9 @@ const inline = new Chart(inl, {
 			responsive: false,
 		  },
 		});
-//incheon end
+//INCHEON end
 
-//yeouido
+//YEOUIDO(selectedmonth, one month before)
 const yeouido = document.getElementById('yeshopsales');
 const yeouidoChart = new Chart(yeouido, {
   type: 'bar',
@@ -622,11 +646,13 @@ const yeouidoChart = new Chart(yeouido, {
   }
 });
 
+//YEOUIDO monthly data(date)
 let yemonthList=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
  yemonthList.push('${i.key}'.substring(5, 10));
 </c:forEach>
 
+//YEOUIDO monthly data(sales data)
 let yemonthData=[];
 <c:forEach var="i" items="${yemonthlysaleslist}">
  yemonthData.push('${i.value}');
@@ -653,7 +679,7 @@ const yeline = new Chart(yel, {
 			responsive: false,
 		  },
 		});
-//yeouido end
+//YEOUIDO end
 
 //shop monthly sales
 let shopdata=[];

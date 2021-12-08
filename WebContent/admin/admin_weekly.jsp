@@ -72,73 +72,77 @@ table.line td {
 
 	<jsp:include page="../include/admin_top.jsp" />
 	<div id="body-wrapper">
-	<div id="body-content">
-<div id="container">
-<div class="item">
-<div class="wrapper">
-<p class="title">주간 매출 (전체매장)</p>
-<canvas id="wholesales" width="450" height="450"></canvas>
-</div>
-</div>
-<div class="item">
-<div class="wrapper">
-<p class="title">매장별 매출</p>
-<canvas id="shopsales" width="450" height="450"></canvas>
-</div>
-</div>
-</div>
-<div align="center">
-	<table width="1100" class="line">
-		<tr>
-			<th scope="cols">매장명</th>
-			<c:set var="week" value="${week}" />
-			<c:forEach var="week" items="${week}"><th scope="cols">${week}</th></c:forEach>
-		</tr>
-		<c:set var="garosu" value="${garosu}" />
-		<c:set var="gimpo" value="${gimpo}" />
-		<c:set var="hongdae" value="${hongdae}" />
-		<c:set var="incheon" value="${incheon}" />
-		<c:set var="yeouido" value="${yeouido}" />
-		<tr>
-			<th scope="row"> Apple 가로수길 </th>
-			<c:forEach var="garosu" items="${garosu}">
-			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${garosu }"/></td></c:forEach>
-		</tr>
-		<tr>
-			<th scope="row"> 윌리스 김포공항 </th>
-			<c:forEach var="gimpo" items="${gimpo}">
-			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${gimpo }"/></td></c:forEach>
-		</tr>
-		<tr>
-			<th scope="row"> 프리스비 홍대점 </th>
-			<c:forEach var="hongdae" items="${hongdae}">
-			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${hongdae }"/></td></c:forEach>
-		</tr>
-		<tr>
-			<th scope="row"> 윌리스 인천터미널점 </th>
-			<c:forEach var="incheon" items="${incheon}">
-			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${incheon }"/></td></c:forEach>
-		</tr>
-		<tr>
-			<th scope="row"> Apple 여의도 점 </th>
-			<c:forEach var="yeouido" items="${yeouido}">
-			<td> <fmt:formatNumber type="number" maxFractionDigits="3"
-		 value="${yeouido }"/></td></c:forEach>
-		</tr>
-	</table>
-	</div>
-	</div>
+		<div id="body-content">
+			<div id="container">
+				<div class="item">
+					<div class="wrapper">
+						<p class="title">주간 매출 (전체매장)</p>
+						<!-- whole store's daily sales graph(stacked) -->
+						<canvas id="wholesales" width="450" height="450"></canvas>
+					</div>
+				</div>
+				<div class="item">
+					<div class="wrapper">
+						<p class="title">매장별 매출</p>
+						<!-- whole store's weekly sales graph -->
+						<canvas id="shopsales" width="450" height="450"></canvas>
+					</div>
+				</div>
+			</div>
+			<div align="center">
+				<!-- WEEKLY sales table(date, shopname) -->
+				<table width="1100" class="line">
+					<tr>
+						<th scope="cols">매장명</th>
+						<c:set var="week" value="${week}" />
+						<c:forEach var="week" items="${week}"><th scope="cols">${week}</th></c:forEach>
+					</tr>
+					<c:set var="garosu" value="${garosu}" />
+					<c:set var="gimpo" value="${gimpo}" />
+					<c:set var="hongdae" value="${hongdae}" />
+					<c:set var="incheon" value="${incheon}" />
+					<c:set var="yeouido" value="${yeouido}" />
+					<tr>
+						<th scope="row"> Apple 가로수길 </th>
+						<c:forEach var="garosu" items="${garosu}">
+						<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+					 value="${garosu }"/></td></c:forEach>
+					</tr>
+					<tr>
+						<th scope="row"> 윌리스 김포공항 </th>
+						<c:forEach var="gimpo" items="${gimpo}">
+						<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+					 value="${gimpo }"/></td></c:forEach>
+					</tr>
+					<tr>
+						<th scope="row"> 프리스비 홍대점 </th>
+						<c:forEach var="hongdae" items="${hongdae}">
+						<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+					 value="${hongdae }"/></td></c:forEach>
+					</tr>
+					<tr>
+						<th scope="row"> 윌리스 인천터미널점 </th>
+						<c:forEach var="incheon" items="${incheon}">
+						<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+					 value="${incheon }"/></td></c:forEach>
+					</tr>
+					<tr>
+						<th scope="row"> Apple 여의도 점 </th>
+						<c:forEach var="yeouido" items="${yeouido}">
+						<td> <fmt:formatNumber type="number" maxFractionDigits="3"
+					 value="${yeouido }"/></td></c:forEach>
+					</tr>
+				</table>
+			</div>
+		</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
 <script>
+// data for weekly salesgraph
 let shopdata=[];
 <c:set var="sales" value="${shopsales}" />
 <c:forEach items="${sales}" var="sales">
-shopdata.push('${sales}');
+  shopdata.push('${sales}');
 </c:forEach>
 const ctx = document.getElementById('shopsales');
 const myChart = new Chart(ctx, {
@@ -175,36 +179,49 @@ const myChart = new Chart(ctx, {
     }
 });
 
+// date data
 let week=[];
 <c:set var="week" value="${week}" />
 <c:forEach items="${week}" var="week">
-week.push('${week}'.substring(5, 10));
+  week.push('${week}'.substring(5, 10));
 </c:forEach>
+
+// GAROSU WEEKLY
 let garosu=[];
 <c:set var="garosu" value="${garosu}" />
 <c:forEach items="${garosu}" var="garosu">
-garosu.push('${garosu}');
+  garosu.push('${garosu}');
 </c:forEach>
+
+// GIMPO WEEKLY
 let gimpo=[];
 <c:set var="gimpo" value="${gimpo}" />
 <c:forEach items="${gimpo}" var="gimpo">
-gimpo.push('${gimpo}');
+  gimpo.push('${gimpo}');
 </c:forEach>
+
+// HONGDAE WEEKLY
 let hongdae=[];
 <c:set var="hongdae" value="${hongdae}" />
 <c:forEach items="${hongdae}" var="hongdae">
 hongdae.push('${hongdae}');
 </c:forEach>
+
+// INCHEON WEEKLY
 let incheon=[];
 <c:set var="incheon" value="${incheon}" />
 <c:forEach items="${incheon}" var="incheon">
-incheon.push('${incheon}');
+  incheon.push('${incheon}');
 </c:forEach>
+
+// YEOUIDO WEEKLY
 let yeouido=[];
 <c:set var="yeouido" value="${yeouido}" />
 <c:forEach items="${yeouido}" var="yeouido">
-yeouido.push('${yeouido}');
+  yeouido.push('${yeouido}');
 </c:forEach>
+
+// stacked graph data
 const con = document.getElementById('wholesales');
 const config = new Chart(con, {
 		  type: 'bar',

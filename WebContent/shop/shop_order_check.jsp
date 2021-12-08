@@ -77,70 +77,71 @@ table.line td {
 
 	<jsp:include page="../include/shop_top.jsp" />
 	<div class="container">
-	
-	<p class="title">발주 내역</p>
-	
-	<div class="form">
-	<form method="post"
-			action="<%=request.getContextPath() %>/shop_order_check_again.do">
-			<table width="600">
-			<tr>
-			<td>
-			<input class="input" type="date" name="date1" required>
-			</td>
-			<td>-</td>
-			<td>
-			<input class="input" type="date" name="date2" required>
-			</td>
-			<td>상태 : <select class="input" name="search_field" required>
-						<option value="all">전체</option>
-						<option value="order">요청</option>
-						<option value="order_ok">발주승인</option>
-						<option value="order_cancel">발주취소</option>
-					</select>
-					</td>
-					<td>
-			<input class="input" type="submit" style="width:60px;" value="확인">
-			</td>
-			</tr>
+		<p class="title">발주 내역</p>
+		<div class="form">
+			<!-- order search form -->
+			<form method="post"
+					action="<%=request.getContextPath() %>/shop_order_check_again.do">
+				<table width="600">
+					<tr>
+						<td>
+							<input class="input" type="date" name="date1" required>
+						</td>
+						<td>-</td>
+						<td>
+							<input class="input" type="date" name="date2" required>
+						</td>
+						<td>
+							상태 : <select class="input" name="search_field" required>
+									<option value="all">전체</option>
+									<option value="order">요청</option>
+									<option value="order_ok">발주승인</option>
+									<option value="order_cancel">발주취소</option>
+							</select>
+						</td>
+						<td>
+							<input class="input" type="submit" style="width:60px;" value="확인">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="table-wrapper">
+			<!-- searched order data table -->
+			<table class="line" style ='width : 1000px;'>
+			<c:set var="list" value="${orderlist }" />
+				<c:if test="${!empty list }">
+				<tr>
+		      		<th>요청 코드</th><th>요청제품</th><th>수량</th><th>요청 일자</th>
+		      		<th>상태</th><th>본사 확인</th><th>코멘트</th>
+				</tr>
+				<c:forEach items="${list }" var="dto">
+				<tr>
+					<td> ${dto.getOrder_code() } </td>
+		            <td> ${dto.getPnum() } </td>
+		            <td> ${dto.getOrder_no() } </td>
+		            <td> ${fn:substring(dto.getOrder_date(),0,16) } </td>
+		            <td> ${dto.getOrder_check() } </td>
+		            <td> <c:if test="${!empty dto.getOrderok_date() }">
+		            	${fn:substring(dto.getOrderok_date(),0,16) }</c:if>
+		            	<c:if test="${empty dto.getOrderok_date() }">
+		             	미확인</c:if> 
+		            </td>
+		            <td>
+		            	<c:if test="${!empty dto.getOrder_comment() }">
+		            	${dto.getOrder_comment() }</c:if>
+		            	<c:if test="${empty dto.getOrder_comment() }">
+		            	<div class="sent">-</div>
+		             	</c:if>
+		            </td>
+		         </tr>
+				</c:forEach>
+		        </c:if>
 			</table>
-		</form>
+		</div>
+		</div>
+	<div>
+	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
-	<div class="table-wrapper">
-		<table class="line" style ='width : 1000px;'>
-		<c:set var="list" value="${orderlist }" />
-			<c:if test="${!empty list }">
-			<tr>
-	      		<th>요청 코드</th><th>요청제품</th><th>수량</th><th>요청 일자</th>
-	      		<th>상태</th><th>본사 확인</th><th>코멘트</th>
-			</tr>
-			<c:forEach items="${list }" var="dto">
-			<tr>
-				<td> ${dto.getOrder_code() } </td>
-	            <td> ${dto.getPnum() } </td>
-	            <td> ${dto.getOrder_no() } </td>
-	            <td> ${fn:substring(dto.getOrder_date(),0,16) } </td>
-	            <td> ${dto.getOrder_check() } </td>
-	            <td> <c:if test="${!empty dto.getOrderok_date() }">
-	            	${fn:substring(dto.getOrderok_date(),0,16) }</c:if>
-	            	<c:if test="${empty dto.getOrderok_date() }">
-	             	미확인</c:if> 
-	            </td>
-	            <td>
-	            	<c:if test="${!empty dto.getOrder_comment() }">
-	            	${dto.getOrder_comment() }</c:if>
-	            	<c:if test="${empty dto.getOrder_comment() }">
-	            	<div class="sent">발주완료</div>
-	             	</c:if>
-	            </td>
-	         </tr>
-			</c:forEach>
-	        </c:if>
-		</table>
-	</div>
-	</div>
-<div>
-<jsp:include page="../include/shop_bottom.jsp" />
-</div>
 </body>
 </html>

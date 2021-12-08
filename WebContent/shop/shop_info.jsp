@@ -244,82 +244,77 @@ body {
 </style>
 </head>
 <body>
-<nav class="bar" >
-	
-	<div class="logo">
-		<img class="img" src="../images/mainlogo.png">
-	</div>
-	
-	<ul class="menu">
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_login_ok.do?code=1">Home</a></li>
-		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">매  장</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">Shop Info</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_apple_product.do">제품목록</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_board_list.do">공지사항</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재  고</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재고관리</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order.do">발주 폼</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order_check.do">발주내역</a></li>
-			</ul>
-		</li>
-		
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매  출</a>
-			<ul class="sub">
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">주간 매출</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_monthly.do">월 매출</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매출 조회</a></li>
-				<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_report.do">매출 보고</a></li>
-			</ul>
-		</li>
-		
-	</ul>
-	
-	<ul class="logout">
-		<li> <a class="cate_a" href="#">${shopName } &nbsp;</a> </li>
-		<li><i class="fas fa-sign-in-alt"></i></li>
-		<li><a class="cate_a" href="<%=request.getContextPath() %>/user_logout.do">Logout</a></li>
-	</ul>
-</nav>
-
-	<div id="body-wrapper">
-	<div id="body-content">
-	<div class = "infomenu">
-		<ul>
-			<li><a class="menuLink" onclick="garosu()">Apple 가로수길</a></li>
-			<li><a class="menuLink" onclick="gimpo()">윌리스 김포공항</a></li>
-			<li><a class="menuLink" onclick="hongdae()">프리스비 홍대</a></li>
-			<li><a class="menuLink" onclick="incheon()">윌리스 인천터미널점</a></li>
-			<li><a class="menuLink" onclick="yeouido()">Apple 여의도</a></li>
+	<!-- MENU BAR -->
+	<nav class="bar" >
+		<div class="logo">
+			<img class="img" src="../images/mainlogo.png">
+		</div>
+		<ul class="menu">
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_login_ok.do?code=1">Home</a></li>
+			
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">매  장</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop/shop_info.jsp">Shop Info</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_apple_product.do">제품목록</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_board_list.do">공지사항</a></li>
+				</ul>
+			</li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재  고</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/user_product_list.do">재고관리</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order.do">발주 폼</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_order_check.do">발주내역</a></li>
+				</ul>
+			</li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매  출</a>
+				<ul class="sub">
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_weekly.do">주간 매출</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_monthly.do">월 매출</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_summary.do">매출 조회</a></li>
+					<li> <a class="cate_a" href="<%=request.getContextPath() %>/shop_report.do">매출 보고</a></li>
+				</ul>
+			</li>
 		</ul>
-	</div>
-	
-	<div class="wrapper">
-		
-	<div class="infoback">
-		<p id="shopname">Apple 가로수길</p>
-		<div id="info" align="center">
-		<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
-		<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
-		<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
-		<p><img src="../images/man.png" width="18" height="18"> 담당매니저 : 표은비</p>
-		</div></div>
-		<div id="map" class="map"></div></div></div>
+		<ul class="logout">
+			<li> <a class="cate_a" href="#">${shopName } &nbsp;</a> </li>
+			<li><i class="fas fa-sign-in-alt"></i></li>
+			<li><a class="cate_a" href="<%=request.getContextPath() %>/user_logout.do">Logout</a></li>
+		</ul>
+	</nav>
+	<!-- MENUBAR END -->
+	<div id="body-wrapper">
+		<div id="body-content">
+			<div class = "infomenu">
+				<ul>
+					<li><a class="menuLink" onclick="garosu()">Apple 가로수길</a></li>
+					<li><a class="menuLink" onclick="gimpo()">윌리스 김포공항</a></li>
+					<li><a class="menuLink" onclick="hongdae()">프리스비 홍대</a></li>
+					<li><a class="menuLink" onclick="incheon()">윌리스 인천터미널점</a></li>
+					<li><a class="menuLink" onclick="yeouido()">Apple 여의도</a></li>
+				</ul>
+			</div>
+			<div class="wrapper">
+				<div class="infoback">
+				<!-- Shop information -->
+				<p id="shopname">Apple 가로수길</p>
+					<div id="info" align="center">
+					<p><img src="../images/location.png" width="18" height="18"> 서울 강남구 가로수길 43 (우)06028</p>
+					<p><img src="../images/time.png" width="18" height="18"> 10:00 ~ 22:00</p>
+					<p><img src="../images/phone.png" width="18" height="18"> 080-500-0029</p>
+					<p><img src="../images/man.png" width="18" height="18"> 담당매니저 : 표은비</p>
+					</div>
+				</div>
+				<!-- KAKAO map -->
+				<div id="map" class="map">
+				</div>
+			</div>
+		</div>
 	<jsp:include page="../include/shop_bottom.jsp" />
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4285c890083d1f612cc44cfdd5d0dc4f"></script>
 <script>
-let container = document.getElementById('map');
-let options = {
-	center: new kakao.maps.LatLng(37.52081891686327, 127.02272035982348),
-	level: 3
-};
-			
+
+// shopinfo set		
 let garosuinfo = "<p><img src='../images/location.png' width='18' height='18'> 서울 강남구 가로수길 43 (우)06028</p>"
 				+"<p><img src='../images/time.png' width='18' height='18'> 10:00 ~ 22:00</p>"
 				+"<p><img src='../images/phone.png' width='18' height='18'> 080-500-0029</p>"
@@ -344,93 +339,101 @@ let incheoninfo = "<p><img src='../images/location.png' width='18' height='18'> 
 				+"<p><img src='../images/time.png' width='18' height='18'> 10:30 ~ 21:00</p>"
 				+"<p><img src='../images/phone.png' width='18' height='18'> 032-242-2710</p>"
 				+"<p><img src='../images/man.png' width='18' height='18'> 담당 매니저 : 이영훈</p>"
-	
-	
+
+// map set
+
+let container = document.getElementById('map');
+let options = {
+  center: new kakao.maps.LatLng(37.52081891686327, 127.02272035982348),
+  level: 3
+};
+				
 let map = new kakao.maps.Map(container, options);
 let marker = new kakao.maps.Marker({ 
 	position: map.getCenter() 
 	}); 
-	marker.setMap(map);	
-			
+  marker.setMap(map);	
+	
+// shop function
+
+// YEOUIDO
 function yeouido() {            
 		
-	document.getElementById("shopname").innerHTML = "Apple 여의도점";
-	document.getElementById("info").innerHTML
-	= yeouidoinfo
+  document.getElementById("shopname").innerHTML = "Apple 여의도점";
+  document.getElementById("info").innerHTML = yeouidoinfo
 		
-	let moveLatLon = new kakao.maps.LatLng(37.525100134561754, 126.92588452406844);
+  let moveLatLon = new kakao.maps.LatLng(37.525100134561754, 126.92588452406844);
 			    
-	map.setCenter(moveLatLon);
-	let marker = new kakao.maps.Marker({ 
+  map.setCenter(moveLatLon);
+  let marker = new kakao.maps.Marker({ 
 	    position: map.getCenter() 
 	}); 
-	marker.setMap(map);	
+  marker.setMap(map);	
 }
-	
+
+// GIMPO
 function gimpo() {            
 		
-	document.getElementById("shopname").innerHTML = "윌리스 김포공항";
-	document.getElementById("info").innerHTML
-	= gimpoinfo
+  document.getElementById("shopname").innerHTML = "윌리스 김포공항";
+  document.getElementById("info").innerHTML = gimpoinfo
 		
-	// 이동할 위도 경도 위치를 생성합니다 
-	let moveLatLon = new kakao.maps.LatLng(37.56318424549044, 126.80318825591408);
+  // 이동할 위도 경도 위치를 생성합니다 
+  let moveLatLon = new kakao.maps.LatLng(37.56318424549044, 126.80318825591408);
 			    
-	map.setCenter(moveLatLon);
-	let marker = new kakao.maps.Marker({ 
-	    position: map.getCenter() 
-	}); 
-	marker.setMap(map);	
+  map.setCenter(moveLatLon);
+  let marker = new kakao.maps.Marker({ 
+    position: map.getCenter() 
+  }); 
+  marker.setMap(map);	
 }
-	
+
+// GAROSU
 function garosu() {            
 	
-	document.getElementById("shopname").innerHTML = "Apple 가로수길";
-	document.getElementById("info").innerHTML
-	= garosuinfo
+  document.getElementById("shopname").innerHTML = "Apple 가로수길";
+  document.getElementById("info").innerHTML = garosuinfo
 		
-	// 이동할 위도 경도 위치를 생성합니다 
-	let moveLatLon = new kakao.maps.LatLng(37.52081891686327, 127.02272035982348);
+  // 이동할 위도 경도 위치를 생성합니다 
+  let moveLatLon = new kakao.maps.LatLng(37.52081891686327, 127.02272035982348);
 			    
-	map.setCenter(moveLatLon);
-	let marker = new kakao.maps.Marker({ 
-	    position: map.getCenter() 
-	}); 
-	marker.setMap(map);	
+  map.setCenter(moveLatLon);
+  let marker = new kakao.maps.Marker({ 
+    position: map.getCenter() 
+  }); 
+  marker.setMap(map);	
 }
-	
+
+// HONGDAE
 function hongdae() {            
 	
-	document.getElementById("shopname").innerHTML = "프리스비 홍대";
-	document.getElementById("info").innerHTML
-	= hongdaeinfo
+  document.getElementById("shopname").innerHTML = "프리스비 홍대";
+  document.getElementById("info").innerHTML = hongdaeinfo
 		
-	// 이동할 위도 경도 위치를 생성합니다 
-	let moveLatLon = new kakao.maps.LatLng(37.55350248354633, 126.92326480411504);
+  // 이동할 위도 경도 위치를 생성합니다 
+  let moveLatLon = new kakao.maps.LatLng(37.55350248354633, 126.92326480411504);
 		
-	map.setCenter(moveLatLon);
-	let marker = new kakao.maps.Marker({ 
-	    position: map.getCenter() 
-	}); 
-	marker.setMap(map);	
+  map.setCenter(moveLatLon);
+  let marker = new kakao.maps.Marker({ 
+    position: map.getCenter() 
+  }); 
+  marker.setMap(map);	
 }
-	
+
+// INCHEON
 function incheon() {            
 	
-	document.getElementById("shopname").innerHTML = "윌리스 인천터미널점";
-	document.getElementById("info").innerHTML
-	= incheoninfo
+  document.getElementById("shopname").innerHTML = "윌리스 인천터미널점";
+  document.getElementById("info").innerHTML = incheoninfo
 		
-	// 이동할 위도 경도 위치를 생성합니다 
-	let moveLatLon = new kakao.maps.LatLng(37.44150644089625, 126.70136555595195);
+  // 이동할 위도 경도 위치를 생성합니다 
+  let moveLatLon = new kakao.maps.LatLng(37.44150644089625, 126.70136555595195);
 			    
-	map.setCenter(moveLatLon);
-	let marker = new kakao.maps.Marker({ 
-	    position: map.getCenter() 
-	}); 
-	marker.setMap(map);	
+  map.setCenter(moveLatLon);
+  let marker = new kakao.maps.Marker({ 
+    position: map.getCenter() 
+  }); 
+  marker.setMap(map);	
 }
 </script>
 </body>
-
 </html>
