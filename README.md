@@ -38,3 +38,4 @@ To add in Markdown format, use this code:
 
 
 
+[UI아키텍처설계.pdf](https://github.com/eunbizzang/Apple/files/7697200/UI.pdf)
