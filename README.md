@@ -36,6 +36,8 @@ To add in Markdown format, use this code:
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 ```
 
+![UI](https://user-images.githubusercontent.com/70651994/145680230-2bf9a6fc-8be4-43c4-8e61-ae499ee9eb06.JPG)
+
 
 
 [UI아키텍처설계.pdf](https://github.com/eunbizzang/Apple/files/7697200/UI.pdf)
