@@ -1,9 +1,10 @@
-# :apple: sales apple system 🍏
+:apple: Apple Store 관리 시스템 :apple:
+======================
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-
-Apple:apple:
-
+# 1. Apple Store 관리 시스템이란?
+## 1.1.
+JSP를 이용한 Apple사의 매장 관리시스템.
+본사계정 또는 매장계정을 통해 매장의 재고, 매출, 정보 등을 관리 할 수 있습니다 !
 Web Application for Apple store & Apple company.
 This application will help stores 
 1. Report their daily sales.
