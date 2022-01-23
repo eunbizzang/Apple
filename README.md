@@ -8,9 +8,13 @@ JSP를 이용한 Apple사의 매장 관리시스템.
 ##  2. Current Functionalities
 
 Login
+
 Logout
+
 Shop information
+
 ![shop_info](https://user-images.githubusercontent.com/70651994/146647584-43fc9bc3-1971-48ca-b094-8870f9eff89b.JPG)
+
 기능 : 서울 지역에 있는 각 Apple Store의 정보 (주소, 전화번호, 매니저이름, 영업시간)를 한눈에 볼 수 있게 했습니다.
 목적 : 가끔 걸려오는 다른 매장을 찾는 고객의 전화📞, 급히 재고가 🚑필요할 때 다른 매장의 전화번호를 수첩을 뒤지거나 인터넷에 검색하는 등의
 수고를 덜기 위해서 매장 정보 페이지를 작성했습니다. 이 페이지를 통해 다른 매장에 용무가 있을 때는 언제든지 등록돼있는 영업시간을 확인 후
@@ -18,12 +22,19 @@ Shop information
 확인하여 바로 매장까지의 길 안내가 가능합니다.
 
 Update Products
+
 Update inventories
+
 Check inventories
+
 Order Products
+
 Check Order
+
 Weekly Sales(with graphs)
+
 Monthly Sales(with graphs)
+
 Total Sales during selected date(with graphs)
 
 ## 3. Skills
